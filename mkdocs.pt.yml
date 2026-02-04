@@ -1,12 +1,13 @@
 site_name: tucoopy (Python)
-repo_url: https://github.com/brennobarbosa/tucoopyy
+site_url: https://brennobarbosa.github.io/tucoopy/pt/
+
+repo_url: https://github.com/brennobarbosa/tucoopy
 repo_name: brennobarbosa/tucoopy
-copyright: Conteudo licenciado sob CC BY 4.0.
+
+copyright: Conteúdo licenciado sob CC BY 4.0.
 
 docs_dir: docs/pt
 site_dir: site/pt
-site_name: tucoopyy
-site_url: https://brennobarbosa.github.io/tucoopyy/
 
 theme:
   name: material
@@ -23,12 +24,13 @@ theme:
 
 extra:
   alternate:
-    - name: English
-      link: /
-      lang: en
     - name: Português
-      link: /pt/
+      link: /tucoopy/pt/
       lang: pt-BR
+    # Ative quando você tiver docs em inglês na raiz (docs/en ou docs/)
+    # - name: English
+    #   link: /tucoopy/
+    #   lang: en
 
 nav:
   - Início: index.md
@@ -175,17 +177,15 @@ nav:
           - reference/transforms/combine.md
           - reference/transforms/communication.md
           - reference/transforms/derived.md
-      
+
       - viz:
           - reference/viz/mpl2.md
           - reference/viz/mpl3.md
-
 
 markdown_extensions:
   - admonition
   - attr_list
   - def_list
-
   - footnotes
   - toc:
       permalink: true
@@ -198,6 +198,12 @@ markdown_extensions:
 
 plugins:
   - search
+  - awesome-pages
+  - git-revision-date-localized:
+      type: date
+      locale: pt_BR
+  - minify:
+      minify_html: true
   - mkdocstrings:
       handlers:
         python:
