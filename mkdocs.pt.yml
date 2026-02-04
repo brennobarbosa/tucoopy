@@ -5,6 +5,8 @@ copyright: Conteudo licenciado sob CC BY 4.0.
 
 docs_dir: docs/pt
 site_dir: site/pt
+site_name: tucoopy
+site_url: https://brennobarbosa.github.io/tucoopy/
 
 theme:
   name: material

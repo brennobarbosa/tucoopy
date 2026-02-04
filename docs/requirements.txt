@@ -3,3 +3,6 @@ mkdocs-material>=9.5
 pymdown-extensions>=10.0
 mkdocstrings[python]>=0.25
 griffe>=0.49
+mkdocs-git-revision-date-localized-plugin>=1.2
+mkdocs-minify-plugin>=0.7
+mkdocs-awesome-pages-plugin>=2.9
