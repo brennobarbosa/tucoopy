@@ -12,7 +12,6 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        # Recomendo remover 3.14 por enquanto (muitas deps ainda não têm wheels).
         python-version: ["3.10", "3.11", "3.12", "3.13"]
 
     steps:
@@ -23,10 +22,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
           cache-dependency-path: |
-            tucoopy/pyproject.toml
+            pyproject.toml
+            requirements-docs.txt
 
       - name: Install (editable)
-        working-directory: ./tucoopy
         run: |
           python -m pip install -U pip
           python -m pip install -e ".[dev,docs]"
@@ -55,23 +54,23 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if rg -n "^[[:space:]]*#\\s*apagar\\b" tucoopy/src/tucoopy -S; then
+          if rg -n "^[[:space:]]*#\\s*apagar\\b" src/tucoopy -S; then
             echo "Found placeholder '# apagar' files. Remove them or replace with an explicit ImportError module."
             exit 1
           fi
 
       - name: Pytest
         run: |
-          python -m pytest -q tucoopy/tests
+          python -m pytest -q tests
 
       - name: Mypy
         run: |
-          python -m mypy tucoopy/src/tucoopy
+          python -m mypy src/tucoopy
 
       - name: MkDocs (pt)
         if: runner.os == 'Linux'
         run: |
-          python -m mkdocs build -f tucoopy/mkdocs.pt.yml --clean
+          python -m mkdocs build -f mkdocs.pt.yml --clean
 
   test-full:
     name: test (full extras) - ubuntu / py3.12
@@ -84,14 +83,14 @@ jobs:
           python-version: "3.12"
           cache: pip
           cache-dependency-path: |
-            tucoopy/pyproject.toml
+            pyproject.toml
+            requirements-docs.txt
 
       - name: Install (editable + extras)
-        working-directory: ./tucoopy
         run: |
           python -m pip install -U pip
           python -m pip install -e ".[dev,docs,lp,fast,viz]"
 
       - name: Pytest
         run: |
-          python -m pytest -q tucoopy/tests
+          python -m pytest -q tests
