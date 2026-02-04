@@ -8,6 +8,7 @@ copyright: Conteúdo licenciado sob CC BY 4.0.
 
 docs_dir: docs/pt
 site_dir: site/pt
+site_url: https://brennobarbosa.github.io/tucoopy/pt/
 
 theme:
   name: material
