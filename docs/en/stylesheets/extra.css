@@ -1,0 +1,14 @@
+/*
+Make the header logo a bit larger than the Material default.
+This only affects the top-left brand area (not the logo embedded in pages).
+*/
+
+p {
+  text-align: justify;
+  text-justify: auto;
+}
+.md-header__button.md-logo img {
+  height: 2.0rem;
+  width: auto;
+}
+

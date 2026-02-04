@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tucoop"
+version = "0.1.0"
+description = "Cooperative game theory (TU) algorithms + animation spec generator"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "tucoop contributors" }]
+dependencies = [
+]
+
+keywords = ["cooperative-game-theory", "game-theory", "shapley", "banzhaf", "nucleolus"]
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering :: Mathematics",
+]
+
+[project.urls]
+Homepage = "https://github.com/brennobarbosa/tucoop"
+Repository = "https://github.com/brennobarbosa/tucoop"
+Issues = "https://github.com/brennobarbosa/tucoop/issues"
+
+[project.optional-dependencies]
+lp = ["scipy>=1.10"]
+lp_alt = ["pulp>=2.8"]
+fast = ["numpy>=1.26"]
+viz = ["matplotlib>=3.8"]
+dev = ["pytest>=8.0", "ruff>=0.6", "mypy>=1.8"]
+docs = [
+  "mkdocs>=1.6",
+  "mkdocs-material>=9.5",
+  "pymdown-extensions>=10.0",
+  "mkdocstrings[python]>=0.25",
+  "griffe>=0.49",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["tucoop*"]
+
+[tool.setuptools.package-data]
+"tucoop.io" = ["schemas/*.json"]
+
+[tool.pytest.ini_options]
+addopts = "-p no:cacheprovider"
+norecursedirs = [
+  "pytest-cache-files-*",
+]

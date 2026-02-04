@@ -1,0 +1,11 @@
+# Optional dependencies (mandatory for development)
+
+# For fast computations
+numpy>=2.4
+
+# Required for linear programming
+scipy>=1.17 # recommend
+pulp>=3.3 # fallback
+
+# Required for visualizations
+matplotlib>=3.10

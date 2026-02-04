@@ -1,0 +1,221 @@
+site_name: tucoop (Python)
+repo_url: https://github.com/brennobarbosa/tucoop
+repo_name: brennobarbosa/tucoop
+copyright: Conteudo licenciado sob CC BY 4.0.
+
+docs_dir: docs/pt
+site_dir: site/pt
+
+theme:
+  name: material
+  language: pt-BR
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.footnote.tooltips
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+
+extra:
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: Português
+      link: /pt/
+      lang: pt-BR
+
+nav:
+  - Início: index.md
+
+  - Teoria:
+      - Visão geral: theory/index.md
+      - Jogos cooperativos TU: theory/tu_games.md
+      - Alocações e imputações: theory/allocations.md
+      - Bloqueio e estabilidade: theory/stability.md
+      - Classes de jogos e propriedades: theory/game_classes.md
+      - Jogos simples: theory/simple_games.md
+      - Notação e convenções: theory/notation.md
+      - Set solutions (núcleo e afins): theory/set_solutions.md
+      - Conceitos de solução (visão geral): theory/solution_concepts.md
+      - Poder em jogos simples: theory/power.md
+      - Decomposição e transformações: theory/transforms.md
+
+  - Uso:
+      - Começando: guides/quickstart.md
+      - Escolhendo uma solução: guides/choose_solution.md
+      - Diagnosticando resultados: guides/diagnostics.md
+      - Trabalhando com jogos grandes: guides/large_games.md
+      - Otimizando a performance: guides/performance.md
+      - Desenvolvimento (Windows/OneDrive): guides/dev_windows_onedrive.md
+      - Como escolher/entender backends: guides/lp_backends.md
+      - Visualização (Matplotlib): guides/vizualization.md
+      - Especificação de animação: guides/animation_spec.md
+      - Contrato de analysis: guides/analysis_contract.md
+      - Exemplos: guides/examples.md
+
+  - Biblioteca:
+      - Soluções: library/solutions.md
+      - Geometria: library/geometry.md
+      - Jogos geradores: library/games.md
+      - Índices de poder: library/power.md
+      - Transformações: library/transforms.md
+      - Visualização: library/viz.md
+      - API (como ler): library/api.md
+      - Estrutura do pacote: library/structure.md
+
+  - Projeto:
+      - Referências bibliográficas: project/references.md
+      - Roadmap: project/roadmap.md
+      - API pública: project/public_api.md
+      - Depreciação: project/deprecation.md
+      - JS vs Python: project/js_vs_python.md
+      - Crítica do projeto: project/project_critique.md
+      - Contribuições: project/contributions.md
+
+  - Referência (API):
+      - Índice: reference/index.md
+
+      - base:
+          - reference/base/coalition.md
+          - reference/base/game.md
+          - reference/base/config.md
+          - reference/base/exceptions.md
+          - reference/base/types.md
+
+      - diagnostics:
+          - reference/diagnostics/allocation_diagnostics.md
+          - reference/diagnostics/blocking_regions.md
+          - reference/diagnostics/core_cover_diagnostics.md
+          - reference/diagnostics/core_diagnostics.md
+          - reference/diagnostics/epsilon_core_diagnostics.md
+          - reference/diagnostics/imputation_diagnostics.md
+          - reference/diagnostics/least_core_diagnostics.md
+          - reference/diagnostics/linprog_diagnostics.md
+          - reference/diagnostics/reasonable_diagnostics.md
+
+      - games:
+          - reference/games/additive.md
+          - reference/games/airport.md
+          - reference/games/apex.md
+          - reference/games/assignment.md
+          - reference/games/bankruptcy.md
+          - reference/games/cost_sharing.md
+          - reference/games/flow.md
+          - reference/games/glove.md
+          - reference/games/market.md
+          - reference/games/mst.md
+          - reference/games/production.md
+          - reference/games/savings.md
+          - reference/games/unanimity.md
+          - reference/games/weighted_voting.md
+
+      - geometry:
+          - reference/geometry/bargaining_set.md
+          - reference/geometry/core_set.md
+          - reference/geometry/core_cover_set.md
+          - reference/geometry/epsilon_core_set.md
+          - reference/geometry/imputation_set.md
+          - reference/geometry/kernel_set.md
+          - reference/geometry/least_core_set.md
+          - reference/geometry/polyhedron.md
+          - reference/geometry/projection.md
+          - reference/geometry/reasonable_set.md
+          - reference/geometry/sampling.md
+          - reference/geometry/weber_set.md
+
+      - io:
+          - reference/io/analysis.md
+          - reference/io/animation_spec.md
+          - reference/io/game_spec.md
+          - reference/io/schema.md
+
+      - power:
+          - reference/power/banzhaf.md
+          - reference/power/coleman.md
+          - reference/power/deegan_packel.md
+          - reference/power/egalitarian_shapley.md
+          - reference/power/holler.md
+          - reference/power/johnston.md
+          - reference/power/koenig_brauninger.md
+          - reference/power/rae.md
+          - reference/power/shapley_shubik.md
+          - reference/power/solidarity.md
+
+      - properties:
+          - reference/properties/basic.md
+          - reference/properties/balancedness.md
+          - reference/properties/convexity.md
+          - reference/properties/cost_games.md
+          - reference/properties/simple_games.md
+
+      - solutions:
+          - reference/solutions/banzhaf.md
+          - reference/solutions/gately.md
+          - reference/solutions/kernel.md
+          - reference/solutions/least_core.md
+          - reference/solutions/least_squares.md
+          - reference/solutions/modiclus.md
+          - reference/solutions/myerson.md
+          - reference/solutions/nucleolus.md
+          - reference/solutions/owen.md
+          - reference/solutions/shapley.md
+          - reference/solutions/solve.md
+          - reference/solutions/tau.md
+
+      - transforms:
+          - reference/transforms/algebra.md
+          - reference/transforms/mobius.md
+          - reference/transforms/harsanyi.md
+          - reference/transforms/combine.md
+          - reference/transforms/communication.md
+          - reference/transforms/derived.md
+      
+      - viz:
+          - reference/viz/mpl2.md
+          - reference/viz/mpl3.md
+
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - src
+          options:
+            docstring_style: numpy
+            show_signature_annotations: false
+            separate_signature: true
+            show_source: false
+
+watch:
+  - src
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
+  - javascripts/katex.js
+  - javascripts/cg-tooltips.js
