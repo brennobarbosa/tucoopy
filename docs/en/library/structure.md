@@ -1,38 +1,39 @@
-﻿# Estrutura do tucoopy-py
+﻿# tucoopy structure
 
-Este pacote é organizado para manter a API pública explícita, pequena e fácil de navegar.
+This package is organized to keep the public API explicit, small, and easy to navigate.
 
-## Módulos canônicos
+## Canonical modules
 
 - `tucoopy.base`
-  - estruturas fundamentais (`Coalition` bitmask, `Game`)
+  - fundamental structures (`Coalition` bitmask, `Game`)
 
 - `tucoopy.properties`
-  - propriedades / reconhecedores
+  - properties / recognizers
 
 - `tucoopy.io`
-  - IO JSON + helpers de animation spec (contrato compartilhado com o JS)
+  - JSON IO + animation spec helpers (shared contract with the JS package)
 
 - `tucoopy.backends`
-  - adapters para dependências opcionais (LP, NumPy, ...)
+  - adapters for optional dependencies (LP, NumPy, ...)
 
 - `tucoopy.power`
-  - índices de poder (votação / jogos simples)
+  - power indices (voting / simple games)
 
 - `tucoopy.solutions`
-  - conceitos de solução (Shapley, Banzhaf, ...)
+  - solution concepts (Shapley, Banzhaf, ...)
 
 - `tucoopy.transforms`
-  - representações / transformações (ex.: dividendos de Harsanyi)
+  - representations / transforms (e.g. Harsanyi dividends)
 
 - `tucoopy.geometry`
-  - objetos/operações geométricas usadas para visualização (ex.: vértices do núcleo)
+  - geometric objects/operations used for visualization (e.g. core vertices)
 
-## Regras de importação (restritas)
+## Import rules (restricted)
 
-- Código interno deve importar dos módulos canônicos acima.
-- Re-exports públicos ficam em:
-  - o `__init__.py` de cada subpacote (ex.: `tucoopy.geometry.__init__`)
-  - o `tucoopy/__init__.py` no topo, por conveniência
+- Internal code should import from the canonical modules above.
+- Public re-exports live in:
+  - each subpackage's `__init__.py` (e.g. `tucoopy.geometry.__init__`)
+  - the top-level `tucoopy/__init__.py`, for convenience
 
-Evite introduzir “shims”/atalhos de módulo extras como `tucoopy/core.py`: isso deixa o pacote mais difícil de navegar.
+Avoid introducing extra module "shims"/shortcuts like `tucoopy/core.py`: that makes the package harder to navigate.
+

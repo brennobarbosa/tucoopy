@@ -19,16 +19,18 @@ RODICA BRANZEI; STEF TIJS; DINKO DIMITROV. *Models in Cooperative Game Theory*. 
 
 :   Modelos matemáticos para jogos cooperativos, incluindo jogos TU e NTU, e aplicações em economia e ciências sociais.
 
-4. Driessen, Theo. 1988. Cooperative Games, Solutions and Applications. Vol. 3, edited by W. Leinfellner, G. Eberlein, and S. H. Tijs. Theory and Decision Library. Springer Netherlands. [https://doi.org/10.1007/978-94-015-7787-8].
+Driessen, Theo. 1988. Cooperative Games, Solutions and Applications. Vol. 3, edited by W. Leinfellner, G. Eberlein, and S. H. Tijs. Theory and Decision Library. Springer Netherlands. [https://doi.org/10.1007/978-94-015-7787-8].
     
-    Texto clássico sobre conceitos de solução (núcleo, nucleolus, valor τ, etc.).
+:    Texto clássico sobre conceitos de solução (núcleo, nucleolus, valor τ, etc.).
 
 5. Robert J. Aumann & Sergiu Hart (eds.) – **Handbook of Game Theory with Economic Applications** —
     - Os volumes 1 e 2 contêm capítulos abrangentes sobre teoria dos jogos cooperativos.
     - Cobre conceitos fundamentais, métodos de solução e aplicações.
     - Os volumes 3 e 4 contêm seções extensas sobre teoria dos jogos cooperativos.
-6. Chalkiadakis, Georgios, Edith Elkind, and Michael J. Wooldridge. 2012. Computational Aspects of Cooperative Game Theory. Synthesis Lectures on Artificial Intelligence and Machine Learning, #16. Morgan & Claypool.
-    - Foco em aspectos computacionais e algoritmos para jogos cooperativos.
+
+Chalkiadakis, Georgios, Edith Elkind, and Michael J. Wooldridge. 2012. Computational Aspects of Cooperative Game Theory. Synthesis Lectures on Artificial Intelligence and Machine Learning, #16. Morgan & Claypool.
+
+:    - Foco em aspectos computacionais e algoritmos para jogos cooperativos.
     - Discute complexidade, representações eficientes e soluções algorítmicas.
 
 ## Artigos clássicos / conceitos

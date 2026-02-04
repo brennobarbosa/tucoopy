@@ -1,65 +1,66 @@
-﻿# Performance, limites e custos computacionais
+﻿# Performance, limits, and computational costs
 
-Esta pagina resume os principais **custos assintoticos** no `tucoopy` e como escolher limites praticos para jogos maiores.
+This page summarizes the main **asymptotic costs** in `tucoopy` and how to choose practical limits for larger games.
 
-## Regra de ouro
+## Rule of thumb
 
-- Quase tudo que "varre coalicoes" e pelo menos $O(2^n)$.
-- Quase tudo que "varre permutacoes" e $O(n!)$.
-- Quase tudo que "enumera vertices de politopo" explode com o numero de restricoes e dimensao.
+- Almost everything that "scans coalitions" is at least $O(2^n)$.
+- Almost everything that "scans permutations" is $O(n!)$.
+- Almost everything that "enumerates polytope vertices" blows up with the number of constraints and the dimension.
 
-Quando $n$ cresce, a estrategia recomendada e:
+As $n$ grows, the recommended strategy is:
 
-- preferir **amostragem** (pontos e/ou permutacoes),
-- gerar `analysis.bundle` (tabelas e resumos) em vez de tentar "desenhar o simplex inteiro",
-- limitar a geometria exata a $n$ pequeno.
+- prefer **sampling** (points and/or permutations),
+- generate `analysis.bundle` (tables and summaries) instead of trying to "draw the whole simplex",
+- keep exact geometry to small $n$.
 
-## Tabela rapida (ordem de grandeza)
+## Quick table (order of magnitude)
 
-| Objeto / rotina | Custo tipico | Observacao |
+| Object / routine | Typical cost | Notes |
 |---|---:|---|
-| Scans por coalicao (ex.: excessos) | $O(2^n)$ | depende de ter `v(S)` acessivel / cache |
-| Shapley (exato, tabular) | $O(n 2^n)$ | via soma sobre subcoalicoes / DP |
-| Banzhaf (exato, tabular) | $O(n 2^n)$ | similar ao Shapley em custo |
-| Nucleolus / least-core / balancedness | varios LPs | cada LP pode ter muitas restricoes (coalicoes) |
-| Weber set (exato) | $O(n!)$ | so viavel para $n$ pequeno |
-| Poliedros (vertices) | exponencial | vertices nao escalam para $n$ grande |
-| Hit-and-run (amostragem) | varios passos | requer set **limitado** e um ponto inicial (LP) |
+| Coalition scans (e.g. excesses) | $O(2^n)$ | depends on having `v(S)` accessible / cached |
+| Shapley (exact, tabular) | $O(n 2^n)$ | sum over subcoalitions / DP |
+| Banzhaf (exact, tabular) | $O(n 2^n)$ | similar cost to Shapley |
+| Nucleolus / least-core / balancedness | many LPs | each LP may have many constraints (coalitions) |
+| Weber set (exact) | $O(n!)$ | only feasible for small $n$ |
+| Polyhedra (vertices) | exponential | vertex enumeration does not scale to large $n$ |
+| Hit-and-run (sampling) | many steps | requires a **bounded** set and an initial point (LP) |
 
-## Recomendacoes praticas por familia
+## Practical recommendations by family
 
-### Solucoes pontuais
+### Point solutions
 
-- Para $n$ pequeno (ate ~10-12): `shapley_value`, `normalized_banzhaf_value` e afins podem ser usados exatos, desde que o jogo esteja "completo" (tabular).
-- Para $n$ maior:
-  - prefira aproximar Shapley por amostragem de permutacoes (quando disponivel),
-  - evite rotinas com varios LPs (nucleolus/modiclus) sem limites claros.
+- For small $n$ (~10-12): `shapley_value`, `normalized_banzhaf_value`, and similar can be used exactly, as long as the game is "complete" (tabular).
+- For larger $n$:
+  - prefer approximating Shapley by sampling permutations (when available),
+  - avoid routines with many LPs (nucleolus/modiclus) without clear limits.
 
-### Geometria (sets / politopos)
+### Geometry (sets / polytopes)
 
-- `PolyhedralSet.extreme_points(...)` e para visualizacao em dimensao baixa.
-- Para projecoes quando $n$ cresce, prefira `project(..., approx_n_points=...)` (amostragem + projecao de pontos).
+- `PolyhedralSet.extreme_points(...)` is for visualization in low dimensions.
+- For projections as $n$ grows, prefer `project(..., approx_n_points=...)` (sampling + point projection).
 
-### Jogos simples / indices de poder
+### Simple games / power indices
 
-- Se voce consegue representar o jogo simples de forma compacta (ex.: weighted voting), indices como Banzhaf/SSI tendem a escalar melhor do que varrer todos os subconjuntos cegamente.
-- Em jogos simples tabulares, ainda existe custo $O(2^n)$ para muita coisa.
+- If you can represent the simple game compactly (e.g. weighted voting), indices like Banzhaf/SSI tend to scale better than blindly scanning all subsets.
+- For tabular simple games, there is still an $O(2^n)$ cost for many operations.
 
 ### Weber set
 
-O Weber set e o fecho convexo de vetores marginais. O gerador exato tem tamanho $n!$, entao:
+The Weber set is the convex hull of marginal vectors. The exact generator has size $n!$, so:
 
-- para $n$ pequeno: usar `WeberSet.points()` e `WeberSet.poly` (quando `n in {2,3}`),
-- para $n$ maior: usar `WeberSet.sample_points(...)` e tratar o resultado como uma nuvem (nao como um politopo exato).
+- for small $n$: use `WeberSet.points()` and `WeberSet.poly` (when `n in {2,3}`),
+- for larger $n$: use `WeberSet.sample_points(...)` and treat the result as a point cloud (not an exact polytope).
 
-## Backends e dependencias
+## Backends and dependencies
 
-- Rotinas LP dependem de um backend (recomendado: SciPy/HiGHS). Veja `guides/lp_backends.md`.
-- Algumas rotinas de performance usam NumPy quando disponivel (extra `tucoopy[fast]`).
+- LP routines depend on a backend (recommended: SciPy/HiGHS). See `guides/lp_backends.md`.
+- Some performance-sensitive routines use NumPy when available (extra `tucoopy[fast]`).
 
-## Checklist de "o que fazer quando ficar lento"
+## Checklist: what to do when things get slow
 
-1. Verifique se o jogo esta completo/tabular (quando a rotina assume isso).
-2. Reduza `max_players` / `max_dim` / `max_points`.
-3. Troque vertices por amostragem (`sample_points_*`) e projecao aproximada.
-4. Se ha LP, confirme que SciPy esta instalado e sendo usado.
+1. Check whether the game is complete/tabular (when the routine assumes it).
+2. Reduce `max_players` / `max_dim` / `max_points`.
+3. Replace vertices with sampling (`sample_points_*`) and approximate projection.
+4. If there is LP, confirm SciPy is installed and being used.
+

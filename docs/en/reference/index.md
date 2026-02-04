@@ -1,5 +1,6 @@
-﻿# Referencia
+# Reference
 
-Paginas de referencia da API geradas a partir de docstrings via `mkdocstrings`.
+API reference pages generated from docstrings via `mkdocstrings`.
 
-Dica: use a barra lateral de navegacao para navegar por modulo.
+Tip: use the sidebar to navigate by module.
+

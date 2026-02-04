@@ -1,100 +1,99 @@
-# Notação e convenções
+﻿# Notation and conventions
 
-Esta seção resume a notação usada nas páginas de teoria e na biblioteca.  
-Seguimos a notação padrão da **teoria de jogos cooperativos com utilidade transferível (TU)**, com pequenas convenções escolhidas por clareza e facilidade de implementação.
+This section summarizes the notation used in the theory pages and in the library.
+We follow standard notation for **transferable-utility (TU) cooperative game theory**, with a few small conventions chosen for clarity and ease of implementation.
 
-O objetivo não é introduzir novos conceitos, e sim fixar uma linguagem comum para que definições, algoritmos e saídas sejam interpretados de forma consistente.
+The goal is not to introduce new concepts, but to establish a common language so that definitions, algorithms, and outputs can be interpreted consistently.
 
-## Jogadores e coalizões
+## Players and coalitions
 
-- **Jogadores** são indexados pelo conjunto finito $N = \{1, \ldots, n\}.$
+- **Players** are indexed by the finite set $N = \{1, \ldots, n\}$.
+- A **coalition** is any subset $S \subseteq N$.
+- The **grand coalition** is the set of all players, denoted by $N$ itself.
 
-- Uma **coalizão** é qualquer subconjunto $S \subseteq N$.
+In the code, players are indexed from `0` to `n-1`, following standard Python conventions.
+Coalitions are represented internally as **bitmasks**, but most user-facing functions accept Python iterables (lists, tuples, or sets of player indices).
 
-- A **grande coalizão** é o conjunto de todos os jogadores, denotado pelo próprio $N$.
+!!! tip "Intuition"
+    A coalition is simply a group of players acting together.
+    The grand coalition represents full cooperation among all players.
 
-No código, os jogadores são indexados de `0` a `n-1`, seguindo a convenção padrão do Python.  
-Coalizões são representadas internamente como **máscaras de bits**, mas a maioria das funções voltadas ao usuário aceita iteráveis do Python (listas, tuplas ou conjuntos de índices de jogadores).
+## Characteristic function
 
-!!! tip "Intuição"
-    Uma coalizão é simplesmente um grupo de jogadores agindo em conjunto.  
-    A grande coalizão representa cooperação total entre todos os jogadores.
-
-## Função característica
-
-Um jogo cooperativo TU é descrito por uma **função característica**
+A TU cooperative game is described by a **characteristic function**
 
 $$
 v : 2^N \to \mathbb{R},
 $$
 
-que atribui um valor real a cada coalizão, com a normalização
+which assigns a real value to each coalition, with the normalization
 
 $$
 v(\emptyset) = 0.
 $$
 
-O valor $v(S)$ representa o valor total que a coalizão $S$ consegue gerar por conta própria, assumindo que seus membros cooperam plenamente e podem transferir utilidade livremente entre si.
+The value $v(S)$ represents the total value that coalition $S$ can generate on its own, assuming its members cooperate fully and can transfer utility freely among themselves.
 
-!!! tip "Intuição"
-    Pense em $v(S)$ como o “*tamanho da torta*” disponível para a coalizão $S$. Como essa torta é dividida vem depois.
+!!! tip "Intuition"
+    Think of $v(S)$ as the "*size of the pie*" available to coalition $S$. How that pie is divided comes later.
 
-## Alocações e eficiência
+## Allocations and efficiency
 
-!!! note "Definição"
-    Uma **alocação** é um vetor
+!!! note "Definition"
+    An **allocation** is a vector
 
     $$
     x = (x_1, \dots, x_n) \in \mathbb{R}^n,
     $$
 
-    onde $x_i$ denota o payoff atribuído ao jogador $i$.
+    where $x_i$ denotes the payoff assigned to player $i$.
 
-    Uma alocação é **eficiente** se
+    An allocation is **efficient** if
 
     $$
     \sum_{i \in N} x_i = v(N).
     $$
 
-!!! tip "Intuição"
-    Eficiência significa que todo o valor criado pela cooperação total é distribuído entre os jogadores.  
-    Nada é perdido e nada fica sem ser distribuído.
+!!! tip "Intuition"
+    Efficiency means that all value created by full cooperation is distributed among the players.
+    Nothing is lost and nothing is left undistributed.
 
-??? example "Exemplo"
-    Para um jogo aditivo definido por $v(S) = |S|$ com $n=3$, a grande coalizão tem valor
-    
+??? example "Example"
+    For an additive game defined by $v(S) = |S|$ with $n=3$, the grand coalition has value
+
     $$
     v(N) = 3.
     $$
 
-    Uma alocação eficiente natural é
-    
+    A natural efficient allocation is
+
     $$
     x = (1, 1, 1),
     $$
 
-    onde cada jogador recebe exatamente sua contribuição isolada.
+    where each player receives exactly their standalone contribution.
 
-## Somas coalizionais e excesso
+## Coalition sums and excess
 
-!!! note "Definição"
-    Dada uma alocação $x$ e uma coalizão $S \subseteq N$, a **soma coalizional** é
-    
+!!! note "Definition"
+    Given an allocation $x$ and a coalition $S \subseteq N$, the **coalition sum** is
+
     $$
     x(S) = \sum_{i \in S} x_i.
     $$
 
-    O **excesso** da coalizão $S$ na alocação $x$ é definido como
-    
+    The **excess** of coalition $S$ at allocation $x$ is defined as
+
     $$
     e(S, x) = v(S) - x(S).
     $$
 
-!!! tip "Intuição"
-    O excesso mede o quanto uma coalizão está insatisfeita.
-    
-    - Se $e(S, x) > 0$, a coalizão $S$ consegue fazer melhor sozinha do que sob a alocação $x$.
-    - Se $e(S, x) = 0$, a coalizão está exatamente satisfeita.
-    - Se $e(S, x) < 0$, a coalizão recebe mais do que seu valor “sozinha”.
+!!! tip "Intuition"
+    The excess measures how dissatisfied a coalition is.
 
-O conceito de excesso é central em muitos conceitos de solução, especialmente os relacionados a **estabilidade**, como o núcleo, o ε-núcleo e o nucleolus.
+    - If $e(S, x) > 0$, coalition $S$ can do better on its own than under allocation $x$.
+    - If $e(S, x) = 0$, the coalition is exactly satisfied.
+    - If $e(S, x) < 0$, the coalition receives more than its standalone value.
+
+The concept of excess is central in many solution concepts, especially those related to **stability**, such as the core, the $\epsilon$-core, and the nucleolus.
+

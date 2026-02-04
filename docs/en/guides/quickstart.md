@@ -1,35 +1,35 @@
-# Começando
+﻿# Quickstart
 
-## Instalação
+## Installation
 
-Instalação básica (sem dependências pesadas opcionais):
+Basic install (without optional heavy dependencies):
 
 ```bash
 pip install tucoopy
 ```
 
-Extras opcionais:
+Optional extras:
 
-- Métodos baseados em LP (least-core / nucleolus / balancedness / conjunto de barganha):
+- LP-based methods (least-core / nucleolus / balancedness / bargaining set):
   ```bash
   pip install "tucoopy[lp]"
   ```
-- Backend alternativo de LP (PuLP):
+- Alternative LP backend (PuLP):
   ```bash
   pip install "tucoopy[lp_alt]"
   ```
-- Acelerações baseadas em NumPy (kernel / prekernel e alguns utilitários):
+- NumPy-based speedups (kernel / prekernel and some utilities):
   ```bash
   pip install "tucoopy[fast]"
   ```
-- Visualizações simples para 2 ou 3 jogadores em Matplotlib:
+- Simple 2-3 player Matplotlib visualizations:
   ```bash
   pip install "tucoopy[viz]"
   ```
 
-## Construir um jogo TU
+## Building a TU game
 
-Coalizões são armazenadas internamente como máscaras de bits, mas você pode definir jogos com chaves de coalizão “pythonicas”:
+Coalitions are stored internally as bitmasks, but you can define games using "Pythonic" coalition keys:
 
 ```py
 from tucoopy import Game
@@ -49,7 +49,7 @@ g = Game.from_coalitions(
 )
 ```
 
-## Calcular uma solução
+## Computing a solution
 
 ```py
 from tucoopy.solutions import shapley_value
@@ -58,7 +58,7 @@ phi = shapley_value(g)
 print(phi)
 ```
 
-## Gerar uma especificação de animação (contrato Python -> JS)
+## Generating an animation spec (Python -> JS contract)
 
 ```py
 from tucoopy.io.animation_spec import build_animation_spec
@@ -68,10 +68,11 @@ spec = build_animation_spec(
     series_id="shapley",
     allocations=[phi] * 60,
     dt=1 / 30,
-    series_description="Valor de Shapley (estático).",
+    series_description="Shapley value (static).",
     include_analysis=True,
 )
 print(spec.to_json())
 ```
 
-Mais scripts executáveis ficam em `packages/tucoopy-py/examples/`.
+More runnable scripts live in `packages/tucoopy/examples/`.
+

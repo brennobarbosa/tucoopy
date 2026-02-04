@@ -1,17 +1,17 @@
-# API publica (contrato minimo)
+﻿# Public API (minimal contract)
 
-Este documento define o **contrato publico minimo** do `tucoopy` (Python).
-Ele existe para reduzir retrabalho: os imports listados aqui devem permanecer estaveis.
+This document defines the **minimal public contract** of `tucoopy` (Python).
+It exists to reduce churn: the imports listed here should remain stable.
 
-## Regra geral
+## General rule
 
-- O top-level `tucoopy` e **pequeno** e serve como "porta de entrada".
-- A superficie completa vive nos subpacotes (`tucoopy.geometry`, `tucoopy.solutions`, etc.).
-- Se algo nao estiver documentado aqui, pode mudar com mais liberdade (especialmente no `0.x`).
+- The top-level `tucoopy` is **small** and serves as an entry point.
+- The full surface lives in subpackages (`tucoopy.geometry`, `tucoopy.solutions`, etc.).
+- If something is not documented here, it may change more freely (especially in `0.x`).
 
-## Imports canônicos (estáveis)
+## Canonical imports (stable)
 
-Recomendado para usuarios:
+Recommended for users:
 
 ```py
 from tucoopy import Game
@@ -23,41 +23,41 @@ from tucoopy.power import banzhaf_index, shapley_shubik_index
 
 ## Top-level (`tucoopy`)
 
-O top-level deve expor apenas alguns itens de alto nivel (conveniencia).
-O restante deve ser importado dos subpacotes.
+The top-level should expose only a few high-level items (convenience).
+Everything else should be imported from subpackages.
 
-Itens expostos atualmente:
+Currently exposed:
 
 - `Game`
 - `mask_from_players`
 - `glove_game`, `weighted_voting_game`
 - `Core`
 - `shapley_value`
-- `nucleolus` (requer backend de LP quando chamado)
+- `nucleolus` (requires an LP backend at runtime when called)
 
-## Subpacotes (source of truth)
+## Subpackages (source of truth)
 
-- `tucoopy.base`: primitivas (coalizoes, jogos, config, types/exceptions)
-- `tucoopy.games`: geradores de jogos classicos
-- `tucoopy.solutions`: solucoes pontuais (vetor payoff)
-- `tucoopy.geometry`: conjuntos/poliedros (core, least-core, etc.)
-- `tucoopy.diagnostics`: checks e explicacoes (por set e por alocacao)
-- `tucoopy.power`: indices de poder para jogos simples/votacao
-- `tucoopy.transforms`: transformacoes e representacoes
-- `tucoopy.io`: especificacoes JSON e schema
-- `tucoopy.backends`: adaptadores para dependencias opcionais
+- `tucoopy.base`: primitives (coalitions, games, config, types/exceptions)
+- `tucoopy.games`: classic game generators
+- `tucoopy.solutions`: point solutions (payoff vectors)
+- `tucoopy.geometry`: sets/polyhedra (core, least-core, etc.)
+- `tucoopy.diagnostics`: checks and explanations (per set / per allocation)
+- `tucoopy.power`: power indices for simple games/voting
+- `tucoopy.transforms`: transforms and representations
+- `tucoopy.io`: JSON specs and schemas
+- `tucoopy.backends`: adapters for optional dependencies
 
-## O que e experimental?
+## What is experimental?
 
-Enquanto o projeto estiver no `0.x`, consideramos mais sujeito a mudanca:
+While the project is in `0.x`, we consider the following more subject to change:
 
-- detalhes de diagnosticos (campos adicionais, estruturas internas);
-- implementacoes de LP e explicacoes detalhadas do solver;
-- algumas utilidades de visualizacao e sampling.
+- diagnostic details (additional fields, internal structures);
+- LP implementations and detailed solver explanations;
+- some visualization and sampling utilities.
 
-Quando um recurso migrar de "experimental" para "estavel", ele deve:
+When a feature moves from "experimental" to "stable", it should:
 
-- ter docstring completa (Numpy style),
-- ter testes unitarios,
-- entrar neste documento.
+- have a complete docstring (NumPy style),
+- have unit tests,
+- be added to this document.
 

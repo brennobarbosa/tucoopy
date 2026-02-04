@@ -1,21 +1,21 @@
-#
-# Visualizacao
+﻿#
+# Visualization
 
-O subpacote `tucoopy.viz` oferece visualizacao estatica (Matplotlib) para:
+The `tucoopy.viz` subpackage provides static visualization (Matplotlib) for:
 
-- $n=2$: segmentos no plano $(x_1, x_2)$
-- $n=3$: diagrama ternario (simplex)
+- $n=2$: line segments in the plane $(x_1, x_2)$
+- $n=3$: ternary diagram (simplex)
 
-See Also
---------
-- Guia: `../guides/vizualization.md`
-- Referencia (API) -> viz: `../reference/index.md`
+## See also
+
+- Guide: `../guides/vizualization.md`
+- API Reference -> viz: `../reference/index.md`
 
 > Warning
-> Matplotlib e uma dependencia opcional. Instale com `pip install "tucoopy[viz]"`.
+> Matplotlib is an optional dependency. Install with `pip install "tucoopy[viz]"`.
 
-API
----
+## API
 
-- `mpl2` (segmentos): `../reference/viz/mpl2.md`
-- `mpl3` (ternario): `../reference/viz/mpl3.md`
+- `mpl2` (segments): `../reference/viz/mpl2.md`
+- `mpl3` (ternary): `../reference/viz/mpl3.md`
+

@@ -1,36 +1,35 @@
-<!--
-Este guia é curto por design. A documentação de teoria/API vive em outras páginas.
+﻿<!--
+This guide is short by design. Theory/API docs live on other pages.
 -->
 
-# Contribuições
+# Contributing
 
-Este documento descreve um fluxo simples para contribuir com o `tucoopy` (foco: `tucoopy-py`).
+This document describes a simple workflow for contributing to `tucoopy`.
 
 ## Setup (dev)
 
-Recomendado: criar um ambiente virtual na raiz de `packages/tucoopy-py` e instalar o pacote em modo editável.
+Recommended: create a virtual environment at the repo root and install the package in editable mode.
 
 ```bash
-cd packages/tucoopy-py
 python -m venv .venv
 ```
 
-Ative o ambiente e instale com extras:
+Activate the environment and install with dev/docs extras:
 
 ```bash
 pip install -e ".[dev,docs]"
 ```
 
-Extras opcionais:
+Optional extras:
 
-- `lp`: `pip install -e ".[lp]"` (SciPy; habilita métodos baseados em LP)
+- `lp`: `pip install -e ".[lp]"` (SciPy; enables LP-based methods)
 - `lp_alt`: `pip install -e ".[lp_alt]"` (PuLP; fallback)
 - `fast`: `pip install -e ".[fast]"` (NumPy; speedups)
-- `viz`: `pip install -e ".[viz]"` (Matplotlib; visualização estática)
+- `viz`: `pip install -e ".[viz]"` (Matplotlib; static visualization)
 
-## Rodar checks locais
+## Running local checks
 
-### Testes
+### Tests
 
 ```bash
 pytest -q
@@ -44,28 +43,35 @@ mypy src/tucoopy
 
 ### Docs (MkDocs)
 
-Build da documentação em português:
+Build the Portuguese docs:
 
 ```bash
 mkdocs build -f mkdocs.pt.yml --dirty
 ```
 
-## Regras de qualidade (projeto)
+Build the English docs:
 
-- Evitar duplicação: manter um “source of truth” por conceito/módulo.
-- Não usar shims/aliases para “compatibilidade”: prefira imports canônicos.
-- Preferir docstrings em **Numpy style** (é o estilo configurado no mkdocstrings).
+```bash
+mkdocs build -f mkdocs.yml --dirty
+```
+
+## Quality rules (project)
+
+- Avoid duplication: keep one source of truth per concept/module.
+- Avoid shims/aliases for "compatibility": prefer canonical imports.
+- Prefer docstrings in **NumPy style** (as configured in mkdocstrings).
 
 ## Windows/OneDrive
 
-Se estiver desenvolvendo dentro do OneDrive, veja:
+If you are developing inside OneDrive, see:
 
-- `guides/dev_windows_onedrive.md`
+- `../guides/dev_windows_onedrive.md`
 
 ## Pull requests
 
-Antes de abrir PR:
+Before opening a PR:
 
-- rode `pytest` e `mypy`;
-- valide `mkdocs build` (PT) se mexer em docs/docstrings;
-- descreva impacto de API e mudanças em extras/dependências opcionais quando aplicável.
+- run `pytest` and `mypy`;
+- validate `mkdocs build` (EN/PT) if you touched docs/docstrings;
+- describe API impact and changes to optional extras/dependencies when applicable.
+

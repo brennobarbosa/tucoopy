@@ -1,9 +1,9 @@
-# Mapa da API
+# API map
 
-A API pública é intencionalmente restrita:
+The public API is intentionally restricted:
 
-- `import tucoopy` é uma superfície pequena e estável de conveniência.
-- A maior parte da funcionalidade vive nos subpacotes canônicos:
+- `import tucoopy` is a small, stable convenience surface.
+- Most functionality lives in the canonical subpackages:
   - `tucoopy.base`
   - `tucoopy.games`
   - `tucoopy.solutions`
@@ -15,28 +15,29 @@ A API pública é intencionalmente restrita:
   - `tucoopy.backends`
   - `tucoopy.viz`
 
-## Top-level estável (`tucoopy`)
+## Stable top-level (`tucoopy`)
 
 ```py
 from tucoopy import Game, glove_game, mask_from_players, nucleolus, shapley_value, weighted_voting_game
 ```
 
-Notas:
-- `nucleolus()` é um método opcional (exige SciPy em runtime quando chamado).
-- Vértices do núcleo são pensados para `n` pequeno (uso em visualização).
+Notes:
 
-## Subpacotes canônicos
+- `nucleolus()` is optional (it requires SciPy at runtime when called).
+- Core vertices are intended for small `n` (for visualization use).
+
+## Canonical subpackages
 
 ### `tucoopy.base`
 
-Representação de jogos + helpers “amigáveis” para IO:
+Game representations + IO-friendly helpers:
 
-- Helpers de coalizÃ£o: `all_coalitions`, `subcoalitions`, `players`, `size`, `grand_coalition`, `mask_from_players`
-- Jogos: `Game`, `TabularGame`, `ValueFunctionGame`
+- Coalition helpers: `all_coalitions`, `subcoalitions`, `players`, `size`, `grand_coalition`, `mask_from_players`
+- Games: `Game`, `TabularGame`, `ValueFunctionGame`
 
 ### `tucoopy.properties`
 
-Propriedades / reconhecedores:
+Properties / recognizers:
 
 - `is_convex`, `is_concave`
 - `is_essential`, `is_monotone`, `is_normalized`, `is_superadditive`
@@ -45,22 +46,22 @@ Propriedades / reconhecedores:
 
 ### `tucoopy.io`
 
-Helpers de JSON + animation spec:
+JSON helpers + animation spec:
 
 - Dataclasses: `AnimationSpec`, `GameSpec`, `SeriesSpec`, `FrameSpec`
 - Helpers: `game_to_spec`, `series_from_allocations`, `build_animation_spec`
-- JSON (jogos): `game_to_dict`, `game_from_dict`
+- JSON (games): `game_to_dict`, `game_from_dict`
 
 ### `tucoopy.backends`
 
-Adapters para dependÃªncias opcionais:
+Adapters for optional dependencies:
 
-- Adapter LP: `tucoopy.backends.lp.linprog_solve`
-- Helper NumPy: `tucoopy.backends.numpy_fast.require_numpy`
+- LP adapter: `tucoopy.backends.lp.linprog_solve`
+- NumPy helper: `tucoopy.backends.numpy_fast.require_numpy`
 
 ### `tucoopy.games`
 
-Jogos clássicos / geradores:
+Classic games / generators:
 
 - `glove_game`
 - `weighted_voting_game`
@@ -72,34 +73,35 @@ Jogos clássicos / geradores:
 
 ### `tucoopy.solutions`
 
-Conceitos de solução:
+Solution concepts:
 
-- Valores: `shapley_value`, `banzhaf_value`, `normalized_banzhaf_value`
-- Família do nucleolus (SciPy): `least_core`, `nucleolus`, `prenucleolus` (+ dataclasses de resultado)
-- Família kernel (NumPy): `kernel`, `prekernel` (+ dataclasses de resultado)
-- Helpers do valor τ: `tau_value`, `utopia_payoff`, `minimal_rights`
+- Values: `shapley_value`, `banzhaf_value`, `normalized_banzhaf_value`
+- Nucleolus family (SciPy): `least_core`, `nucleolus`, `prenucleolus` (+ result dataclasses)
+- Kernel family (NumPy): `kernel`, `prekernel` (+ result dataclasses)
+- $\tau$ value helpers: `tau_value`, `utopia_payoff`, `minimal_rights`
 
 ### `tucoopy.geometry`
 
-Geometria para visualização:
+Geometry for visualization:
 
-- Núcleo: `Core(game).vertices()` (n pequeno)
-- Excesso / checks: `excesses`, `max_excess`, `tight_coalitions`, `is_in_core`, `is_in_epsilon_core`, `is_imputation`, `is_efficient`
-- Conjunto de imputações: `imputation_lower_bounds`, `is_in_imputation_set`, `project_to_imputation`, `ImputationSet(game).vertices()`
-- ε-núcleo: `EpsilonCore(game, eps).poly`, `EpsilonCore(game, eps).vertices()`, `least_core_polytope`
-- Conjunto de Weber: `marginal_vector`, `weber_marginal_vectors`, `weber_sample`
-- Conjunto de barganha (SciPy): `bargaining_set_check`, `bargaining_set_sample`, `is_in_bargaining_set`
-- Balanceamento (SciPy): `balancedness_check` (+ dataclass de resultado)
+- Core: `Core(game).vertices()` (small `n`)
+- Excess / checks: `excesses`, `max_excess`, `tight_coalitions`, `is_in_core`, `is_in_epsilon_core`, `is_imputation`, `is_efficient`
+- Imputation set: `imputation_lower_bounds`, `is_in_imputation_set`, `project_to_imputation`, `ImputationSet(game).vertices()`
+- $\epsilon$-core: `EpsilonCore(game, eps).poly`, `EpsilonCore(game, eps).vertices()`, `least_core_polytope`
+- Weber set: `marginal_vector`, `weber_marginal_vectors`, `weber_sample`
+- Bargaining set (SciPy): `bargaining_set_check`, `bargaining_set_sample`, `is_in_bargaining_set`
+- Balancedness (SciPy): `balancedness_check` (+ result dataclass)
 
 ### `tucoopy.power`
 
-- Índices de votação: `shapley_shubik_index`, `banzhaf_index`
-- Índices via PD (pesos inteiros): `shapley_shubik_index_weighted_voting`, `banzhaf_index_weighted_voting`
+- Voting indices: `shapley_shubik_index`, `banzhaf_index`
+- DP-based indices (integer weights): `shapley_shubik_index_weighted_voting`, `banzhaf_index_weighted_voting`
 
 ### `tucoopy.transforms`
 
-Transformações / representações:
+Transforms / representations:
 
 - `to_dense_values`
 - `mobius_transform`, `inverse_mobius_transform`
 - `harsanyi_dividends`
+

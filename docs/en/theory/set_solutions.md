@@ -1,39 +1,40 @@
-# Núcleo e poliedros relacionados
+# The core and related polyhedra
 
-Muitos objetos de solução são definidos como poliedros.
+Many solution objects are defined as polyhedra.
 
-## Núcleo
+## Core
 
-Alocações no núcleo satisfazem:
+Allocations in the core satisfy:
 
-- Eficiência: $\sum_i x_i = v(N)$
-- Racionalidade coalizional: $x(S) \ge v(S)$ para todo $S$ não-vazio e próprio
+- Efficiency: $\sum_i x_i = v(N)$
+- Coalitional rationality: $x(S) \ge v(S)$ for every non-empty proper coalition $S$
 
-!!! note "Definição (núcleo)"
-    O núcleo de um jogo TU $(N,v)$ é o conjunto de alocações $x \in \mathbb{R}^n$ tais que:
+!!! note "Definition (core)"
+    The core of a TU game $(N,v)$ is the set of allocations $x \in \mathbb{R}^n$ such that:
 
     $$\sum_{i \in N} x_i = v(N),$$
-    e para toda coalizão não-vazia e própria $S$,
+    and for every non-empty proper coalition $S$,
     $$x(S) = \sum_{i \in S} x_i \ge v(S).$$
 
-!!! tip "Intuição"
-    Nenhuma coalizão consegue desviar com ganho: toda coalizão recebe pelo menos o que consegue garantir sozinha.
+!!! tip "Intuition"
+    No coalition can profitably deviate: every coalition receives at least what it can guarantee on its own.
 
-## ε-núcleo / least-core
+## $\epsilon$-core / least-core
 
-O ε-núcleo relaxa a racionalidade coalizional por $\epsilon \ge 0$:
+The $\epsilon$-core relaxes coalitional rationality by $\epsilon \ge 0$:
 
 - $x(S) \ge v(S) - \epsilon$
 
-O least-core escolhe o menor $\epsilon$ possível (calculado via LP quando o SciPy está disponível).
+The least-core chooses the smallest possible $\epsilon$ (computed via LP when SciPy is available).
 
-## Conjunto de imputações
+## Imputation set
 
-- Eficiência + racionalidade individual ($x_i \ge v(\{i\})$)
+- Efficiency + individual rationality ($x_i \ge v(\{i\})$)
 
-!!! note "Definição (conjunto de imputações)"
-    O conjunto de imputações é:
+!!! note "Definition (imputation set)"
+    The imputation set is:
 
     $$I(v) = \left\{x \in \mathbb{R}^n : \sum_{i \in N} x_i = v(N),\; x_i \ge v(\{i\})\;\forall i\right\}.$$
 
-Para detalhes voltados à implementação, veja `geometry.md`.
+For implementation-oriented details, see `../library/geometry.md`.
+

@@ -1,167 +1,166 @@
-# Critica (bem direta) do projeto `tucoopy`
+﻿# A direct critique of `tucoopy`
 
-Este documento e propositalmente critico. A ideia e registrar:
+This document is intentionally critical. The idea is to record:
 
-- pontos fracos reais (tecnicos e de produto),
-- riscos de manutencao,
-- lacunas de teoria/estado-da-arte,
-- oportunidades de performance/robustez,
+- real weaknesses (technical and product),
+- maintenance risks,
+- theory / state-of-the-art gaps,
+- opportunities for performance/robustness,
 
-e sugerir a menor lista de mudancas que aumenta muito a previsibilidade do projeto.
+and suggest the smallest set of changes that significantly increases project predictability.
 
-## 0) Resumo executivo
+## 0) Executive summary
 
-O `tucoopy` ja esta em um bom ponto como **MVP** (TU games, solucoes e conjuntos principais, contrato JSON + renderer JS).
-O maior risco hoje nao e "falta de feature", e sim:
+`tucoopy` is already in a good place as an **MVP** (TU games, core solution concepts and sets, JSON contract + examples).
+The biggest risk today is not "missing features", but:
 
-1) **robustez numerica + LP** (degenerescencia, tolerancias, solver differences),
-2) **contrato publico** (evitar drift e refactors repetidos),
-3) **performance previsivel** (limites claros e caminhos aproximados).
+1) **numerical robustness + LP** (degeneracy, tolerances, solver differences),
+2) **public contract** (avoid drift and repeated refactors),
+3) **predictable performance** (clear limits and approximate paths).
 
-## 1) Pontos fortes (onde o projeto esta acima da media)
+## 1) Strengths (where the project is above average)
 
-- **Arquitetura por camadas** razoavelmente clara:
+- A reasonably clear **layered architecture**:
   - base (game/coalition/config),
   - solutions (single-valued),
-  - geometry (set-valued / poliedros),
-  - diagnostics (explicacoes),
-  - io/schema (contrato),
-  - JS renderer separado.
-- **Contrato JSON** como interface entre Python e JS: isso e uma decisao correta e escalavel.
-- **Dependencias opcionais** bem encaminhadas: `lp`, `fast`, `viz` (sem forcar SciPy/NumPy/Matplotlib no core).
-- **Testes** ja existem e cobrem fluxos reais (isso e raro em libs matematicas pequenas).
+  - geometry (set-valued / polyhedra),
+  - diagnostics (explanations),
+  - io/schema (contract).
+- Using the **JSON contract** as the interface boundary: a correct and scalable decision.
+- Well-scoped **optional dependencies**: `lp`, `fast`, `viz` (no forced SciPy/NumPy/Matplotlib in the core).
+- Existing **tests** that cover real flows (rare for small math libraries).
 
-## 2) Onde esta fragil (pontos fracos importantes)
+## 2) Where it is fragile (important weaknesses)
 
-### 2.1 Robustez numerica (LP e poliedros)
+### 2.1 Numerical robustness (LP and polyhedra)
 
-Problema: teoria de jogos cooperativos vira LP/poliedros rapidamente, e isso e uma area onde:
+Problem: cooperative game theory quickly becomes LP/polyhedra, and this is an area where:
 
-- degenerescencia e comum,
-- tolerancias mudam resultado (principalmente "tight" constraints),
-- metodos diferentes de solver (SciPy/HiGHS vs PuLP/CBC) podem divergir em detalhes,
-- enumeracao de vertices pode explodir ou falhar silenciosamente.
+- degeneracy is common,
+- tolerances change results (especially "tight" constraints),
+- different solvers (SciPy/HiGHS vs PuLP/CBC) may diverge in details,
+- vertex enumeration can blow up or fail silently.
 
-Melhorias que valem muito:
+High-value improvements:
 
-- padronizar *sempre* o uso de `tol` (em um lugar) e documentar o que significa (feasibility vs dedup),
-- garantir que diagnosticos retornem "por que deu estranho" (slacks, residuals, affine dimension, boundedness),
-- tornar mais explicito o "contrato" do backend de LP (o que e esperado e o que pode vir `None`).
+- standardize *always* using `tol` (in one place) and document what it means (feasibility vs dedup),
+- ensure diagnostics return "why it got weird" (slacks, residuals, affine dimension, boundedness),
+- make the LP backend "contract" more explicit (what is expected, what can be `None`).
 
-### 2.2 Performance: riscos de uso ingenuo
+### 2.2 Performance: risks of naive usage
 
-O pacote tem rotinas intrinsicamente explosivas:
+The package has intrinsically explosive routines:
 
-- coalizoes: $2^n$,
+- coalitions: $2^n$,
 - Weber set: $n!$,
-- vertices/projecoes: combinatorial,
-- kernel/prekernel: iterativo.
+- vertices/projections: combinatorial,
+- kernel/prekernel: iterative.
 
-Risco: usuario chama uma funcao em `n=20` e acha que "travou".
+Risk: a user calls a function at `n=20` and thinks it "hung".
 
-Melhorias:
+Improvements:
 
-- manter limites default conservadores,
-- mensagens de erro sempre explicarem o custo e a alternativa (sampling/approx),
-- oferecer caminhos "approx por amostragem" sempre que fizer sentido (principalmente geometry/project).
+- keep conservative default limits,
+- error messages should always explain the cost and the alternative (sampling/approx),
+- provide "approx via sampling" paths where appropriate (especially geometry/projection).
 
-### 2.3 API/contrato: muita mudanca estrutural custa caro
+### 2.3 API/contract: structural churn is expensive
 
-Se o usuario nao sabe quais imports sao estaveis, ele vira refem do repo.
+If users don't know which imports are stable, they become hostage to the repo.
 
-O projeto ja comecou a melhorar isso com "API publica minima", mas ainda falta:
+The project already started improving this with a "minimal public API", but it still needs:
 
-- aplicar de verdade uma politica de deprecacao (mesmo no 0.x),
-- evitar "arquivos fantasmas" (principalmente em Windows/OneDrive),
-- manter docs como parte do contrato (CI ja ajuda bastante).
+- actually applying a deprecation policy (even in 0.x),
+- avoiding "ghost files" (especially on Windows/OneDrive),
+- treating docs as part of the contract (CI helps a lot).
 
-## 3) Funcoes ausentes / gaps (conteudo e estado da arte)
+## 3) Missing features / gaps (content and state of the art)
 
-### 3.1 Solucoes/sets (teoria de jogos cooperativos)
+### 3.1 Solutions/sets (cooperative game theory)
 
-Mesmo ignorando "public goods" e indices raros, ha lacunas naturais:
+Even ignoring "public goods" and rare indices, there are natural gaps:
 
-- **nucleolus**: existem algoritmos de "constraint generation" e criterios de Kohlberg que sao estado da arte para escalar melhor do que enumerar tudo de uma vez (depende do escopo desejado).
-- **kernel/prekernel**: normalmente exigem cuidados com estabilidade numerica, criterios de parada, e diagnosticos (na pratica, "convergiu" e "qualidade do ponto" importam).
-- **bargaining set** e variantes: computacao exata e pesada; sampling e ok, mas precisa diagnostico bom (falso positivo/negativo).
-- **vertex enumeration**: para ir alem de `n=3`, o caminho "correto" geralmente usa ferramentas como `cddlib`/`pycddlib` ou `polymake` (provavelmente opcional, mas vale documentar).
+- **nucleolus**: constraint generation and Kohlberg criteria are often used to scale better than enumerating everything at once (depends on desired scope).
+- **kernel/prekernel**: usually require care with numerical stability, stopping criteria, and diagnostics (in practice, "converged" and "quality of point" matter).
+- **bargaining set** and variants: exact computation is heavy; sampling is fine but needs good diagnostics (false positives/negatives).
+- **vertex enumeration**: to go beyond `n=3`, the "right" path usually involves tools like `cddlib`/`pycddlib` or `polymake` (likely optional, but worth documenting).
 
-### 3.2 Propriedades e reconhecedores
+### 3.2 Properties and recognizers
 
-Comparando com toolboxes maduras (MATLAB TuGames, R CoopGame), normalmente existe:
+Compared to mature toolboxes (MATLAB TuGames, R CoopGame), you typically see:
 
-- catalogo maior de "sanity checks" e exemplos canonicos,
-- funcoes auxiliares para normalizacao e transformacoes padrao,
-- mais testes "teoricos" (nao so de software).
+- a larger catalog of sanity checks and canonical examples,
+- helper functions for normalization and standard transforms,
+- more "theory tests" (not only software tests).
 
-Aqui o projeto ja evoluiu, mas ainda pode melhorar:
+This project has already progressed, but can still improve:
 
-- checks de convexidade/balancedness com diagnosticos melhores,
-- exemplos pequenos para cada propriedade (contraexemplos incluidos).
+- convexity/balancedness checks with better diagnostics,
+- small examples for each property (including counterexamples).
 
-### 3.3 Indices de poder
+### 3.3 Power indices
 
-O pacote tem um bom conjunto de indices classicos, mas sempre vai existir "mais um indice".
-O maior risco aqui nao e faltar indice, e sim:
+The package has a good set of classic indices, but there will always be "one more index".
+The bigger risk is not missing an index, but:
 
-- definicoes inconsistentes (normalizacao, dominio: simple vs TU),
-- documentacao confusa do que e suportado.
+- inconsistent definitions (normalization, domain: simple vs TU),
+- confusing documentation of what is supported.
 
-## 4) Comparacao com outros sistemas (onde o `tucoopy` se posiciona)
+## 4) Comparison with other systems (where `tucoopy` fits)
 
 ### MATLAB (TuGames toolbox, etc.)
 
-Normalmente: muito conteudo, funcoes prontas e exemplos; mas:
+Typically: lots of content, ready-to-use functions and examples; but:
 
-- depende de MATLAB,
-- integracao web/renderer nao e foco,
-- arquitetura nem sempre e modular.
+- depends on MATLAB,
+- web integration/rendering is not a focus,
+- architecture is not always modular.
 
-`tucoopy` pode competir bem se priorizar:
+`tucoopy` can compete well if it prioritizes:
 
-- contrato claro,
-- docs boas,
-- instalacao simples + extras opcionais.
+- a clear contract,
+- good docs,
+- simple installation + optional extras.
 
-### R (CoopGame e afins)
+### R (CoopGame, etc.)
 
-R e forte em analise e visualizacao rapida, mas:
+R is strong for analysis and quick visualization, but:
 
-- performance/engenharia pode ser desigual,
-- integracao com um renderer JS customizado e rara.
+- performance/engineering can be uneven,
+- integration with a custom JS renderer is rare.
 
-### Bibliotecas de poliedros (cddlib/polymake)
+### Polyhedron libraries (cddlib/polymake)
 
-Essas sao "estado da arte" para V/H-rep e vertices.
-O `tucoopy` nao precisa competir diretamente: ele pode integrar opcionalmente, ou usar como referencia.
+These are state of the art for V/H representations and vertices.
+`tucoopy` doesn't need to compete directly: it can integrate optionally, or use them as references.
 
-## 5) Oportunidades concretas de performance
+## 5) Concrete performance opportunities
 
-Coisas que normalmente dao salto de performance sem reescrever o mundo:
+Things that often yield big performance gains without rewriting everything:
 
-- **evitar loops Python** onde houver soma sobre coalizoes repetida: utilitarios (ex.: `coalition_sum`) ajudam.
-- **cache** onde o custo e alto mas o input se repete (value function + coalition iterators).
-- **NumPy opcional** para rotinas de algebra linear pequenas (ja existe `fast`, mas pode ser expandido com cuidado).
-- **transformadas** em $O(n 2^n)$ (Mobius) ja e um passo certo; aplicar o mesmo raciocinio onde houver $3^n$ escondido.
+- **avoid Python loops** where repeated coalition sums happen: utilities (e.g. `coalition_sum`) help.
+- **cache** where cost is high but input repeats (value function + coalition iterators).
+- optional **NumPy** for small linear algebra routines (the `fast` extra exists, but can be expanded carefully).
+- transforms in $O(n 2^n)$ (Mobius) are already a good step; apply similar ideas where there is hidden $3^n$ work.
 
-O que NAO vale para MVP (custo alto):
+Not worth it for the MVP (high cost):
 
-- implementar vertex enumeration generica para `n>3` sem backend especializado,
-- otimizar nucleolus/kernels para `n` grande sem decidir claramente o publico-alvo.
+- implementing generic vertex enumeration for `n>3` without a specialized backend,
+- optimizing nucleolus/kernels for large `n` without clearly defining the target audience.
 
-## 6) Recomendacao de prioridades (ordem sugerida)
+## 6) Priority recommendation (suggested order)
 
-1) **Estabilizar contrato e docs** (ja avancou muito com CI + public_api + deprecation).
-2) **Melhorar diagnosticos numericos** (explicar "por que" e nao so "deu erro").
-3) **Mais testes teoricos** (canonicos e contraexemplos).
-4) **Performance pontual** (hotspots reais medidos, nao "otimizacao por intuicao").
+1) **Stabilize the contract and docs** (already improved a lot with CI + public_api + deprecation).
+2) **Improve numerical diagnostics** (explain "why", not just "error").
+3) **More theory tests** (canonical cases and counterexamples).
+4) **Targeted performance** (real hotspots measured, not "optimization by intuition").
 
-## 7) Conclusao
+## 7) Conclusion
 
-O projeto esta bem encaminhado e tem potencial real de ser referencia leve/educacional + utilitaria.
-Para isso, o foco tem que ser previsibilidade:
+The project is on a good track and has real potential as a lightweight reference (educational + practical).
+To get there, the focus must be predictability:
 
-- o que e estavel,
-- o que e caro,
-- o que e aproximado,
-- e como depurar quando o solver/numero "nao bate".
+- what is stable,
+- what is expensive,
+- what is approximate,
+- and how to debug when solvers/numbers "don't match".

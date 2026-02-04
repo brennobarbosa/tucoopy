@@ -1,25 +1,27 @@
-# Especificação de animação (contrato Python -> JS)
+﻿# Animation spec (Python -> JS contract)
 
-O `tucoopy` consegue emitir uma “animation spec” em JSON que o renderizador JS pode consumir para desenhar alocações ao longo do tempo.
+`tucoopy` can emit a JSON "animation spec" that a renderer can consume to draw allocations over time.
 
-Arquivo de schema (neste monorepo):
-- `schema/tucoopy-animation.schema.json`
+Schema files (in this repo):
+
+- `src/tucoopy/io/schemas/tucoop-animation.schema.json`
+- `src/tucoopy/io/schemas/tucoop-game.schema.json`
 
 ## Dataclasses
 
-O modelo de dados do lado Python vive em `tucoopy.io.animation_spec`:
+The Python-side data model lives in `tucoopy.io.animation_spec`:
 
 - `AnimationSpec`
 - `GameSpec` / `CharacteristicEntry`
 - `SeriesSpec` / `FrameSpec`
 
-Funções auxiliares:
+Helper functions:
 
-- `game_to_spec(game)` converte um `Game` no `GameSpec` (amigável para JSON).
-- `series_from_allocations(...)` constrói um `SeriesSpec` a partir de uma sequência de alocações.
-- `build_animation_spec(...)` constrói um `AnimationSpec` “completo” (game + analysis + series), com highlights opcionais.
+- `game_to_spec(game)` converts a `Game` into a `GameSpec` (JSON-friendly).
+- `series_from_allocations(...)` builds a `SeriesSpec` from a sequence of allocations.
+- `build_animation_spec(...)` builds a "full" `AnimationSpec` (game + analysis + series), with optional highlights.
 
-## Exemplo mínimo
+## Minimal example
 
 ```py
 from tucoopy import Game, shapley_value
@@ -50,35 +52,36 @@ spec = build_animation_spec(
 print(spec.to_json())
 ```
 
-Notas:
-- `analysis` é intencionalmente flexível, mas vale manter alinhado com o schema JSON.
-- Para visualização, o pacote JS pode renderizar apenas até 4 jogadores (simplex até 3-simplex).
+Notes:
 
-## Highlights por frame (`series[].frames[].highlights`)
+- `analysis` is intentionally flexible, but it is worth keeping it aligned with the JSON schema.
+- For visualization, the JS package can only render up to 4 players (simplex up to the 3-simplex).
 
-Cada frame pode carregar um objeto `highlights` com informação extra para a UI (ex.: tooltip seguindo o mouse).
+## Per-frame highlights (`series[].frames[].highlights`)
 
-Convenção atual (opcional) usada pelos exemplos:
+Each frame can carry a `highlights` object with extra UI information (e.g. a tooltip that follows the mouse).
 
-- `frame.highlights.diagnostics.core`: contém um payload pequeno com `max_excess` e `blocking_coalition_mask`.
+Current (optional) convention used by the examples:
 
-## Proveniência (`analysis.meta`)
+- `frame.highlights.diagnostics.core`: contains a small payload with `max_excess` and `blocking_coalition_mask`.
 
-O `tucoopy.io.build_analysis(...)` preenche um bloco `analysis.meta` para registrar:
+## Provenance (`analysis.meta`)
 
-- `analysis.meta.computed_by`: quem gerou (ex.: `tucoopy-py`)
-- `analysis.meta.build_analysis`: flags e parâmetros (ex.: `max_players`, `tol`, `diagnostics_top_k`)
-- `analysis.meta.computed`: quais seções realmente foram incluídas (`solutions`, `sets`, `diagnostics`, `blocking_regions`)
+`tucoopy.io.build_analysis(...)` fills an `analysis.meta` block to record:
 
-## Diagnósticos (`analysis.diagnostics`)
+- `analysis.meta.computed_by`: who generated it (e.g. `tucoopy`)
+- `analysis.meta.build_analysis`: flags and parameters (e.g. `max_players`, `tol`, `diagnostics_top_k`)
+- `analysis.meta.computed`: which sections were actually included (`solutions`, `sets`, `diagnostics`, `blocking_regions`)
 
-Para apoiar a UI (tooltips/tabelas) sem precisar de backend, o Python pode anexar diagnósticos compactos em `analysis.diagnostics`.
+## Diagnostics (`analysis.diagnostics`)
 
-Exemplo: para cada ponto em `analysis.solutions`, o `tucoopy.io.build_analysis(...)` pode incluir um resumo de pertinência ao núcleo:
+To support the UI (tooltips/tables) without a backend, Python can attach compact diagnostics in `analysis.diagnostics`.
+
+Example: for each point in `analysis.solutions`, `tucoopy.io.build_analysis(...)` can include a summary of core membership:
 
 - `analysis.diagnostics.solutions.<id>.core.in_core`
 - `analysis.diagnostics.solutions.<id>.core.max_excess`
-- `analysis.diagnostics.solutions.<id>.core.tight_coalitions` (coalizões que atingem o `max_excess`)
-- `analysis.diagnostics.solutions.<id>.core.violations` (top-k coalizões que bloqueiam)
+- `analysis.diagnostics.solutions.<id>.core.tight_coalitions` (coalitions attaining `max_excess`)
+- `analysis.diagnostics.solutions.<id>.core.violations` (top-k blocking coalitions)
 
-Também existe `analysis.diagnostics.input` para checks do próprio jogo (ex.: `vN`, `sum_singletons`, `essential`, e se o `characteristic_function` está completo para n pequeno).
+There is also `analysis.diagnostics.input` for game-level checks (e.g. `vN`, `sum_singletons`, `essential`, and whether the characteristic function is complete for small `n`).

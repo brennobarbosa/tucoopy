@@ -1,15 +1,13 @@
-#
-# Indices de poder (jogos simples / votacao)
+﻿#
+# Power indices (simple games / voting)
 
-Este subpacote contem indices classicos de poder para jogos simples e,
-principalmente, jogos de votacao.
+This subpackage contains classic power indices for simple games, especially voting games.
 
-See Also
---------
-- Referencia (API) -> power: `../reference/index.md`
+## See also
 
-Indices principais
------------------
+- API Reference -> power: `../reference/index.md`
+
+## Main indices
 
 - Shapley-Shubik index: `../reference/power/shapley_shubik.md`
 - Banzhaf index: `../reference/power/banzhaf.md`
@@ -19,9 +17,9 @@ Indices principais
 - Johnston index: `../reference/power/johnston.md`
 - Coleman indices: `../reference/power/coleman.md`
 
-Variantes (quando aplicavel)
----------------------------
+## Variants (when applicable)
 
 - Egalitarian Shapley: `../reference/power/egalitarian_shapley.md`
 - Solidarity: `../reference/power/solidarity.md`
 - Koenig-Brauninger: `../reference/power/koenig_brauninger.md`
+

@@ -1,23 +1,24 @@
-# Jogos simples e votação ponderada
+﻿# Simple games and weighted voting
 
-Um *jogo simples* tipicamente tem $v(S) \in \{0,1\}$ para toda coalizão $S$.
+A *simple game* typically has $v(S) \in \{0,1\}$ for every coalition $S$.
 
-Jogos de votação ponderada são uma subclasse comum:
+Weighted voting games are a common subclass:
 
-- Dados pesos $w_i$ e uma cota $q$, a coalizão $S$ é vencedora se $\sum_{i \in S} w_i \ge q$.
+- Given weights $w_i$ and a quota $q$, coalition $S$ is winning if $\sum_{i \in S} w_i \ge q$.
 
-Índices de poder:
+Power indices:
 
-- Índice de Shapley–Shubik
-- Índice de Banzhaf (normalizado)
+- Shapley-Shubik index
+- (Normalized) Banzhaf index
 
-No código, validamos a suposição de “jogo simples” antes de computar esses índices.
+In the code, we validate the "simple game" assumption before computing these indices.
 
-## Definição (jogo simples)
+## Definition (simple game)
 
-!!! note "Definição"
-    Um jogo simples satisfaz $v(S) \in \{0,1\}$ para toda coalizão $S$.
-    Em geral, $v(S)=1$ significa “vencedora” e $v(S)=0$ significa “perdedora”.
+!!! note "Definition"
+    A simple game satisfies $v(S) \in \{0,1\}$ for every coalition $S$.
+    In general, $v(S)=1$ means "winning" and $v(S)=0$ means "losing".
 
-!!! tip "Intuição"
-    Só importa o resultado sim/não; utilidades não são cardinais além disso.
+!!! tip "Intuition"
+    Only the yes/no outcome matters; utilities are not cardinal beyond that.
+

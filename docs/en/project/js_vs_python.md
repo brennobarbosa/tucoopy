@@ -1,71 +1,42 @@
-# JS vs Python (projetos paralelos)
+﻿# JS vs Python (renderer vs library)
 
-Este repo tem dois projetos que se complementam:
+Historically, this project used a "Python produces JSON, JS renders it" split.
 
-- **`tucoopy-py` (Python)**: biblioteca de teoria dos jogos cooperativos (TU), com metodos pesados (LP, varreduras maiores, diagnosticos completos) e geracao de JSON.
-- **`tucoopy-js` / `@tucoopy/core` (TypeScript/JS)**: runtime leve para **validar, completar analises baratas e renderizar** specs no browser (Canvas).
+In this repository you will find **the Python library** (`tucoopy`) and the JSON schemas used by `tucoopy.io`:
 
-## Contrato de compatibilidade
+- `src/tucoopy/io/schemas/tucoop-animation.schema.json`
+- `src/tucoopy/io/schemas/tucoop-game.schema.json`
 
-A compatibilidade entre os dois projetos e pelo **contrato JSON** (schemas), nao pela arquitetura interna:
+The main compatibility boundary is the **JSON contract** (schemas), not internal architecture.
 
-- `schema/tucoopy-animation.schema.json` (canonico no repo)
-- schema empacotado no Python: `tucoopy.io.schemas/tucoopy-animation.schema.json`
+## What the browser-side renderer typically does
 
-Recomendacao: trate o schema como a "interface" entre os projetos.
+A (separate) JS/TS renderer can:
 
-## O que o JS consegue computar sozinho (client-side)
+- validate specs against the schema;
+- render allocations/sets/diagnostics (Canvas/SVG);
+- optionally derive "cheap" analysis for very small `n` (when feasible).
 
-O `@tucoopy/core` tem um modo de "completar" o spec quando ele chega "cru" (apenas `game` + `series`):
+## What should stay in Python
 
-- `analysis.solutions` (quando viavel para `n` pequeno):
-  - Shapley (enumeracao direta, custo $O(n 2^n)$)
-  - Banzhaf e Banzhaf normalizado (enumeracao direta)
-- `analysis.sets` (quando viavel para `n` pequeno):
-  - vertices do **imputation set** (simplex deslocado; barato)
-  - vertices do **core** (enumeracao por ativacao de restricoes + solve linear; pensado para `n` pequeno)
-  - pontos geradores do **Weber set** (vetores marginais por permutacoes; custo $n!$)
+Rule of thumb: anything that depends on **LP** or is numerically delicate should be computed in Python.
 
-Essas computacoes estao concentradas em:
-
-- `packages/tucoopy-js/src/compute.ts` (`deriveAnalysis(spec, opts)`)
-
-Limites:
-
-- Por padrao, o JS so tenta completar `analysis` se `n_players <= 4` (`maxPlayers`).
-- Nao ha backend de LP no browser: o JS evita algoritmos que exigem solver.
-
-## O que deve ficar no Python (offline ou backend)
-
-Regra pratica: tudo que depende de **LP** ou algoritmos mais instaveis/numericamente delicados deve ser computado no Python.
-
-Exemplos tipicos:
+Typical examples:
 
 - least-core, nucleolus, modiclus (LP)
 - balancedness (Bondareva-Shapley via LP)
-- bargaining set (caro; sampling/LP)
-- kernel/pre-kernel (iterativo; pode exigir rotinas numericas e cuidados com degenerescencia)
-- enumeracao de vertices/projecoes para dimensoes maiores
+- bargaining set (expensive; sampling/LP)
+- kernel/pre-kernel (iterative; numerically sensitive)
+- vertex enumeration and higher-dimensional projections
 
-O pipeline recomendado e:
+A reasonable pipeline is:
 
-1. Rodar o Python para computar `analysis` (solucoes, sets, diagnosticos).
-2. Exportar o spec JSON.
-3. O JS so **renderiza** e, opcionalmente, completa o que estiver faltando e for barato.
+1. Run Python to compute `analysis` (solutions, sets, diagnostics).
+2. Export the JSON spec.
+3. The renderer only **renders** and optionally fills in missing cheap pieces for very small `n`.
 
-## Por que manter separado?
+## See also
 
-- JS: foco em **experiencia de visualizacao** e runtime leve (zero dependencias pesadas).
-- Python: foco em **correcao**, **diagnosticos** e algoritmos classicos (com dependencias opcionais como `scipy/numpy`).
-
-Isso evita que:
-
-- o JS vire uma biblioteca numerica pesada, e
-- o Python fique "preso" ao design do renderer.
-
-## See Also
-
-- `packages/tucoopy-js/README.md` (como usar o renderer e `deriveAnalysis`)
-- `guides/animation_spec.md` (como gerar specs no Python)
-- `guides/analysis_contract.md` (o que entra em `analysis`)
+- `../guides/animation_spec.md` (how to generate specs in Python)
+- `../guides/analysis_contract.md` (what goes into `analysis`)
 

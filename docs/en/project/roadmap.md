@@ -1,49 +1,51 @@
-﻿# Roadmap (do zero)
+﻿# Roadmap (reset)
 
-Este roadmap foi resetado para iniciar uma nova fase do projeto (lancamento do produto).
-Use as caixinhas para acompanhar o andamento.
+This roadmap was reset to start a new phase of the project (product release).
+Use the checkboxes to track progress.
 
-## Legenda
-- `[x]` feito
-- `[ ]` pendente
-- `(*)` opcional / depois
+## Legend
+
+- `[x]` done
+- `[ ]` pending
+- `(*)` optional / later
 
 ---
 
-## 1) MVP (minimo teorico + estabilidade)
+## 1) MVP (minimal theory + stability)
 
-- [ ] Definir escopo do MVP (o que entra / o que fica fora)
-- [ ] Fixar "API publica minima" e imports canonicos
-- [ ] Revisar numerica / tolerancias (documentar `tol` e limites)
-- [ ] Revisar mensagens de erro (padrao + extras opcionais)
-- [ ] Revisar contrato JSON (schema + exemplos)
+- [ ] Define MVP scope (what's in / what's out)
+- [ ] Lock down a "minimal public API" and canonical imports
+- [ ] Review numerics / tolerances (document `tol` and limits)
+- [ ] Review error messages (baseline + optional extras)
+- [ ] Review the JSON contract (schemas + examples)
 
-## 2) Documentacao PT (release)
+## 2) Docs (release)
 
-- [ ] Revisar paginas de teoria (minimo teorico)
-- [ ] Revisar guias (quickstart, diagnostics, large games, performance)
-- [ ] Revisar pagina de exemplos (mais exemplos curtos e canonicos)
-- [ ] Revisar referencia (mkdocstrings): docstrings com exemplos onde fizer sentido
-- [ ] Checar navegacao do MkDocs (nav completo e sem paginas orfas)
+- [ ] Review theory pages (minimal theory)
+- [ ] Review guides (quickstart, diagnostics, large games, performance)
+- [ ] Review the examples page (more short, canonical examples)
+- [ ] Review API reference (mkdocstrings): docstrings with examples where it makes sense
+- [ ] Check MkDocs navigation (complete nav, no orphan pages)
 
-## 3) Qualidade (CI + testes)
+## 3) Quality (CI + tests)
 
-- [ ] Rodar `pytest` em Windows e Linux (CI)
-- [ ] Rodar `mypy` em Windows e Linux (CI)
-- [ ] Rodar `mkdocs build` (PT) como parte do CI
-- [ ] Aumentar cobertura em pontos com maior risco (LP/geometry/diagnostics)
-- [ ] Avaliar possibilidade de paralelizacao (hotspots em loops de coalizoes, sampling e scans de excessos)
+- [ ] Run `pytest` on Windows and Linux (CI)
+- [ ] Run `mypy` on Windows and Linux (CI)
+- [ ] Run `mkdocs build` (EN + PT) as part of CI
+- [ ] Increase coverage in higher-risk areas (LP/geometry/diagnostics)
+- [ ] Evaluate parallelization (hotspots in coalition loops, sampling, excess scans)
 
-## 4) Produto (empacotamento)
+## 4) Product (packaging)
 
-- [ ] Revisar `pyproject.toml` (extras, classifiers, python_requires)
-- [ ] Revisar README do pacote Python (curto, com tabela "feature -> extra")
-- [ ] Revisar `CHANGELOG.md` (minimo para release)
-- [ ] Preparar checklist de release (tag, build, publish)
+- [ ] Review `pyproject.toml` (extras, classifiers, python_requires)
+- [ ] Review Python package README (short, with a "feature -> extra" table)
+- [ ] Review `CHANGELOG.md` (minimal for release)
+- [ ] Prepare release checklist (tag, build, publish)
 
-## 5) Depois (nao bloquear o lancamento)
+## 5) Later (do not block the release)
 
-- [ ] (*) Traduzir docs para EN
-- [ ] (*) Integracao opcional com backend de poliedros (cddlib/polymake) para `n>3`
-- [ ] (*) Mais solucoes/sets (conforme necessidade)
-- [ ] (*) Paralelizacao: implementar via `concurrent.futures` (process) em tarefas naturalmente independentes (permutacoes, coalizoes, amostragem), com controle por `max_workers`
+- [x] (*) Translate docs to EN
+- [ ] (*) Optional integration with a polyhedron backend (cddlib/polymake) for `n>3`
+- [ ] (*) More solutions/sets (as needed)
+- [ ] (*) Parallelization: implement via `concurrent.futures` (process) for naturally independent tasks (permutations, coalitions, sampling), controlled by `max_workers`
+

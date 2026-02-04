@@ -1,39 +1,39 @@
-# Politica de deprecacao
+﻿# Deprecation policy
 
-Este documento define como o `tucoopy` (Python) lida com mudancas de API.
+This document defines how `tucoopy` (Python) handles API changes.
 
-## Objetivo
+## Goal
 
-- Evitar "drift" e refactors repetidos.
-- Dar previsibilidade para usuarios e para a documentacao.
+- Avoid drift and repeated refactors.
+- Provide predictability for users and for the documentation.
 
-## Versoes `0.x`
+## Versions `0.x`
 
-O projeto esta em fase Alpha (`0.x`):
+The project is in an alpha phase (`0.x`):
 
-- Mudancas quebrando API ainda podem acontecer.
-- Mesmo assim, tentamos **depreciar antes de remover** quando isso nao custar caro.
+- Breaking API changes may still happen.
+- Still, we try to **deprecate before removing** when it does not add too much cost.
 
-## Processo recomendado (quando possivel)
+## Recommended process (when possible)
 
-1. **Marcar como deprecated**
-   - Documentar no changelog.
-   - Atualizar docs (pagina de referencia, exemplos).
-2. **Emitir aviso**
-   - Usar `DeprecationWarning` (ou excecao especifica) apenas quando fizer sentido.
-3. **Remover**
-   - Preferencia: remover no proximo "minor" (ex.: `0.2.0`), ou no maximo em `+2` releases.
+1. **Mark as deprecated**
+   - Document in the changelog.
+   - Update docs (reference page, examples).
+2. **Emit a warning**
+   - Use `DeprecationWarning` (or a specific exception) only when it makes sense.
+3. **Remove**
+   - Prefer removing in the next "minor" (e.g. `0.2.0`), or at most in `+2` releases.
 
-## Arquivos "fantasma" e duplicados
+## "Ghost files" and duplicates
 
-Arquivos vazios (ou com `# apagar`) nao devem permanecer:
+Empty files (or files with `# delete`) should not remain:
 
-- Preferir **remover de fato**.
-- Se nao for possivel remover (restricoes de ambiente), manter um modulo que:
-  - falhe no import com erro explicito, e
-  - explique o replacement (novo caminho/camada source-of-truth).
+- Prefer **actually removing** them.
+- If removal is not possible (environment constraints), keep a module that:
+  - fails on import with an explicit error, and
+  - explains the replacement (new path / new source-of-truth layer).
 
-## Compatibilidade com JS
+## JSON contract compatibility
 
-Compatibilidade deve ser mantida no **contrato JSON** (`tucoopy.io.schema`), nao por shims/aliases de modulo.
+Compatibility should be maintained at the **JSON contract** level (`tucoopy.io.schema`), not via module shims/aliases.
 

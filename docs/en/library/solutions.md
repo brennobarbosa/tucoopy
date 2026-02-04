@@ -1,41 +1,40 @@
-#
-# Solucoes (point-valued)
+﻿#
+# Solutions (point-valued)
 
-Esta pagina e um mapa da pasta `tucoopy.solutions`.
+This page is a map of the `tucoopy.solutions` package.
 
-Objetivo: explicar **onde procurar** cada conceito, sem duplicar as docstrings
-da API. Para detalhes completos (assinaturas, exemplos, parametros), use a
-secao **Referencia (API)**.
+Goal: explain **where to look** for each concept, without duplicating the API docstrings.
+For full details (signatures, examples, parameters), use the **API Reference** section.
 
-See Also
---------
-- Referencia (API) -> solutions: `../reference/index.md`
+## See also
+
+- API Reference -> solutions: `../reference/index.md`
 - `tucoopy.solutions` (API): `../reference/solutions/shapley.md`
 
-Conteudo
---------
+## Contents
 
-## Valores axiomáticos / marginais
+### Axiomatic / marginal values
 
 - Shapley: `../reference/solutions/shapley.md`
-- Banzhaf (valor): `../reference/solutions/banzhaf.md`
+- Banzhaf (value): `../reference/solutions/banzhaf.md`
 
-## Solucoes baseadas em LP (deps opcionais)
+### LP-based solutions (optional deps)
 
 > Warning
-> Modulos como `nucleolus`/`modiclus` dependem de um backend de LP em runtime
-> (recomendado: `pip install "tucoopy[lp]"`).
+> Modules like `nucleolus` / `modiclus` require an LP backend at runtime
+> (recommended: `pip install "tucoopy[lp]"`).
 
-- Least-core (ponto/solver): `../reference/solutions/least_core.md`
+- Least-core (point/solver): `../reference/solutions/least_core.md`
 - Nucleolus: `../reference/solutions/nucleolus.md`
 - Modiclus: `../reference/solutions/modiclus.md`
 
-## Kernel / prekernel
+### Kernel / prekernel
 
 - Kernel (solver): `../reference/solutions/kernel.md`
 
-## Outros
+### Other
 
 - Tau value: `../reference/solutions/tau.md`
 - Gately point: `../reference/solutions/gately.md`
 - Dispatch (solve): `../reference/solutions/solve.md`
+

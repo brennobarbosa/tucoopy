@@ -1,14 +1,13 @@
-#
-# Jogos geradores
+﻿#
+# Game generators
 
-Esta pagina lista os geradores em `tucoopy.games`.
+This page lists the generators in `tucoopy.games`.
 
-See Also
---------
-- Referencia (API) -> games: `../reference/index.md`
+## See also
 
-Geradores TU (selecionados)
----------------------------
+- API Reference -> games: `../reference/index.md`
+
+## TU generators (selected)
 
 - Glove game: `../reference/games/glove.md`
 - Weighted voting: `../reference/games/weighted_voting.md`
@@ -18,14 +17,13 @@ Geradores TU (selecionados)
 - Savings: `../reference/games/savings.md`
 - Apex: `../reference/games/apex.md`
 
-Jogos de otimizacao (custo / alocacao)
---------------------------------------
+## Optimization games (cost / allocation)
 
 - Assignment: `../reference/games/assignment.md`
 - Flow: `../reference/games/flow.md`
 - MST: `../reference/games/mst.md`
 
-Outros
-------
+## Other
 
-- Additive (basico): `../reference/games/additive.md`
+- Additive (basic): `../reference/games/additive.md`
+

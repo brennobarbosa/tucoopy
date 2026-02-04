@@ -1,26 +1,26 @@
-# Depurar core/ε-core via `analysis.diagnostics`
+﻿# Debugging core/epsilon-core via `analysis.diagnostics`
 
-O objetivo de `analysis.diagnostics` é permitir que o front explique “por que” um ponto falha (ou passa) sem chamadas a backend.
+The goal of `analysis.diagnostics` is to let the frontend explain "why" a point fails (or passes) without backend calls.
 
-## Por que um ponto não está no core?
+## Why is a point not in the core?
 
-Para um ponto $x$, o diagnóstico principal é:
+For a point $x$, the main diagnostic is:
 
 - $\text{maxexcess} = \max_S (v(S) - x(S))$
-- Se $\text{maxexcess} > 0$, existe uma coalizão que bloqueia.
+- If $\text{maxexcess} > 0$, there exists a blocking coalition.
 
-No JSON, isso aparece como:
+In JSON, this appears as:
 
 - `analysis.diagnostics.solutions.<id>.core.max_excess`
 - `analysis.diagnostics.solutions.<id>.core.tight_coalitions`
-- `analysis.diagnostics.solutions.<id>.core.violations` (top-k com `vS`, `xS`, `excess`)
+- `analysis.diagnostics.solutions.<id>.core.violations` (top-k with `vS`, `xS`, `excess`)
 
-## Diagnóstico por frame (tooltip)
+## Per-frame diagnostics (tooltip)
 
-Os exemplos também colocam um payload pequeno em cada frame:
+The examples also include a small payload in each frame:
 
 - `series[].frames[].highlights.diagnostics.core.blocking_coalition_mask`
 - `series[].frames[].highlights.diagnostics.core.blocking_players`
 
-Isso é útil para tooltip seguindo o mouse: ao passar em um ponto/segmento, mostrar a coalizão bloqueadora e as coordenadas.
+This is useful for a tooltip that follows the mouse: when hovering a point/segment, show the blocking coalition and coordinates.
 

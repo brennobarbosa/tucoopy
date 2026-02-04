@@ -1,72 +1,73 @@
-# Uma introdução à teoria dos jogos cooperativos
+﻿# An introduction to cooperative game theory
 
-A **Teoria dos Jogos** estuda situações em que nossos resultados dependem não apenas das nossas decisões, mas também das escolhas dos outros.
+**Game theory** studies situations where our outcomes depend not only on our own decisions, but also on the choices of others.
 
-Isso acontece o tempo todo: em negociações, mercados, projetos colaborativos, infraestrutura compartilhada, coalizões políticas — e até na decisão cotidiana entre cooperar ou agir sozinho.
+This happens all the time: in negotiations, markets, collaborative projects, shared infrastructure, political coalitions -- and even in the everyday choice between cooperating or acting alone.
 
-Na teoria dos jogos cooperativos, porém, o foco muda.
+In cooperative game theory, however, the focus shifts.
 
-Em vez de perguntar:
+Instead of asking:
 
-> *“Qual jogada devo fazer agora?”*
+> *"What move should I make now?"*
 
-fazemos uma pergunta diferente. Mais simples. E, muitas vezes, mais prática:
+we ask a different question. Simpler. And often more practical:
 
-> **O que ganhamos ao cooperar — e como devemos dividir esse ganho?**
+> **What do we gain by cooperating -- and how should we split that gain?**
 
-Imagine um grupo de agentes capazes de formar alianças. Sozinho, cada um consegue gerar algum valor. Juntos, frequentemente conseguem gerar muito mais.
+Imagine a group of agents who can form alliances. Alone, each agent can generate some value. Together, they can often generate much more.
 
-Mas o ponto realmente interessante não é apenas que a cooperação cria valor.
+But the truly interesting point is not just that cooperation creates value.
 
-É que **grupos diferentes criam quantidades diferentes de valor**.
+It is that **different groups create different amounts of value**.
 
-Algumas coalizões são fortes. Outras são fracas. Certos participantes são decisivos em algumas combinações, e quase irrelevantes em outras.
+Some coalitions are strong. Others are weak. Certain participants are decisive in some combinations and almost irrelevant in others.
 
-A teoria dos jogos cooperativos surge exatamente para descrever e analisar essa estrutura da cooperação.
+Cooperative game theory exists precisely to describe and analyze this structure of cooperation.
 
-Aqui, não nos concentramos em decisões passo a passo nem em estratégias individuais. Assumimos algo diferente: que os participantes podem firmar acordos vinculantes[^1].
+Here, we do not focus on step-by-step decisions or individual strategies. We assume something else: that participants can make binding agreements[^1].
 
-[^1]: Um acordo é dito vinculante quando não há possibilidade de *blefe*. Se os agentes fazem um acordo, não é possível que algum deles deixe de cumpri-lo.
+[^1]: An agreement is *binding* when there is no room for bluffing. If agents make an agreement, it is not possible for any of them to fail to carry it out.
 
-O objeto central deixa de ser a estratégia e passa a ser a **estrutura de valor das coalizões** — isto é, quanto cada grupo possível consegue gerar quando coopera.
+The central object is no longer strategy, but the **value structure of coalitions** -- that is, how much each possible group can generate when it cooperates.
 
-A partir daí, começamos a fazer perguntas como:
+From there, we begin to ask questions such as:
 
-* Quem é essencial para que a cooperação funcione?
-* Quais acordos são estáveis, no sentido de que nenhum grupo tem incentivo para abandoná-los?
-* O que significa, na prática, uma divisão “justa” do resultado?
-* Até que ponto o resultado depende de poder de barganha ou de regras de votação?
+- Who is essential for cooperation to work?
+- Which agreements are stable, in the sense that no group has an incentive to leave them?
+- What does a "fair" split mean in practice?
+- To what extent does the outcome depend on bargaining power or voting rules?
 
-Perguntas diferentes levam a conceitos de solução diferentes.
+Different questions lead to different solution concepts.
 
-Alguns priorizam **justiça** e **simetria**.
-Outros enfatizam **estabilidade** e **resistência a desvios**.
-Outros ainda capturam **influência** ou **poder** dentro do grupo.
+Some prioritize **fairness** and **symmetry**.
+Others emphasize **stability** and **resistance to deviations**.
+Others still capture **influence** or **power** within the group.
 
-Nenhum deles é universalmente “correto”. Cada um reflete uma maneira particular de enxergar a cooperação.
+None of them is universally "correct". Each reflects a particular way of looking at cooperation.
 
-Um exemplo ajuda a visualizar isso.
+An example helps make this concrete.
 
-Imagine que a construção de um gasoduto poderia beneficiar várias empresas interessadas. Construí-lo é caro demais para uma única empresa. Mas, quando várias se juntam, o projeto se torna viável.
+Imagine that building a gas pipeline could benefit several interested companies. Building it is too expensive for a single company. But when several companies join forces, the project becomes viable.
 
-Diferentes grupos de empresas conseguem viabilizar o projeto de formas distintas e, portanto, gerar custos de construção diferentes.
+Different groups of companies can make the project viable in different ways and therefore generate different construction costs (or different net benefits).
 
-Surge então a pergunta natural:
+So a natural question arises:
 
-> Como dividir, de forma razoável, o custo — ou o benefício — dessa cooperação?
+> How should we reasonably split the cost -- or the benefit -- of that cooperation?
 
-A teoria dos jogos cooperativos fornece as ferramentas para descrever situações como essa e comparar diferentes formas de repartir o valor criado quando agentes decidem cooperar.
+Cooperative game theory provides the tools to describe situations like this and to compare different ways of sharing the value created when agents decide to cooperate.
 
-As próximas seções não têm como objetivo sobrecarregar você com definições formais ou provas técnicas.
+The next sections are not meant to overwhelm you with formal definitions or technical proofs.
 
-O objetivo aqui é outro.
+The goal here is different.
 
-É construir **intuição**.
+It is to build **intuition**.
 
-Entender o que cada conceito procura capturar, por que ele funciona daquela maneira e como interpretar seus resultados na prática.
+To understand what each concept is trying to capture, why it works the way it does, and how to interpret its results in practice.
 
-Se, ao final, você conseguir olhar para uma alocação e pensar:
+If, by the end, you can look at an allocation and think:
 
-> *“Isso faz sentido, dado o que valorizamos aqui: justiça, estabilidade ou poder.”*
+> *"This makes sense, given what we value here: fairness, stability, or power."*
 
-então você já terá entendido a essência da teoria dos jogos cooperativos.
+then you will already have grasped the essence of cooperative game theory.
+
