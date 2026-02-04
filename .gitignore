@@ -1,0 +1,25 @@
+# Byte-code files
+*.pyc
+__pycache__/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+wheels/
+*.egg-info/
+*.whl
+
+# Virtual environment
+.venv/
+
+# IDE and editor files
+# Uncomment the ones you use
+.vscode/       # VS Code
+
+# Miscellaneous
+*.log
+*.seed
+*.pid
+*.mo
+*.pot

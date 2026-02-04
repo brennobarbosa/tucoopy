@@ -1,0 +1,129 @@
+site_name: tucoop (Python)
+repo_url: https://github.com/brenn/tucoop
+repo_name: brenn/tucoop
+copyright: Content licensed under CC BY 4.0.
+
+docs_dir: docs/en
+
+# Build into a staging directory. We'll publish to the repo-level `site/` via a script.
+site_dir: site
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+  logo: assets/tucoop-logo.png
+  favicon: assets/tucoop-logo.png
+
+extra:
+  # Language switcher (we build EN to / and PT to /pt/).
+  alternate:
+    - name: English
+      link: /
+      lang: en
+    - name: Português
+      link: /pt/
+      lang: pt-BR
+
+nav:
+  - Home: index.md
+  - Theory:
+      - theory/index.md
+      - theory/notation.md
+      - theory/tu_games.md
+      - theory/solution_concepts.md
+      - theory/simple_games.md
+      - theory/polyhedra.md
+  - Quickstart: quickstart.md
+  - Examples: examples.md
+  - API: api.md
+  - Solutions: solutions.md
+  - Geometry: geometry.md
+  - Animation Spec: animation_spec.md
+  - References: references.md
+  - Roadmap: roadmap.md
+  - Structure: structure.md
+  - How-to:
+      - howto/lp_backends.md
+  - Reference:
+      - reference/index.md
+      - base:
+          - reference/base/game.md
+          - reference/base/properties.md
+          - reference/base/spec.md
+      - diagnostics:
+          - reference/diagnostics/linprog.md
+      - games:
+          - reference/games/airport.md
+          - reference/games/apex.md
+          - reference/games/bankruptcy.md
+          - reference/games/glove.md
+          - reference/games/market.md
+          - reference/games/savings.md
+          - reference/games/unanimity.md
+          - reference/games/voting.md
+      - geometry:
+          - reference/geometry/balancedness.md
+          - reference/geometry/bargaining.md
+          - reference/geometry/core.md
+          - reference/geometry/epsilon_core.md
+          - reference/geometry/excess.md
+          - reference/geometry/imputation.md
+          - reference/geometry/weber.md
+      - solutions:
+          - reference/solutions/banzhaf.md
+          - reference/solutions/kernel.md
+          - reference/solutions/nucleolus.md
+          - reference/solutions/power.md
+          - reference/solutions/shapley.md
+          - reference/solutions/tau.md
+      - power:
+          - reference/power.md
+      - transforms:
+          - reference/transforms/transforms.md
+      - viz:
+          - reference/viz/mpl2.md
+          - reference/viz/mpl3.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          # This is a src-layout package; include it so mkdocstrings can import `tucoop`.
+          paths:
+            - src
+          options:
+            docstring_style: numpy
+            # Type annotations tend to make signatures huge; keep pages readable.
+            show_signature_annotations: false
+            separate_signature: true
+            show_source: false
+
+watch:
+  - src
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
+  - javascripts/katex.js

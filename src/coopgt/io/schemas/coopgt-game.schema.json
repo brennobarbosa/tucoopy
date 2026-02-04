@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "tucoop Game JSON (game_to_dict)",
+  "type": "object",
+  "required": ["n_players", "values"],
+  "properties": {
+    "n_players": { "type": "integer", "minimum": 1 },
+    "player_labels": {
+      "anyOf": [
+        { "type": "null" },
+        { "type": "array", "items": { "type": "string" } }
+      ]
+    },
+    "values": {
+      "type": "object",
+      "description": "Mapping from coalition mask (as string) to value.",
+      "propertyNames": { "pattern": "^[0-9]+$" },
+      "additionalProperties": { "type": "number" }
+    }
+  },
+  "additionalProperties": false
+}
+

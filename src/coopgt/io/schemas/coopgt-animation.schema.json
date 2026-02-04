@@ -1,0 +1,324 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/tucoop/tucoop-animation.schema.json",
+  "title": "Cooperative Game Theory Animation Spec",
+  "type": "object",
+  "required": ["schema_version", "game", "series"],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Semantic version of this spec (e.g. 0.1.0)."
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "game": {
+      "type": "object",
+      "required": ["n_players", "characteristic_function"],
+      "properties": {
+        "n_players": { "type": "integer", "minimum": 1 },
+        "player_labels": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "characteristic_function": {
+          "type": "array",
+          "description": "Coalition values v(S) using bitmask encoding for S.",
+          "items": {
+            "type": "object",
+            "required": ["coalition_mask", "value"],
+            "properties": {
+              "coalition_mask": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Bitmask for coalition S (players 0..n-1)."
+              },
+              "value": { "type": "number" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "analysis": {
+      "type": "object",
+      "description": "Optional precomputed analysis results produced by Python (static w.r.t. the game).",
+      "properties": {
+        "meta": {
+          "type": "object",
+          "description": "Metadata about how analysis fields were computed (provenance, parameters, and which sections were included).",
+          "properties": {
+            "computed_by": { "type": "string" },
+            "contract_version": { "type": "string" },
+            "build_analysis": { "type": "object", "additionalProperties": true },
+            "limits": { "type": "object", "additionalProperties": true },
+            "computed": { "type": "object", "additionalProperties": true },
+            "skipped": { "type": "object", "additionalProperties": true },
+            "approx": { "type": "boolean" },
+            "approx_reasons": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": true
+        },
+        "core": {
+          "type": "object",
+          "required": ["vertices"],
+          "properties": {
+            "vertices": {
+              "type": "array",
+              "description": "Core vertices as allocations in R^n (each length n_players).",
+              "items": {
+                "type": "array",
+                "items": { "type": "number" }
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "sets": {
+          "type": "object",
+          "description": "Optional set representations for visualization (preferred over legacy analysis.core).",
+          "properties": {
+            "imputation": {
+              "type": "object",
+              "properties": {
+                "vertices": {
+                  "type": "array",
+                  "description": "Vertices of the imputation set (each length n_players).",
+                  "items": { "type": "array", "items": { "type": "number" } }
+                }
+              },
+              "additionalProperties": true
+            },
+            "core": {
+              "type": "object",
+              "properties": {
+                "vertices": {
+                  "type": "array",
+                  "description": "Core vertices (each length n_players).",
+                  "items": { "type": "array", "items": { "type": "number" } }
+                }
+              },
+              "additionalProperties": true
+            },
+            "epsilon_core": {
+              "type": "object",
+              "properties": {
+                "epsilon": { "type": "number" },
+                "vertices": {
+                  "type": "array",
+                  "description": "Vertices of the epsilon-core (each length n_players).",
+                  "items": { "type": "array", "items": { "type": "number" } }
+                }
+              },
+              "additionalProperties": true
+            },
+            "weber": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "description": "Weber set sample points (each length n_players).",
+                  "items": { "type": "array", "items": { "type": "number" } }
+                }
+              },
+              "additionalProperties": true
+            },
+            "bargaining": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "description": "Bargaining set sample points (each length n_players).",
+                  "items": { "type": "array", "items": { "type": "number" } }
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "additionalProperties": true
+        },
+        "solutions": {
+          "type": "object",
+          "description": "Named solution points (single allocations) for visualization.",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["allocation"],
+            "properties": {
+              "allocation": {
+                "type": "array",
+                "description": "Allocation x (length n_players).",
+                "items": { "type": "number" }
+              },
+              "meta": { "type": "object", "additionalProperties": true }
+            },
+            "additionalProperties": true
+          }
+        },
+        "blocking_regions": {
+          "type": "object",
+          "description": "Optional precomputed regions where a coalition is the (or a) max-excess blocker; primarily for visualization caches.",
+          "properties": {
+            "coordinate_system": {
+              "type": "string",
+              "enum": ["allocation", "barycentric_imputation"],
+              "description": "How region vertices are represented. allocation: R^n allocation vectors. barycentric_imputation: barycentric coords in the imputation simplex."
+            },
+            "regions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["coalition_mask", "vertices"],
+                "properties": {
+                  "coalition_mask": { "type": "integer", "minimum": 0 },
+                  "vertices": {
+                    "type": "array",
+                    "items": { "type": "array", "items": { "type": "number" } }
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          },
+          "additionalProperties": true
+        },
+        "diagnostics": {
+          "type": "object",
+          "description": "Optional diagnostic summaries meant for UI display (e.g., core violations for named solution points).",
+          "properties": {
+            "input": {
+              "type": "object",
+              "description": "Diagnostics about the input game itself (sanity checks, completeness, and simple properties).",
+              "additionalProperties": true
+            },
+            "lp": {
+              "type": "object",
+              "description": "Optional LP-based explanations (requires SciPy at generation time).",
+              "properties": {
+                "balancedness_check": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "lp_explanation": {
+                      "type": ["array", "null"],
+                      "items": { "type": "string" },
+                      "description": "Short human-readable summary of the LP solver output (if available)."
+                    }
+                  }
+                },
+                "least_core": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "properties": {
+                    "lp_explanation": {
+                      "type": ["array", "null"],
+                      "items": { "type": "string" },
+                      "description": "Short human-readable summary of the LP solver output (if available)."
+                    }
+                  }
+                }
+              },
+              "additionalProperties": true
+            },
+            "solutions": {
+              "type": "object",
+              "description": "Diagnostics keyed by solution id (matching keys in analysis.solutions).",
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "core": {
+                    "type": "object",
+                    "description": "Core membership explanation at that solution allocation.",
+                    "properties": {
+                      "n_players": { "type": "integer" },
+                      "in_core": { "type": "boolean" },
+                      "max_excess": { "type": "number" },
+                      "explanation": {
+                        "type": "array",
+                        "description": "Optional human-readable explanation strings (for UI display).",
+                        "items": { "type": "string" }
+                      },
+                      "tight_coalitions": {
+                        "type": "array",
+                        "description": "Coalitions achieving max_excess (within tolerance used during computation).",
+                        "items": { "type": "integer", "minimum": 0 }
+                      },
+                      "violations": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": ["coalition_mask", "players", "vS", "xS", "excess"],
+                          "properties": {
+                            "coalition_mask": { "type": "integer", "minimum": 0 },
+                            "players": { "type": "array", "items": { "type": "integer", "minimum": 0 } },
+                            "vS": { "type": "number" },
+                            "xS": { "type": "number" },
+                            "excess": { "type": "number" }
+                          },
+                          "additionalProperties": true
+                        }
+                      }
+                    },
+                    "additionalProperties": true
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          },
+          "additionalProperties": true
+        },
+        "bundle": {
+          "type": "object",
+          "description": "Optional table/list bundle for n>max_players (avoid geometry; prefer summaries).",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "series": {
+      "type": "array",
+      "description": "One or more animation series (each with frames).",
+      "items": {
+        "type": "object",
+        "required": ["id", "frames"],
+        "properties": {
+          "id": { "type": "string" },
+          "description": { "type": "string" },
+          "frames": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["t", "allocation"],
+              "properties": {
+                "t": {
+                  "type": "number",
+                  "description": "Time in seconds (or arbitrary units)."
+                },
+                "allocation": {
+                  "type": "array",
+                  "description": "x_i allocation for each player (length n_players).",
+                  "items": { "type": "number" }
+                },
+                "highlights": {
+                  "type": "object",
+                  "description": "Optional per-frame annotations for visualization.",
+                  "additionalProperties": true
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "visualization_hints": {
+      "type": "object",
+      "description": "Optional hints for the JS renderer (not required).",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
