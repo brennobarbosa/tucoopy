@@ -1,12 +1,13 @@
 site_name: tucoopy (Python)
-repo_url: https://github.com/brenn/tucoopy
-repo_name: brenn/tucoopy
+site_url: https://brennobarbosa.github.io/tucoopy/
+
+repo_url: https://github.com/brennobarbosa/tucoopy
+repo_name: brennobarbosa/tucoopy
+
 copyright: Content licensed under CC BY 4.0.
 
 docs_dir: docs/en
-
-# Build into a staging directory. We'll publish to the repo-level `site/` via a script.
-site_dir: docs/site
+site_dir: site
 
 theme:
   name: material
@@ -17,75 +18,165 @@ theme:
     - navigation.indexes
     - toc.follow
     - content.code.copy
-  logo: assets/tucoopy-logo.png
-  favicon: assets/tucoopy-logo.png
+    - content.footnote.tooltips
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
 
 extra:
-  # Language switcher (we build EN to / and PT to /pt/).
   alternate:
     - name: English
-      link: /
+      link: /tucoopy/
       lang: en
     - name: Português
-      link: /pt/
+      link: /tucoopy/pt/
       lang: pt-BR
 
 nav:
   - Home: index.md
+
   - Theory:
       - theory/index.md
-      - theory/notation.md
       - theory/tu_games.md
-      - theory/solution_concepts.md
+      - theory/allocations.md
+      - theory/stability.md
+      - theory/game_classes.md
       - theory/simple_games.md
-      - theory/polyhedra.md
-  - Quickstart: quickstart.md
-  - Examples: examples.md
-  - API: api.md
-  - Solutions: solutions.md
-  - Geometry: geometry.md
-  - Animation Spec: animation_spec.md
-  - References: references.md
-  - Roadmap: roadmap.md
-  - Structure: structure.md
-  - How-to:
-      - howto/lp_backends.md
-  - Reference:
+      - theory/notation.md
+      - theory/set_solutions.md
+      - theory/solution_concepts.md
+      - theory/power.md
+      - theory/transforms.md
+
+  - Guides:
+      - guides/quickstart.md
+      - guides/choose_solution.md
+      - guides/diagnostics.md
+      - guides/large_games.md
+      - guides/performance.md
+      - guides/dev_windows_onedrive.md
+      - guides/lp_backends.md
+      - guides/vizualization.md
+      - guides/animation_spec.md
+      - guides/analysis_contract.md
+      - guides/examples.md
+
+  - Library:
+      - library/solutions.md
+      - library/geometry.md
+      - library/games.md
+      - library/power.md
+      - library/transforms.md
+      - library/viz.md
+      - library/api.md
+      - library/structure.md
+
+  - Project:
+      - project/references.md
+      - project/roadmap.md
+      - project/public_api.md
+      - project/deprecation.md
+      - project/js_vs_python.md
+      - project/project_critique.md
+      - project/contributions.md
+
+  - API Reference:
       - reference/index.md
+
       - base:
+          - reference/base/coalition.md
           - reference/base/game.md
-          - reference/base/properties.md
-          - reference/base/spec.md
+          - reference/base/config.md
+          - reference/base/exceptions.md
+          - reference/base/types.md
+
       - diagnostics:
-          - reference/diagnostics/linprog.md
+          - reference/diagnostics/allocation_diagnostics.md
+          - reference/diagnostics/blocking_regions.md
+          - reference/diagnostics/core_cover_diagnostics.md
+          - reference/diagnostics/core_diagnostics.md
+          - reference/diagnostics/epsilon_core_diagnostics.md
+          - reference/diagnostics/imputation_diagnostics.md
+          - reference/diagnostics/least_core_diagnostics.md
+          - reference/diagnostics/linprog_diagnostics.md
+          - reference/diagnostics/reasonable_diagnostics.md
+
       - games:
+          - reference/games/additive.md
           - reference/games/airport.md
           - reference/games/apex.md
+          - reference/games/assignment.md
           - reference/games/bankruptcy.md
+          - reference/games/cost_sharing.md
+          - reference/games/flow.md
           - reference/games/glove.md
           - reference/games/market.md
+          - reference/games/mst.md
+          - reference/games/production.md
           - reference/games/savings.md
           - reference/games/unanimity.md
-          - reference/games/voting.md
+          - reference/games/weighted_voting.md
+
       - geometry:
-          - reference/geometry/balancedness.md
-          - reference/geometry/bargaining.md
-          - reference/geometry/core.md
-          - reference/geometry/epsilon_core.md
-          - reference/geometry/excess.md
-          - reference/geometry/imputation.md
-          - reference/geometry/weber.md
+          - reference/geometry/bargaining_set.md
+          - reference/geometry/core_set.md
+          - reference/geometry/core_cover_set.md
+          - reference/geometry/epsilon_core_set.md
+          - reference/geometry/imputation_set.md
+          - reference/geometry/kernel_set.md
+          - reference/geometry/least_core_set.md
+          - reference/geometry/polyhedron.md
+          - reference/geometry/projection.md
+          - reference/geometry/reasonable_set.md
+          - reference/geometry/sampling.md
+          - reference/geometry/weber_set.md
+
+      - io:
+          - reference/io/analysis.md
+          - reference/io/animation_spec.md
+          - reference/io/game_spec.md
+          - reference/io/schema.md
+
+      - power:
+          - reference/power/banzhaf.md
+          - reference/power/coleman.md
+          - reference/power/deegan_packel.md
+          - reference/power/egalitarian_shapley.md
+          - reference/power/holler.md
+          - reference/power/johnston.md
+          - reference/power/koenig_brauninger.md
+          - reference/power/rae.md
+          - reference/power/shapley_shubik.md
+          - reference/power/solidarity.md
+
+      - properties:
+          - reference/properties/basic.md
+          - reference/properties/balancedness.md
+          - reference/properties/convexity.md
+          - reference/properties/cost_games.md
+          - reference/properties/simple_games.md
+
       - solutions:
           - reference/solutions/banzhaf.md
+          - reference/solutions/gately.md
           - reference/solutions/kernel.md
+          - reference/solutions/least_core.md
+          - reference/solutions/least_squares.md
+          - reference/solutions/modiclus.md
+          - reference/solutions/myerson.md
           - reference/solutions/nucleolus.md
-          - reference/solutions/power.md
+          - reference/solutions/owen.md
           - reference/solutions/shapley.md
+          - reference/solutions/solve.md
           - reference/solutions/tau.md
-      - power:
-          - reference/power.md
+
       - transforms:
-          - reference/transforms/transforms.md
+          - reference/transforms/algebra.md
+          - reference/transforms/mobius.md
+          - reference/transforms/harsanyi.md
+          - reference/transforms/combine.md
+          - reference/transforms/communication.md
+          - reference/transforms/derived.md
+
       - viz:
           - reference/viz/mpl2.md
           - reference/viz/mpl3.md
@@ -94,24 +185,32 @@ markdown_extensions:
   - admonition
   - attr_list
   - def_list
+  - footnotes
   - toc:
       permalink: true
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.arithmatex:
       generic: true
 
 plugins:
   - search
+  - awesome-pages
+  - git-revision-date-localized:
+      type: date
+      locale: en
+      enable_parallel_processing: false
+  - minify:
+      minify_html: true
   - mkdocstrings:
       handlers:
         python:
-          # This is a src-layout package; include it so mkdocstrings can import `tucoopy`.
           paths:
             - src
           options:
             docstring_style: numpy
-            # Type annotations tend to make signatures huge; keep pages readable.
             show_signature_annotations: false
             separate_signature: true
             show_source: false
@@ -127,3 +226,4 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
   - javascripts/katex.js
+  - javascripts/cg-tooltips.js

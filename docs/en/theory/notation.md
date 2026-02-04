@@ -1,100 +1,100 @@
-# Notation and Conventions
+# Notação e convenções
 
-This section summarizes the notation used throughout the theory pages and in the library.  
-We follow standard notation from **transferable utility (TU) cooperative game theory**, with minor conventions chosen for clarity and ease of implementation.
+Esta seção resume a notação usada nas páginas de teoria e na biblioteca.  
+Seguimos a notação padrão da **teoria de jogos cooperativos com utilidade transferível (TU)**, com pequenas convenções escolhidas por clareza e facilidade de implementação.
 
-The goal is not to introduce new concepts, but to fix a common language so that definitions, algorithms, and outputs can be interpreted consistently.
+O objetivo não é introduzir novos conceitos, e sim fixar uma linguagem comum para que definições, algoritmos e saídas sejam interpretados de forma consistente.
 
-## Players and coalitions
+## Jogadores e coalizões
 
-- **Players** are indexed by the finite set $N = \{1, \ldots, n\}.$
+- **Jogadores** são indexados pelo conjunto finito $N = \{1, \ldots, n\}.$
 
-- A **coalition** is any subset $S \subseteq N$.
+- Uma **coalizão** é qualquer subconjunto $S \subseteq N$.
 
-- The **grand coalition** is the set of all players, denoted by $N$ itself.
+- A **grande coalizão** é o conjunto de todos os jogadores, denotado pelo próprio $N$.
 
-In code, players are indexed from `0` to `n-1`, following standard Python conventions.  
-Coalitions are internally represented as **bitmasks**, but most user-facing functions accept standard Python iterables (such as lists, tuples, or sets of player indices).
+No código, os jogadores são indexados de `0` a `n-1`, seguindo a convenção padrão do Python.  
+Coalizões são representadas internamente como **máscaras de bits**, mas a maioria das funções voltadas ao usuário aceita iteráveis do Python (listas, tuplas ou conjuntos de índices de jogadores).
 
-!!! tip "Intuition"
-    A coalition is simply a group of players acting together.  
-    The grand coalition represents full cooperation among all players.
+!!! tip "Intuição"
+    Uma coalizão é simplesmente um grupo de jogadores agindo em conjunto.  
+    A grande coalizão representa cooperação total entre todos os jogadores.
 
-## Characteristic function
+## Função característica
 
-A TU cooperative game is described by a **characteristic function**
+Um jogo cooperativo TU é descrito por uma **função característica**
 
 $$
 v : 2^N \to \mathbb{R},
 $$
 
-which assigns a real value to each coalition, with the normalization
+que atribui um valor real a cada coalizão, com a normalização
 
 $$
 v(\emptyset) = 0.
 $$
 
-The value $v(S)$ represents the total worth that coalition $S$ can generate on its own, assuming its members cooperate fully and can freely transfer utility among themselves.
+O valor $v(S)$ representa o valor total que a coalizão $S$ consegue gerar por conta própria, assumindo que seus membros cooperam plenamente e podem transferir utilidade livremente entre si.
 
-!!! tip "Intuition"
-    Think of $v(S)$ as the “*size of the pie*” available to coalition $S$. How that pie is split comes later.
+!!! tip "Intuição"
+    Pense em $v(S)$ como o “*tamanho da torta*” disponível para a coalizão $S$. Como essa torta é dividida vem depois.
 
-## Allocations and efficiency
+## Alocações e eficiência
 
-!!! note "Definition"
-    An **allocation** is a vector
+!!! note "Definição"
+    Uma **alocação** é um vetor
 
     $$
     x = (x_1, \dots, x_n) \in \mathbb{R}^n,
     $$
 
-    where $x_i$ denotes the payoff assigned to player $i$.
+    onde $x_i$ denota o payoff atribuído ao jogador $i$.
 
-    An allocation is **efficient** if
+    Uma alocação é **eficiente** se
 
     $$
     \sum_{i \in N} x_i = v(N).
     $$
 
-!!! tip "Intuition"
-    Efficiency means that all value created by full cooperation is distributed among the players.  
-    Nothing is lost, and nothing is left undistributed.
+!!! tip "Intuição"
+    Eficiência significa que todo o valor criado pela cooperação total é distribuído entre os jogadores.  
+    Nada é perdido e nada fica sem ser distribuído.
 
-??? example "Example"
-    For an additive game defined by $v(S) = |S|$ with $n=3$, the grand coalition has value
+??? example "Exemplo"
+    Para um jogo aditivo definido por $v(S) = |S|$ com $n=3$, a grande coalizão tem valor
     
     $$
     v(N) = 3.
     $$
 
-    A natural efficient allocation is
+    Uma alocação eficiente natural é
     
     $$
     x = (1, 1, 1),
     $$
 
-    where each player receives exactly their standalone contribution.
+    onde cada jogador recebe exatamente sua contribuição isolada.
 
-## Coalitional sums and excess
+## Somas coalizionais e excesso
 
-!!! note "Definition"
-    Given an allocation $x$ and a coalition $S \subseteq N$, the **coalitional sum** is
+!!! note "Definição"
+    Dada uma alocação $x$ e uma coalizão $S \subseteq N$, a **soma coalizional** é
     
     $$
     x(S) = \sum_{i \in S} x_i.
     $$
 
-    The **excess** of coalition $S$ at allocation $x$ is defined as
+    O **excesso** da coalizão $S$ na alocação $x$ é definido como
     
     $$
     e(S, x) = v(S) - x(S).
     $$
 
-!!! tip "Intuition"
-    The excess measures how dissatisfied a coalition is.
+!!! tip "Intuição"
+    O excesso mede o quanto uma coalizão está insatisfeita.
     
-    - If $e(S, x) > 0$, coalition $S$ can do better on its own than under allocation $x$.
-    - If $e(S, x) = 0$, the coalition is exactly satisfied.
-    - If $e(S, x) < 0$, the coalition receives more than its standalone worth.
+    - Se $e(S, x) > 0$, a coalizão $S$ consegue fazer melhor sozinha do que sob a alocação $x$.
+    - Se $e(S, x) = 0$, a coalizão está exatamente satisfeita.
+    - Se $e(S, x) < 0$, a coalizão recebe mais do que seu valor “sozinha”.
 
-The concept of excess plays a central role in many solution concepts, especially those concerned with **stability**, such as the core, the epsilon-core, and the nucleolus.
+O conceito de excesso é central em muitos conceitos de solução, especialmente os relacionados a **estabilidade**, como o núcleo, o ε-núcleo e o nucleolus.

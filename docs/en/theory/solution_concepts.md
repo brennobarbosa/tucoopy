@@ -1,19 +1,18 @@
-# Solution concepts (overview)
+# Conceitos de solução (visão geral)
 
-This library implements multiple classic solution concepts. At a high level:
+Esta biblioteca implementa vários conceitos clássicos de solução. Em alto nível:
 
-- Values (single-point selections): Shapley value, Banzhaf value, tau value.
-- LP-based selections (optional SciPy): least-core, nucleolus, pre-nucleolus.
-- Complementarity-based selections (optional NumPy): kernel, prekernel.
+- Valores (seleções de ponto único): valor de Shapley, valor de Banzhaf, valor τ.
+- Seleções via LP (SciPy opcional): least-core, nucleolus, pré-nucleolus.
+- Seleções por complementaridade (NumPy opcional): kernel, prekernel.
 
-For the implementation-facing summary, see `solutions.md`.
 
-## Shapley value
+## Valor de Shapley
 
-!!! note "Definition"
-    The Shapley value assigns to each player $i$ the average marginal contribution over all permutations:
+!!! note "Definição"
+    O valor de Shapley atribui a cada jogador $i$ a contribuição marginal média sobre todas as permutações:
 
     $$\varphi_i(v) = \sum_{S \subseteq N\setminus\{i\}} \frac{|S|!(n-|S|-1)!}{n!}\,\bigl(v(S\cup\{i\})-v(S)\bigr).$$
 
-!!! tip "Intuition"
-    Each ordering of player arrivals is equally likely; a player's payoff is its expected marginal contribution.
+!!! tip "Intuição"
+    Cada ordem de chegada dos jogadores é igualmente provável; o pagamento de um jogador é sua contribuição marginal esperada.

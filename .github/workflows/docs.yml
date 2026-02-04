@@ -22,13 +22,21 @@ jobs:
       - name: Install docs dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r docs/requirements.txt
+          pip install -r docs/requirements-docs.txt
 
       # (Opcional mas recomendado) se mkdocstrings importa seu pacote via src/
       - name: Install package (editable)
         run: |
           pip install -e .
 
-      - name: Deploy MkDocs (pt)
+      - name: Build MkDocs (en)
         run: |
-          mkdocs gh-deploy --force --config-file mkdocs.pt.yml
+          mkdocs build --config-file mkdocs.yml
+
+      - name: Build MkDocs (pt)
+        run: |
+          mkdocs build --config-file mkdocs.pt.yml
+
+      - name: Deploy MkDocs (en + pt)
+        run: |
+          mkdocs gh-deploy --force --config-file mkdocs.yml --no-build

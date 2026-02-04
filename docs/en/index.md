@@ -1,38 +1,42 @@
 # tucoopy (Python)
 
-<p align="center">
+<p class="centered-logo">
   <img src="assets/tucoopy-logo.png" width="320" alt="tucoopy">
 </p>
 
-`tucoopy` is a Python library for **TU (transferable utility) cooperative game theory**.
-It provides:
+`tucoopy` é uma biblioteca Python para **Teoria de Jogos Cooperativos com Utilidade Transferível (TU)**.
+Ela oferece:
 
-- Classic game generators (glove, weighted voting, airport, bankruptcy, unanimity, ...)
-- Classic solution concepts (Shapley, Banzhaf, least-core / nucleolus, kernel / prekernel, tau value, ...)
-- Geometry helpers intended for **visualization** (core, epsilon-core, imputation set, Weber set, bargaining set)
-- A JSON-friendly **animation spec** generator that can be consumed by the JS renderer in this monorepo
+ - Geradores clássicos de jogos (luvas, votação ponderada, aeroporto, falência, unanimidade, ...)
+ - Conceitos clássicos de solução (Shapley, Banzhaf, least-core / nucleolus, kernel / prekernel, valor τ, ...)
+ - Utilitários geométricos voltados para **visualização** (core, ε-core, conjunto de imputações, conjunto de Weber, conjunto de barganha)
+ - Um gerador de **especificações de animação em JSON**, compatível com o pacote `tucoopyjs`.
 
-## Scope and design goals
+## Escopo e objetivos de design
 
-- Focus on TU cooperative games (characteristic function games).
-- Keep a clean, well-structured API: a small top-level surface, with most functionality in subpackages.
-- Prefer correctness and clear diagnostics over maximum performance; many routines are exponential and intended for small `n`.
-- Optional heavy dependencies:
-  - `tucoopy[lp]` enables LP-based methods via SciPy (least-core, nucleolus, balancedness, bargaining set, ...)
-  - `tucoopy[fast]` enables NumPy-based helpers (kernel / prekernel)
+ - Foco em jogos cooperativos TU (jogos em função característica).
+ - Manter uma API limpa e bem estruturada: uma superfície pequena no nível superior, com a maior parte da funcionalidade organizada em subpacotes.
+ - Priorizar correção e diagnósticos claros em vez de desempenho máximo; muitas rotinas são exponenciais e pensadas para valores pequenos de `n`.
+ - Dependências pesadas opcionais:
 
-## Quick links
+  - `tucoopy[lp]` habilita métodos baseados em programação linear via `SciPy` (least-core, nucleolus, balanceamento, conjunto de barganha, ...)
+  - `tucoopy[lp_alt]` motor alternativo para programação linear via `PuLP` 
+  - `tucoopy[fast]` habilita utilitários baseados em `NumPy` (kernel / prekernel)
+  - `tucoopy[viz]` habilita visualização simples para jogos com 2 ou 3 jogadores baseada em `Matplotlib`
 
-If you are new to the package, start here:
+## Links rápidos
 
-- `api.md`: public API map (stable top-level vs subpackages)
-- `quickstart.md`: install + minimal examples
-- `solutions.md`: solution concepts (Shapley, Banzhaf, nucleolus, kernel, ...)
-- `geometry.md`: geometric objects for visualization (core, epsilon-core, imputation, Weber, bargaining, ...)
-- `animation_spec.md`: generating JSON specs consumed by the JS renderer
-- `roadmap.md`: implementation checklist / next steps
+Se você é novo no pacote, comece por aqui:
 
-## Minimal example
+* [Início Rápido](guides/quickstart.md): instalação + exemplos mínimos.
+* [API](reference/index.md): mapa da API pública (nível superior estável vs. subpacotes)
+*  [Um pouco de teoria](theory/index.md): conceitos de solução (Shapley, Banzhaf, nucleolus, kernel, ...)
+* `geometry.md`: objetos geométricos para visualização (core, ε-core, imputações, Weber, barganha, ...)
+* `animation_spec.md`: geração de especificações JSON consumidas pelo renderizador JS
+- [Roadmap](project/roadmap.md): checklist de implementação / próximos passos
+- [Como contribuir](project/contributions.md): checklist de implementação / próximos passos
+
+## Exemplo mínimo
 
 ```py
 from tucoopy import Game

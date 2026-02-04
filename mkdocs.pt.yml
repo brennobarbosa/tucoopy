@@ -8,7 +8,6 @@ copyright: Conteúdo licenciado sob CC BY 4.0.
 
 docs_dir: docs/pt
 site_dir: site/pt
-site_url: https://brennobarbosa.github.io/tucoopy/pt/
 
 theme:
   name: material
@@ -28,10 +27,9 @@ extra:
     - name: Português
       link: /tucoopy/pt/
       lang: pt-BR
-    # Ative quando você tiver docs em inglês na raiz (docs/en ou docs/)
-    # - name: English
-    #   link: /tucoopy/
-    #   lang: en
+    - name: English
+      link: /tucoopy/
+      lang: en
 
 nav:
   - Início: index.md
@@ -203,6 +201,7 @@ plugins:
   - git-revision-date-localized:
       type: date
       locale: pt_BR
+      enable_parallel_processing: false
   - minify:
       minify_html: true
   - mkdocstrings:
