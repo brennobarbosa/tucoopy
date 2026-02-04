@@ -5,8 +5,11 @@ copyright: Conteudo licenciado sob CC BY 4.0.
 
 docs_dir: docs/pt
 site_dir: site/pt
+<<<<<<< HEAD
 site_name: tucoopy
 site_url: https://brennobarbosa.github.io/tucoopy/
+=======
+>>>>>>> dbc323d823dd9f823740e1d57dc79ba0a90fdb14
 
 theme:
   name: material
