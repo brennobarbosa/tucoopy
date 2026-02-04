@@ -1,7 +1,7 @@
 # tucoopy (Python)
 
 <p class="centered-logo">
-  <img src="assets/tucoopy-logo.png" width="320" alt="tucoopy">
+  <img src="assets/logo.png" width="320" alt="tucoopy">
 </p>
 
 `tucoopy` é uma biblioteca Python para **Teoria de Jogos Cooperativos com Utilidade Transferível (TU)**.
