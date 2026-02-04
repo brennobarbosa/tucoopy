@@ -1,7 +1,7 @@
 #
 # Transformacoes
 
-`tucoop.transforms` contem transformacoes que mudam a representacao do jogo ou
+`tucoopy.transforms` contem transformacoes que mudam a representacao do jogo ou
 derivam novos jogos a partir de um jogo base.
 
 See Also

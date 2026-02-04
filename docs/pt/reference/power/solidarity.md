@@ -1,3 +1,3 @@
-# `tucoop.power.solidarity`
+# `tucoopy.power.solidarity`
 
-::: tucoop.power.solidarity
+::: tucoopy.power.solidarity

@@ -5,18 +5,18 @@
 Base install (no optional heavy deps):
 
 ```bash
-pip install tucoop
+pip install tucoopy
 ```
 
 Optional extras:
 
 - LP-based methods (least-core / nucleolus / balancedness / bargaining set):
   ```bash
-  pip install "tucoop[lp]"
+  pip install "tucoopy[lp]"
   ```
 - NumPy-based speedups (kernel / prekernel and some helpers):
   ```bash
-  pip install "tucoop[fast]"
+  pip install "tucoopy[fast]"
   ```
 
 ## Build a TU game
@@ -24,7 +24,7 @@ Optional extras:
 Coalitions are stored as bitmasks, but you can author games with Pythonic coalition keys:
 
 ```py
-from tucoop import Game
+from tucoopy import Game
 
 g = Game.from_coalitions(
     n_players=3,
@@ -44,7 +44,7 @@ g = Game.from_coalitions(
 ## Compute a solution
 
 ```py
-from tucoop.solutions import shapley_value
+from tucoopy.solutions import shapley_value
 
 phi = shapley_value(g)
 print(phi)
@@ -53,7 +53,7 @@ print(phi)
 ## Produce an animation spec (Python -> JS contract)
 
 ```py
-from tucoop.io.animation_spec import build_animation_spec
+from tucoopy.io.animation_spec import build_animation_spec
 
 spec = build_animation_spec(
     g,
@@ -66,4 +66,4 @@ spec = build_animation_spec(
 print(spec.to_json())
 ```
 
-More runnable scripts live in `packages/tucoop-py/examples/`.
+More runnable scripts live in `packages/tucoopy-py/examples/`.

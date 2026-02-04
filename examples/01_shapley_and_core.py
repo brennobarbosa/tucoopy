@@ -11,9 +11,9 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.base.game import Game
-from tucoop.geometry.core_set import Core
-from tucoop.solutions.shapley import shapley_value
+from tucoopy.base.game import Game
+from tucoopy.geometry.core_set import Core
+from tucoopy.solutions.shapley import shapley_value
 
 
 def main() -> None:
@@ -39,7 +39,7 @@ def main() -> None:
         import scipy  # noqa: F401
     except Exception:
         print("\nCore vertices require an LP backend (recommended: SciPy).")
-        print('Install with: pip install "tucoop[lp]"')
+        print('Install with: pip install "tucoopy[lp]"')
         return
 
     verts = Core(g).vertices()

@@ -1,3 +1,3 @@
-# `tucoop.geometry.projection`
+# `tucoopy.geometry.projection`
 
-::: tucoop.geometry.projection
+::: tucoopy.geometry.projection

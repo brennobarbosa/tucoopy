@@ -2,21 +2,21 @@
 
 Este repo tem dois projetos que se complementam:
 
-- **`tucoop-py` (Python)**: biblioteca de teoria dos jogos cooperativos (TU), com metodos pesados (LP, varreduras maiores, diagnosticos completos) e geracao de JSON.
-- **`tucoop-js` / `@tucoop/core` (TypeScript/JS)**: runtime leve para **validar, completar analises baratas e renderizar** specs no browser (Canvas).
+- **`tucoopy-py` (Python)**: biblioteca de teoria dos jogos cooperativos (TU), com metodos pesados (LP, varreduras maiores, diagnosticos completos) e geracao de JSON.
+- **`tucoopy-js` / `@tucoopy/core` (TypeScript/JS)**: runtime leve para **validar, completar analises baratas e renderizar** specs no browser (Canvas).
 
 ## Contrato de compatibilidade
 
 A compatibilidade entre os dois projetos e pelo **contrato JSON** (schemas), nao pela arquitetura interna:
 
-- `schema/tucoop-animation.schema.json` (canonico no repo)
-- schema empacotado no Python: `tucoop.io.schemas/tucoop-animation.schema.json`
+- `schema/tucoopy-animation.schema.json` (canonico no repo)
+- schema empacotado no Python: `tucoopy.io.schemas/tucoopy-animation.schema.json`
 
 Recomendacao: trate o schema como a "interface" entre os projetos.
 
 ## O que o JS consegue computar sozinho (client-side)
 
-O `@tucoop/core` tem um modo de "completar" o spec quando ele chega "cru" (apenas `game` + `series`):
+O `@tucoopy/core` tem um modo de "completar" o spec quando ele chega "cru" (apenas `game` + `series`):
 
 - `analysis.solutions` (quando viavel para `n` pequeno):
   - Shapley (enumeracao direta, custo $O(n 2^n)$)
@@ -28,7 +28,7 @@ O `@tucoop/core` tem um modo de "completar" o spec quando ele chega "cru" (apena
 
 Essas computacoes estao concentradas em:
 
-- `packages/tucoop-js/src/compute.ts` (`deriveAnalysis(spec, opts)`)
+- `packages/tucoopy-js/src/compute.ts` (`deriveAnalysis(spec, opts)`)
 
 Limites:
 
@@ -65,7 +65,7 @@ Isso evita que:
 
 ## See Also
 
-- `packages/tucoop-js/README.md` (como usar o renderer e `deriveAnalysis`)
+- `packages/tucoopy-js/README.md` (como usar o renderer e `deriveAnalysis`)
 - `guides/animation_spec.md` (como gerar specs no Python)
 - `guides/analysis_contract.md` (o que entra em `analysis`)
 

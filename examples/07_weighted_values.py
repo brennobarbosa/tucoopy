@@ -14,9 +14,9 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.base.game import Game
-from tucoop.solutions.banzhaf import weighted_banzhaf_value
-from tucoop.solutions.shapley import semivalue, weighted_shapley_value
+from tucoopy.base.game import Game
+from tucoopy.solutions.banzhaf import weighted_banzhaf_value
+from tucoopy.solutions.shapley import semivalue, weighted_shapley_value
 
 
 def main() -> None:

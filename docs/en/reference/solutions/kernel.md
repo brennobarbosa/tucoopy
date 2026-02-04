@@ -1,4 +1,4 @@
-# `tucoop.solutions.kernel`
+# `tucoopy.solutions.kernel`
 
-::: tucoop.solutions.kernel
+::: tucoopy.solutions.kernel
 

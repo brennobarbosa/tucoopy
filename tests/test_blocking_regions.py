@@ -8,8 +8,8 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestBlockingRegions(unittest.TestCase):
     def test_blocking_regions_n3_returns_barycentric_polygons(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.diagnostics import blocking_regions  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.diagnostics import blocking_regions  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,
@@ -41,8 +41,8 @@ class TestBlockingRegions(unittest.TestCase):
                     self.assertGreaterEqual(bi, -1e-6)
 
     def test_blocking_regions_non_n3_is_empty(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.diagnostics import blocking_regions  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.diagnostics import blocking_regions  # noqa: E402
 
         g2 = Game.from_coalitions(
             n_players=2,

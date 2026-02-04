@@ -1,3 +1,3 @@
-# `tucoop.power.johnston`
+# `tucoopy.power.johnston`
 
-::: tucoop.power.johnston
+::: tucoopy.power.johnston

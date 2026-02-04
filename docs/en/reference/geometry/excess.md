@@ -1,5 +1,5 @@
 # Excess and core violations
 
-Excess/violations are diagnostics (not sets), so they live in `tucoop.diagnostics`.
+Excess/violations are diagnostics (not sets), so they live in `tucoopy.diagnostics`.
 
-::: tucoop.diagnostics.excess
+::: tucoopy.diagnostics.excess

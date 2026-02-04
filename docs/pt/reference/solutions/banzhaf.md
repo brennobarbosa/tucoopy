@@ -1,4 +1,4 @@
-# `tucoop.solutions.banzhaf`
+# `tucoopy.solutions.banzhaf`
 
-::: tucoop.solutions.banzhaf
+::: tucoopy.solutions.banzhaf
 

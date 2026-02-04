@@ -1,4 +1,4 @@
-# `tucoop.games.savings`
+# `tucoopy.games.savings`
 
-::: tucoop.games.savings
+::: tucoopy.games.savings
 

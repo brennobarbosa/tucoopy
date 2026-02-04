@@ -1,12 +1,12 @@
-site_name: tucoop (Python)
-repo_url: https://github.com/brenn/tucoop
-repo_name: brenn/tucoop
+site_name: tucoopy (Python)
+repo_url: https://github.com/brenn/tucoopy
+repo_name: brenn/tucoopy
 copyright: Content licensed under CC BY 4.0.
 
 docs_dir: docs/en
 
 # Build into a staging directory. We'll publish to the repo-level `site/` via a script.
-site_dir: site
+site_dir: docs/site
 
 theme:
   name: material
@@ -17,8 +17,8 @@ theme:
     - navigation.indexes
     - toc.follow
     - content.code.copy
-  logo: assets/tucoop-logo.png
-  favicon: assets/tucoop-logo.png
+  logo: assets/tucoopy-logo.png
+  favicon: assets/tucoopy-logo.png
 
 extra:
   # Language switcher (we build EN to / and PT to /pt/).
@@ -106,7 +106,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          # This is a src-layout package; include it so mkdocstrings can import `tucoop`.
+          # This is a src-layout package; include it so mkdocstrings can import `tucoopy`.
           paths:
             - src
           options:

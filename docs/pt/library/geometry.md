@@ -1,7 +1,7 @@
 #
 # Geometria (set-valued)
 
-Esta pagina e um mapa do subpacote `tucoop.geometry`.
+Esta pagina e um mapa do subpacote `tucoopy.geometry`.
 
 O foco aqui e **orientacao**: o que cada conjunto representa e onde esta a
 documentacao de API, sem reescrever as docstrings.

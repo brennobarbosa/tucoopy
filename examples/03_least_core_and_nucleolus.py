@@ -6,7 +6,7 @@ Least-core and nucleolus (optional LP backend).
 Warning
 -------
 This example requires an LP backend at runtime (recommended: SciPy).
-Install with: `pip install \"tucoop[lp]\"`.
+Install with: `pip install \"tucoopy[lp]\"`.
 """
 
 from _bootstrap import add_src_to_path
@@ -18,12 +18,12 @@ def main() -> None:
     try:
         import scipy  # noqa: F401
     except Exception:
-        print("This example requires SciPy. Install with: pip install \"tucoop[lp]\"")
+        print("This example requires SciPy. Install with: pip install \"tucoopy[lp]\"")
         return
 
-    from tucoop.base.game import Game
-    from tucoop.solutions.least_core import least_core
-    from tucoop.solutions.nucleolus import nucleolus, prenucleolus
+    from tucoopy.base.game import Game
+    from tucoopy.solutions.least_core import least_core
+    from tucoopy.solutions.nucleolus import nucleolus, prenucleolus
 
     g = Game.from_coalitions(
         n_players=3,

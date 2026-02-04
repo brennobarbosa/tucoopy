@@ -1,4 +1,4 @@
-# `tucoop.games.unanimity`
+# `tucoopy.games.unanimity`
 
-::: tucoop.games.unanimity
+::: tucoopy.games.unanimity
 

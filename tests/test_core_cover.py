@@ -8,8 +8,8 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestCoreCover(unittest.TestCase):
     def test_reasonable_set_vertices_additive_game(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import ReasonableSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import ReasonableSet  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         verts = ReasonableSet(g).vertices(max_dim=4)
@@ -17,16 +17,16 @@ class TestCoreCover(unittest.TestCase):
         self.assertEqual(verts, [[1.0, 1.0, 1.0]])
 
     def test_core_cover_vertices_additive_game(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import CoreCover  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import CoreCover  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         verts = CoreCover(g).vertices(max_dim=4)
         self.assertEqual(verts, [[1.0, 1.0, 1.0]])
 
     def test_build_analysis_includes_core_cover_and_reasonable(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,

@@ -1,4 +1,4 @@
-# `tucoop.base.exceptions`
+# `tucoopy.base.exceptions`
 
-::: tucoop.base.exceptions
+::: tucoopy.base.exceptions
 

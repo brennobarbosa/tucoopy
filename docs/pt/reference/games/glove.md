@@ -1,4 +1,4 @@
-# `tucoop.games.glove`
+# `tucoopy.games.glove`
 
-::: tucoop.games.glove
+::: tucoopy.games.glove
 

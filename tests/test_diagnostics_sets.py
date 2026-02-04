@@ -8,9 +8,9 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestDiagnosticsSets(unittest.TestCase):
     def test_epsilon_core_diagnostics(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.diagnostics.epsilon_core_diagnostics import epsilon_core_diagnostics  # noqa: E402
-        from tucoop.solutions import shapley_value  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.diagnostics.epsilon_core_diagnostics import epsilon_core_diagnostics  # noqa: E402
+        from tucoopy.solutions import shapley_value  # noqa: E402
 
         # Simple 2-player game with a non-empty core.
         g = Game.from_coalitions(
@@ -38,8 +38,8 @@ class TestDiagnosticsSets(unittest.TestCase):
         self.assertGreaterEqual(len(d1.violations), 1)
 
     def test_reasonable_set_diagnostics(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.diagnostics.reasonable_diagnostics import reasonable_set_diagnostics  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.diagnostics.reasonable_diagnostics import reasonable_set_diagnostics  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,
@@ -68,8 +68,8 @@ class TestDiagnosticsSets(unittest.TestCase):
         self.assertFalse(d2.in_set)
 
     def test_least_core_diagnostics_is_diagnostic_friendly(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.diagnostics.least_core_diagnostics import least_core_diagnostics  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.diagnostics.least_core_diagnostics import least_core_diagnostics  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,

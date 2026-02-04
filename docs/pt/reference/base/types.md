@@ -1,4 +1,4 @@
-# `tucoop.base.types`
+# `tucoopy.base.types`
 
-::: tucoop.base.types
+::: tucoopy.base.types
 

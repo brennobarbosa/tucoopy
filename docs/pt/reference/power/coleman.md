@@ -1,3 +1,3 @@
-# `tucoop.power.coleman`
+# `tucoopy.power.coleman`
 
-::: tucoop.power.coleman
+::: tucoopy.power.coleman

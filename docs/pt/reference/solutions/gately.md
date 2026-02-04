@@ -1,3 +1,3 @@
-# `tucoop.solutions.gately`
+# `tucoopy.solutions.gately`
 
-::: tucoop.solutions.gately
+::: tucoopy.solutions.gately

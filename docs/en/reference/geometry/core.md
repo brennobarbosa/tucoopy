@@ -1,4 +1,4 @@
-# `tucoop.geometry.core`
+# `tucoopy.geometry.core`
 
-::: tucoop.geometry.core
+::: tucoopy.geometry.core
 

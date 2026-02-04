@@ -9,8 +9,8 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestGeometryNewModules(unittest.TestCase):
     def test_sample_imputation_set(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import sample_imputation_set  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import sample_imputation_set  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,
@@ -32,8 +32,8 @@ class TestGeometryNewModules(unittest.TestCase):
             self.assertGreaterEqual(x[2] + 1e-12, 0.5)
 
     def test_project_allocation_n3(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import project_allocation  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import project_allocation  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,
@@ -50,8 +50,8 @@ class TestGeometryNewModules(unittest.TestCase):
         self.assertEqual(len(p), 2)
 
     def test_least_core_missing_numpy_message(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import LeastCore  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import LeastCore  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=2,
@@ -66,7 +66,7 @@ class TestGeometryNewModules(unittest.TestCase):
         with mock.patch("importlib.import_module", side_effect=ModuleNotFoundError("numpy")):
             with self.assertRaises(ImportError) as ctx:
                 _ = LeastCore(g).epsilon
-        self.assertIn("tucoop[lp]", str(ctx.exception))
+        self.assertIn("tucoopy[lp]", str(ctx.exception))
 
 
 if __name__ == "__main__":

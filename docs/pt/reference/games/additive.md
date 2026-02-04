@@ -1,4 +1,4 @@
-# `tucoop.games.additive`
+# `tucoopy.games.additive`
 
-::: tucoop.games.additive
+::: tucoopy.games.additive
 

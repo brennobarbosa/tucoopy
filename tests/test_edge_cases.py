@@ -12,10 +12,10 @@ class TestEdgeCases(unittest.TestCase):
         try:
             import numpy  # noqa: F401
         except Exception:
-            self.skipTest("NumPy not installed (install with tucoop[fast])")
+            self.skipTest("NumPy not installed (install with tucoopy[fast])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import prekernel  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import prekernel  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         res = prekernel(g, max_iter=0)
@@ -24,7 +24,7 @@ class TestEdgeCases(unittest.TestCase):
 
     def test_lp_normalize_bounds_variants(self) -> None:
         # Internal helper: stable, deterministic, and does not require SciPy/PuLP.
-        from tucoop.backends import lp as lp_mod  # noqa: E402
+        from tucoopy.backends import lp as lp_mod  # noqa: E402
 
         self.assertEqual(lp_mod._normalize_bounds(None, 2), [(0.0, None), (0.0, None)])
         self.assertEqual(lp_mod._normalize_bounds((None, None), 2), [(None, None), (None, None)])
@@ -43,10 +43,10 @@ class TestEdgeCases(unittest.TestCase):
         try:
             import numpy as np  # noqa: F401
         except Exception:
-            self.skipTest("NumPy not installed (install with tucoop[lp] or tucoop[fast])")
+            self.skipTest("NumPy not installed (install with tucoopy[lp] or tucoopy[fast])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.properties.balancedness import balancedness_check  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.properties.balancedness import balancedness_check  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=2,
@@ -66,7 +66,7 @@ class TestEdgeCases(unittest.TestCase):
             return _FakeRes()
 
         # Patch the LP adapter to return a result without `fun`.
-        with mock.patch("tucoop.backends.lp.linprog_solve", side_effect=_fake_linprog):
+        with mock.patch("tucoopy.backends.lp.linprog_solve", side_effect=_fake_linprog):
             with self.assertRaises(RuntimeError) as ctx:
                 balancedness_check(g)
         self.assertIn("objective value", str(ctx.exception))

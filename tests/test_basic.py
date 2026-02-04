@@ -5,12 +5,12 @@ import unittest
 PKG_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PKG_ROOT / "src"))
 
-from tucoop import Game  # noqa: E402
-from tucoop.properties import is_convex  # noqa: E402
-from tucoop.diagnostics import is_in_core  # noqa: E402
-from tucoop.geometry import Core, EpsilonCore, ImputationSet  # noqa: E402
-from tucoop.solutions import banzhaf_value, shapley_value, shapley_value_sample, tau_value  # noqa: E402
-from tucoop.transforms import harsanyi_dividends  # noqa: E402
+from tucoopy import Game  # noqa: E402
+from tucoopy.properties import is_convex  # noqa: E402
+from tucoopy.diagnostics import is_in_core  # noqa: E402
+from tucoopy.geometry import Core, EpsilonCore, ImputationSet  # noqa: E402
+from tucoopy.solutions import banzhaf_value, shapley_value, shapley_value_sample, tau_value  # noqa: E402
+from tucoopy.transforms import harsanyi_dividends  # noqa: E402
 
 
 class TestBasic(unittest.TestCase):

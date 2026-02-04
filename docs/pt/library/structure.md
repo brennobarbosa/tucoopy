@@ -1,38 +1,38 @@
-﻿# Estrutura do tucoop-py
+﻿# Estrutura do tucoopy-py
 
 Este pacote é organizado para manter a API pública explícita, pequena e fácil de navegar.
 
 ## Módulos canônicos
 
-- `tucoop.base`
+- `tucoopy.base`
   - estruturas fundamentais (`Coalition` bitmask, `Game`)
 
-- `tucoop.properties`
+- `tucoopy.properties`
   - propriedades / reconhecedores
 
-- `tucoop.io`
+- `tucoopy.io`
   - IO JSON + helpers de animation spec (contrato compartilhado com o JS)
 
-- `tucoop.backends`
+- `tucoopy.backends`
   - adapters para dependências opcionais (LP, NumPy, ...)
 
-- `tucoop.power`
+- `tucoopy.power`
   - índices de poder (votação / jogos simples)
 
-- `tucoop.solutions`
+- `tucoopy.solutions`
   - conceitos de solução (Shapley, Banzhaf, ...)
 
-- `tucoop.transforms`
+- `tucoopy.transforms`
   - representações / transformações (ex.: dividendos de Harsanyi)
 
-- `tucoop.geometry`
+- `tucoopy.geometry`
   - objetos/operações geométricas usadas para visualização (ex.: vértices do núcleo)
 
 ## Regras de importação (restritas)
 
 - Código interno deve importar dos módulos canônicos acima.
 - Re-exports públicos ficam em:
-  - o `__init__.py` de cada subpacote (ex.: `tucoop.geometry.__init__`)
-  - o `tucoop/__init__.py` no topo, por conveniência
+  - o `__init__.py` de cada subpacote (ex.: `tucoopy.geometry.__init__`)
+  - o `tucoopy/__init__.py` no topo, por conveniência
 
-Evite introduzir “shims”/atalhos de módulo extras como `tucoop/core.py`: isso deixa o pacote mais difícil de navegar.
+Evite introduzir “shims”/atalhos de módulo extras como `tucoopy/core.py`: isso deixa o pacote mais difícil de navegar.

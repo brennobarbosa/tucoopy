@@ -1,3 +1,3 @@
-# `tucoop.viz.mpl`
+# `tucoopy.viz.mpl`
 
-::: tucoop.viz.mpl
+::: tucoopy.viz.mpl

@@ -12,14 +12,14 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.games.weighted_voting import weighted_voting_game
-from tucoop.power.banzhaf import banzhaf_index, banzhaf_index_weighted_voting
-from tucoop.power.coleman import coleman_collectivity_power_to_act, coleman_prevent_index
-from tucoop.power.deegan_packel import deegan_packel_index
-from tucoop.power.holler import holler_index
-from tucoop.power.johnston import johnston_index
-from tucoop.power.rae import rae_index
-from tucoop.power.shapley_shubik import (
+from tucoopy.games.weighted_voting import weighted_voting_game
+from tucoopy.power.banzhaf import banzhaf_index, banzhaf_index_weighted_voting
+from tucoopy.power.coleman import coleman_collectivity_power_to_act, coleman_prevent_index
+from tucoopy.power.deegan_packel import deegan_packel_index
+from tucoopy.power.holler import holler_index
+from tucoopy.power.johnston import johnston_index
+from tucoopy.power.rae import rae_index
+from tucoopy.power.shapley_shubik import (
     shapley_shubik_index,
     shapley_shubik_index_weighted_voting,
 )

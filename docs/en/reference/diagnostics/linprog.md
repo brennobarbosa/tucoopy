@@ -1,4 +1,4 @@
-# `tucoop.diagnostics.linprog`
+# `tucoopy.diagnostics.linprog`
 
-::: tucoop.diagnostics.linprog
+::: tucoopy.diagnostics.linprog
 

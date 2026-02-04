@@ -1,3 +1,3 @@
-# `tucoop.properties.basic`
+# `tucoopy.properties.basic`
 
-::: tucoop.properties.basic
+::: tucoopy.properties.basic

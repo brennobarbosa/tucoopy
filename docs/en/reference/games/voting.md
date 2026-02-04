@@ -1,3 +1,3 @@
-# `tucoop.games.weighted_voting`
+# `tucoopy.games.weighted_voting`
 
-::: tucoop.games.weighted_voting
+::: tucoopy.games.weighted_voting

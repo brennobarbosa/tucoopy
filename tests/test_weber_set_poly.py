@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from tucoop.base.game import Game
-from tucoop.geometry import WeberSet
+from tucoopy.base.game import Game
+from tucoopy.geometry import WeberSet
 
 
 def _assert_point_satisfies_hrep(

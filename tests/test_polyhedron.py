@@ -8,7 +8,7 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestPolyhedralSet(unittest.TestCase):
     def test_extreme_points_unit_square(self) -> None:
-        from tucoop.geometry import PolyhedralSet  # noqa: E402
+        from tucoopy.geometry import PolyhedralSet  # noqa: E402
 
         # 0 <= x <= 1, 0 <= y <= 1
         A_ub = [
@@ -27,7 +27,7 @@ class TestPolyhedralSet(unittest.TestCase):
         self.assertFalse(P.contains([1.1, 0.0]))
 
     def test_project_slack_and_residual(self) -> None:
-        from tucoop.geometry import PolyhedralSet  # noqa: E402
+        from tucoopy.geometry import PolyhedralSet  # noqa: E402
 
         # Simplex in 2D: x>=0, y>=0, x+y<=1.
         P = PolyhedralSet.from_hrep(A_ub=[[-1.0, 0.0], [0.0, -1.0], [1.0, 1.0]], b_ub=[0.0, 0.0, 1.0])
@@ -50,7 +50,7 @@ class TestPolyhedralSet(unittest.TestCase):
         self.assertIn([1.0, 1.0], proj)
 
     def test_affine_dimension(self) -> None:
-        from tucoop.geometry import PolyhedralSet  # noqa: E402
+        from tucoopy.geometry import PolyhedralSet  # noqa: E402
 
         # Full-dimensional in 2D.
         P = PolyhedralSet.from_hrep(bounds=[(0.0, 1.0), (0.0, 1.0)])
@@ -65,7 +65,7 @@ class TestPolyhedralSet(unittest.TestCase):
         self.assertEqual(R.affine_dimension(), 0)
 
     def test_extreme_points_redundant_constraints(self) -> None:
-        from tucoop.geometry import PolyhedralSet  # noqa: E402
+        from tucoopy.geometry import PolyhedralSet  # noqa: E402
 
         # Unit square with redundant (duplicate / scaled) inequalities.
         A_ub = [
@@ -84,7 +84,7 @@ class TestPolyhedralSet(unittest.TestCase):
         self.assertEqual(verts, [[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]])
 
     def test_extreme_points_redundant_equalities(self) -> None:
-        from tucoop.geometry import PolyhedralSet  # noqa: E402
+        from tucoopy.geometry import PolyhedralSet  # noqa: E402
 
         # Segment on x+y=1 with a redundant equality row.
         P = PolyhedralSet.from_hrep(
@@ -96,7 +96,7 @@ class TestPolyhedralSet(unittest.TestCase):
         self.assertEqual(verts, [[0.0, 1.0], [1.0, 0.0]])
 
     def test_extreme_points_segment_fixed_bound(self) -> None:
-        from tucoop.geometry import PolyhedralSet  # noqa: E402
+        from tucoopy.geometry import PolyhedralSet  # noqa: E402
 
         # Segment: x fixed to 0, 0<=y<=1.
         P = PolyhedralSet.from_hrep(bounds=[(0.0, 0.0), (0.0, 1.0)])
@@ -107,9 +107,9 @@ class TestPolyhedralSet(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop.geometry import PolyhedralSet  # noqa: E402
+        from tucoopy.geometry import PolyhedralSet  # noqa: E402
 
         # Infeasible: x <= 0 and x >= 1
         P = PolyhedralSet.from_hrep(A_ub=[[1.0], [-1.0]], b_ub=[0.0, -1.0], bounds=[(None, None)])
@@ -128,9 +128,9 @@ class TestPolyhedralSet(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop.geometry import PolyhedralSet  # noqa: E402
+        from tucoopy.geometry import PolyhedralSet  # noqa: E402
 
         P = PolyhedralSet.from_hrep(bounds=[(0.0, 1.0), (0.0, 1.0)])
         self.assertTrue(P.is_bounded())
@@ -140,8 +140,8 @@ class TestPolyhedralSet(unittest.TestCase):
         self.assertFalse(Q.is_bounded())
 
     def test_core_and_imputation_wrappers_import(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import Core, EpsilonCore, ImputationSet, PreImputationSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import Core, EpsilonCore, ImputationSet, PreImputationSet  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=2,

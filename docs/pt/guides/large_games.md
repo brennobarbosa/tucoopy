@@ -8,8 +8,8 @@ Para $n>4$, a UI não desenha um simplex completo; a estratégia recomendada é:
 ## Exemplo (Python)
 
 ```py
-from tucoop import Game
-from tucoop.io import build_analysis
+from tucoopy import Game
+from tucoopy.io import build_analysis
 
 g = Game.from_coalitions(
     n_players=6,

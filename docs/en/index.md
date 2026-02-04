@@ -1,10 +1,10 @@
-# tucoop (Python)
+# tucoopy (Python)
 
 <p align="center">
-  <img src="assets/tucoop-logo.png" width="320" alt="tucoop">
+  <img src="assets/tucoopy-logo.png" width="320" alt="tucoopy">
 </p>
 
-`tucoop` is a Python library for **TU (transferable utility) cooperative game theory**.
+`tucoopy` is a Python library for **TU (transferable utility) cooperative game theory**.
 It provides:
 
 - Classic game generators (glove, weighted voting, airport, bankruptcy, unanimity, ...)
@@ -18,8 +18,8 @@ It provides:
 - Keep a clean, well-structured API: a small top-level surface, with most functionality in subpackages.
 - Prefer correctness and clear diagnostics over maximum performance; many routines are exponential and intended for small `n`.
 - Optional heavy dependencies:
-  - `tucoop[lp]` enables LP-based methods via SciPy (least-core, nucleolus, balancedness, bargaining set, ...)
-  - `tucoop[fast]` enables NumPy-based helpers (kernel / prekernel)
+  - `tucoopy[lp]` enables LP-based methods via SciPy (least-core, nucleolus, balancedness, bargaining set, ...)
+  - `tucoopy[fast]` enables NumPy-based helpers (kernel / prekernel)
 
 ## Quick links
 
@@ -35,8 +35,8 @@ If you are new to the package, start here:
 ## Minimal example
 
 ```py
-from tucoop import Game
-from tucoop.solutions import shapley_value
+from tucoopy import Game
+from tucoopy.solutions import shapley_value
 
 g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
 print(shapley_value(g))  # [1.0, 1.0, 1.0]

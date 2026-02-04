@@ -8,8 +8,8 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestKernelSet(unittest.TestCase):
     def test_kernel_set_membership_additive(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import KernelSet, PreKernelSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import KernelSet, PreKernelSet  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         x = [1.0, 1.0, 1.0]
@@ -23,8 +23,8 @@ class TestKernelSet(unittest.TestCase):
         self.assertTrue(k.check(x, tol=1e-9).in_set)
 
     def test_kernel_set_argmax_masks_and_pair_order(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import KernelSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import KernelSet  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         x = [1.0, 1.0, 1.0]
@@ -51,8 +51,8 @@ class TestKernelSet(unittest.TestCase):
             self.assertFalse(bool(p.argmax_ji & (1 << p.i)))
 
     def test_kernel_set_rejects_non_imputation(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import KernelSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import KernelSet  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         # sum=3 but violates IR (x1 < v({1}) = 1).
@@ -63,8 +63,8 @@ class TestKernelSet(unittest.TestCase):
         self.assertFalse(res.in_set)
 
     def test_kernel_set_sampling_singleton(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import KernelSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import KernelSet  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         k = KernelSet(g, max_players=6)
@@ -75,8 +75,8 @@ class TestKernelSet(unittest.TestCase):
         self.assertAlmostEqual(pts[0][2], 1.0, places=9)
 
     def test_kernel_set_max_players_guard(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import KernelSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import KernelSet  # noqa: E402
 
         g = Game.from_value_function(n_players=5, value_fn=lambda S: float(len(S)))
         k = KernelSet(g, max_players=4)

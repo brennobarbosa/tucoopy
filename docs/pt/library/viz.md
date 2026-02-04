@@ -1,7 +1,7 @@
 #
 # Visualizacao
 
-O subpacote `tucoop.viz` oferece visualizacao estatica (Matplotlib) para:
+O subpacote `tucoopy.viz` oferece visualizacao estatica (Matplotlib) para:
 
 - $n=2$: segmentos no plano $(x_1, x_2)$
 - $n=3$: diagrama ternario (simplex)
@@ -12,7 +12,7 @@ See Also
 - Referencia (API) -> viz: `../reference/index.md`
 
 > Warning
-> Matplotlib e uma dependencia opcional. Instale com `pip install "tucoop[viz]"`.
+> Matplotlib e uma dependencia opcional. Instale com `pip install "tucoopy[viz]"`.
 
 API
 ---

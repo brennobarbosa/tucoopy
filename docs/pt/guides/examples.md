@@ -1,8 +1,8 @@
 ﻿# Exemplos
 
-Os exemplos executaveis ficam em `packages/tucoop-py/examples/`.
+Os exemplos executaveis ficam em `packages/tucoopy-py/examples/`.
 
-A partir de `packages/tucoop-py/`.
+A partir de `packages/tucoopy-py/`.
 
 ## Basicos (sem deps opcionais)
 
@@ -31,20 +31,20 @@ python examples/16_io_roundtrip_animation_spec.py
 !!! warning
     Alguns exemplos exigem extras em runtime.
 
-    - LP (SciPy): `pip install "tucoop[lp]"`
-    - Fast (NumPy): `pip install "tucoop[fast]"`
-    - Viz (Matplotlib): `pip install "tucoop[viz]"`
+    - LP (SciPy): `pip install "tucoopy[lp]"`
+    - Fast (NumPy): `pip install "tucoopy[fast]"`
+    - Viz (Matplotlib): `pip install "tucoopy[viz]"`
 
 ```bash
-python examples/03_least_core_and_nucleolus.py        # requer: tucoop[lp]
-python examples/04_kernel_and_prekernel.py            # requer: tucoop[fast]
-python examples/09_modiclus.py                        # requer: tucoop[lp]
-python examples/10_kernel_set_and_bargaining_set.py   # parte requer: tucoop[lp]
-python examples/11_static_viz_from_spec.py            # requer: tucoop[viz]
-python examples/12_static_viz_direct.py               # requer: tucoop[viz]
-python examples/13_mpl2_segment.py                    # requer: tucoop[viz]
-python examples/14_mpl3_ternary.py                    # requer: tucoop[viz]
-python examples/20_geometry_sets_with_lp_backend.py   # requer: tucoop[lp]
+python examples/03_least_core_and_nucleolus.py        # requer: tucoopy[lp]
+python examples/04_kernel_and_prekernel.py            # requer: tucoopy[fast]
+python examples/09_modiclus.py                        # requer: tucoopy[lp]
+python examples/10_kernel_set_and_bargaining_set.py   # parte requer: tucoopy[lp]
+python examples/11_static_viz_from_spec.py            # requer: tucoopy[viz]
+python examples/12_static_viz_direct.py               # requer: tucoopy[viz]
+python examples/13_mpl2_segment.py                    # requer: tucoopy[viz]
+python examples/14_mpl3_ternary.py                    # requer: tucoopy[viz]
+python examples/20_geometry_sets_with_lp_backend.py   # requer: tucoopy[lp]
 ```
 
 

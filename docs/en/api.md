@@ -2,22 +2,22 @@
 
 The public API is intentionally constrained:
 
-- `import tucoop` is a small, stable convenience surface.
+- `import tucoopy` is a small, stable convenience surface.
 - Most functionality lives in the canonical subpackages:
-  - `tucoop.base`
-  - `tucoop.games`
-  - `tucoop.solutions`
-  - `tucoop.geometry`
-  - `tucoop.transforms`
-  - `tucoop.properties`
-  - `tucoop.power`
-  - `tucoop.io`
-  - `tucoop.backends`
+  - `tucoopy.base`
+  - `tucoopy.games`
+  - `tucoopy.solutions`
+  - `tucoopy.geometry`
+  - `tucoopy.transforms`
+  - `tucoopy.properties`
+  - `tucoopy.power`
+  - `tucoopy.io`
+  - `tucoopy.backends`
 
-## Stable top-level (`tucoop`)
+## Stable top-level (`tucoopy`)
 
 ```py
-from tucoop import Game, glove_game, mask_from_players, nucleolus, shapley_value, weighted_voting_game
+from tucoopy import Game, glove_game, mask_from_players, nucleolus, shapley_value, weighted_voting_game
 ```
 
 Notes:
@@ -25,14 +25,14 @@ Notes:
 
 ## Canonical subpackages
 
-### `tucoop.base`
+### `tucoopy.base`
 
 Primitives (bitmask coalitions + game interface):
 
 - Coalition helpers: `all_coalitions`, `subcoalitions`, `players`, `size`, `grand_coalition`, `mask_from_players`
 - Games: `Game`, `TabularGame`, `ValueFunctionGame`
 
-### `tucoop.properties`
+### `tucoopy.properties`
 
 Game properties / recognizers:
 
@@ -41,7 +41,7 @@ Game properties / recognizers:
 - `is_simple_game`, `validate_simple_game`, `is_weighted_voting_game`
 - `balancedness_check` (LP-backed)
 
-### `tucoop.io`
+### `tucoopy.io`
 
 JSON + animation spec helpers:
 
@@ -49,14 +49,14 @@ JSON + animation spec helpers:
 - Helpers: `game_to_spec`, `series_from_allocations`, `build_animation_spec`
 - JSON (games): `game_to_dict`, `game_from_dict`
 
-### `tucoop.backends`
+### `tucoopy.backends`
 
 Optional dependency adapters:
 
-- LP adapter: `tucoop.backends.lp.linprog_solve`
-- NumPy helper: `tucoop.backends.numpy_fast.require_numpy`
+- LP adapter: `tucoopy.backends.lp.linprog_solve`
+- NumPy helper: `tucoopy.backends.numpy_fast.require_numpy`
 
-### `tucoop.games`
+### `tucoopy.games`
 
 Classic games / generators:
 
@@ -68,7 +68,7 @@ Classic games / generators:
 - `unanimity_game`
 - `apex_game`
 
-### `tucoop.solutions`
+### `tucoopy.solutions`
 
 Solution concepts:
 
@@ -79,7 +79,7 @@ Solution concepts:
 - Kernel family (NumPy): `kernel`, `prekernel` (+ result dataclasses)
 - Tau value helpers: `tau_value`, `utopia_payoff`, `minimal_rights`
 
-### `tucoop.geometry`
+### `tucoopy.geometry`
 
 Geometry for visualization:
 
@@ -91,7 +91,7 @@ Geometry for visualization:
 - Bargaining set (SciPy): `bargaining_set_check`, `bargaining_set_sample`, `is_in_bargaining_set`
 - Balancedness (SciPy): `balancedness_check` (+ result dataclass)
 
-### `tucoop.transforms`
+### `tucoopy.transforms`
 
 Transforms / representations:
 

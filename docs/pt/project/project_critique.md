@@ -1,4 +1,4 @@
-# Critica (bem direta) do projeto `tucoop`
+# Critica (bem direta) do projeto `tucoopy`
 
 Este documento e propositalmente critico. A ideia e registrar:
 
@@ -11,7 +11,7 @@ e sugerir a menor lista de mudancas que aumenta muito a previsibilidade do proje
 
 ## 0) Resumo executivo
 
-O `tucoop` ja esta em um bom ponto como **MVP** (TU games, solucoes e conjuntos principais, contrato JSON + renderer JS).
+O `tucoopy` ja esta em um bom ponto como **MVP** (TU games, solucoes e conjuntos principais, contrato JSON + renderer JS).
 O maior risco hoje nao e "falta de feature", e sim:
 
 1) **robustez numerica + LP** (degenerescencia, tolerancias, solver differences),
@@ -107,7 +107,7 @@ O maior risco aqui nao e faltar indice, e sim:
 - definicoes inconsistentes (normalizacao, dominio: simple vs TU),
 - documentacao confusa do que e suportado.
 
-## 4) Comparacao com outros sistemas (onde o `tucoop` se posiciona)
+## 4) Comparacao com outros sistemas (onde o `tucoopy` se posiciona)
 
 ### MATLAB (TuGames toolbox, etc.)
 
@@ -117,7 +117,7 @@ Normalmente: muito conteudo, funcoes prontas e exemplos; mas:
 - integracao web/renderer nao e foco,
 - arquitetura nem sempre e modular.
 
-`tucoop` pode competir bem se priorizar:
+`tucoopy` pode competir bem se priorizar:
 
 - contrato claro,
 - docs boas,
@@ -133,7 +133,7 @@ R e forte em analise e visualizacao rapida, mas:
 ### Bibliotecas de poliedros (cddlib/polymake)
 
 Essas sao "estado da arte" para V/H-rep e vertices.
-O `tucoop` nao precisa competir diretamente: ele pode integrar opcionalmente, ou usar como referencia.
+O `tucoopy` nao precisa competir diretamente: ele pode integrar opcionalmente, ou usar como referencia.
 
 ## 5) Oportunidades concretas de performance
 

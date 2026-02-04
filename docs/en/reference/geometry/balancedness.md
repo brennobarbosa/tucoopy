@@ -1,5 +1,5 @@
 # Balancedness (Bondareva–Shapley)
 
-`balancedness_check` is a property/diagnostic (not a geometry set), so it lives in `tucoop.properties`.
+`balancedness_check` is a property/diagnostic (not a geometry set), so it lives in `tucoopy.properties`.
 
-::: tucoop.properties.balancedness
+::: tucoopy.properties.balancedness

@@ -1,3 +1,3 @@
-# `tucoop.transforms.mobius`
+# `tucoopy.transforms.mobius`
 
-::: tucoop.transforms.mobius
+::: tucoopy.transforms.mobius

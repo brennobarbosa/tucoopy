@@ -1,6 +1,6 @@
 # Desenvolvimento no Windows/OneDrive
 
-Este guia foca em problemas comuns ao desenvolver o `tucoop-py` no Windows quando o repo esta dentro do OneDrive.
+Este guia foca em problemas comuns ao desenvolver o `tucoopy-py` no Windows quando o repo esta dentro do OneDrive.
 O objetivo e evitar perda de tempo com IO lento, arquivos travados e caches inconsistentes.
 
 ## Sintomas comuns
@@ -14,7 +14,7 @@ O objetivo e evitar perda de tempo com IO lento, arquivos travados e caches inco
 
 ### 1) Preferir desenvolver fora do OneDrive (recomendado)
 
-Se der, mova o repo para um caminho que nao esteja sendo sincronizado (ex.: `C:\\dev\\tucoop`).
+Se der, mova o repo para um caminho que nao esteja sendo sincronizado (ex.: `C:\\dev\\tucoopy`).
 Isso costuma resolver 80% dos problemas de performance/lock.
 
 ### 2) Se precisar ficar no OneDrive, reduza escrita de bytecode

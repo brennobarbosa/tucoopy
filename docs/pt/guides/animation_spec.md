@@ -1,13 +1,13 @@
 # Especificação de animação (contrato Python -> JS)
 
-O `tucoop` consegue emitir uma “animation spec” em JSON que o renderizador JS pode consumir para desenhar alocações ao longo do tempo.
+O `tucoopy` consegue emitir uma “animation spec” em JSON que o renderizador JS pode consumir para desenhar alocações ao longo do tempo.
 
 Arquivo de schema (neste monorepo):
-- `schema/tucoop-animation.schema.json`
+- `schema/tucoopy-animation.schema.json`
 
 ## Dataclasses
 
-O modelo de dados do lado Python vive em `tucoop.io.animation_spec`:
+O modelo de dados do lado Python vive em `tucoopy.io.animation_spec`:
 
 - `AnimationSpec`
 - `GameSpec` / `CharacteristicEntry`
@@ -22,8 +22,8 @@ Funções auxiliares:
 ## Exemplo mínimo
 
 ```py
-from tucoop import Game, shapley_value
-from tucoop.io import build_animation_spec
+from tucoopy import Game, shapley_value
+from tucoopy.io import build_animation_spec
 
 g = Game.from_coalitions(
     n_players=3,
@@ -64,9 +64,9 @@ Convenção atual (opcional) usada pelos exemplos:
 
 ## Proveniência (`analysis.meta`)
 
-O `tucoop.io.build_analysis(...)` preenche um bloco `analysis.meta` para registrar:
+O `tucoopy.io.build_analysis(...)` preenche um bloco `analysis.meta` para registrar:
 
-- `analysis.meta.computed_by`: quem gerou (ex.: `tucoop-py`)
+- `analysis.meta.computed_by`: quem gerou (ex.: `tucoopy-py`)
 - `analysis.meta.build_analysis`: flags e parâmetros (ex.: `max_players`, `tol`, `diagnostics_top_k`)
 - `analysis.meta.computed`: quais seções realmente foram incluídas (`solutions`, `sets`, `diagnostics`, `blocking_regions`)
 
@@ -74,7 +74,7 @@ O `tucoop.io.build_analysis(...)` preenche um bloco `analysis.meta` para registr
 
 Para apoiar a UI (tooltips/tabelas) sem precisar de backend, o Python pode anexar diagnósticos compactos em `analysis.diagnostics`.
 
-Exemplo: para cada ponto em `analysis.solutions`, o `tucoop.io.build_analysis(...)` pode incluir um resumo de pertinência ao núcleo:
+Exemplo: para cada ponto em `analysis.solutions`, o `tucoopy.io.build_analysis(...)` pode incluir um resumo de pertinência ao núcleo:
 
 - `analysis.diagnostics.solutions.<id>.core.in_core`
 - `analysis.diagnostics.solutions.<id>.core.max_excess`

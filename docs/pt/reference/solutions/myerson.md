@@ -1,3 +1,3 @@
-# `tucoop.solutions.myerson`
+# `tucoopy.solutions.myerson`
 
-::: tucoop.solutions.myerson
+::: tucoopy.solutions.myerson

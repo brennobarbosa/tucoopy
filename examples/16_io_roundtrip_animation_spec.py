@@ -17,9 +17,9 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop import Game  # noqa: E402
-from tucoop.io.animation_spec import build_animation_spec  # noqa: E402
-from tucoop.io.game_spec import game_from_animation_spec  # noqa: E402
+from tucoopy import Game  # noqa: E402
+from tucoopy.io.animation_spec import build_animation_spec  # noqa: E402
+from tucoopy.io.game_spec import game_from_animation_spec  # noqa: E402
 
 
 def main() -> None:

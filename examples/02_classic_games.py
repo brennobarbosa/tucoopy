@@ -13,14 +13,14 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.games.airport import airport_game
-from tucoop.games.bankruptcy import bankruptcy_game
-from tucoop.games.glove import glove_game
-from tucoop.games.unanimity import unanimity_game
-from tucoop.games.weighted_voting import weighted_voting_game
-from tucoop.power.banzhaf import banzhaf_index
-from tucoop.power.shapley_shubik import shapley_shubik_index
-from tucoop.solutions.shapley import shapley_value
+from tucoopy.games.airport import airport_game
+from tucoopy.games.bankruptcy import bankruptcy_game
+from tucoopy.games.glove import glove_game
+from tucoopy.games.unanimity import unanimity_game
+from tucoopy.games.weighted_voting import weighted_voting_game
+from tucoopy.power.banzhaf import banzhaf_index
+from tucoopy.power.shapley_shubik import shapley_shubik_index
+from tucoopy.solutions.shapley import shapley_value
 
 
 def main() -> None:

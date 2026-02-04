@@ -1,15 +1,12 @@
-site_name: tucoop (Python)
-repo_url: https://github.com/brennobarbosa/tucoop
-repo_name: brennobarbosa/tucoop
+site_name: tucoopy (Python)
+repo_url: https://github.com/brennobarbosa/tucoopyy
+repo_name: brennobarbosa/tucoopy
 copyright: Conteudo licenciado sob CC BY 4.0.
 
 docs_dir: docs/pt
 site_dir: site/pt
-<<<<<<< HEAD
-site_name: tucoopy
-site_url: https://brennobarbosa.github.io/tucoopy/
-=======
->>>>>>> dbc323d823dd9f823740e1d57dc79ba0a90fdb14
+site_name: tucoopyy
+site_url: https://brennobarbosa.github.io/tucoopyy/
 
 theme:
   name: material

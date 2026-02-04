@@ -1,3 +1,3 @@
-# `tucoop.power.rae`
+# `tucoopy.power.rae`
 
-::: tucoop.power.rae
+::: tucoopy.power.rae

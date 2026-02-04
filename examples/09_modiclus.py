@@ -8,22 +8,22 @@ This example computes the modiclus of a small TU game.
 Warning
 -------
 This example requires an LP backend at runtime (recommended: SciPy).
-Install with: `pip install \"tucoop[lp]\"`.
+Install with: `pip install \"tucoopy[lp]\"`.
 """
 
 from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.base.game import Game
-from tucoop.solutions.modiclus import modiclus
+from tucoopy.base.game import Game
+from tucoopy.solutions.modiclus import modiclus
 
 
 def main() -> None:
     try:
         import scipy  # noqa: F401
     except Exception:
-        print('This example requires SciPy. Install with: pip install "tucoop[lp]"')
+        print('This example requires SciPy. Install with: pip install "tucoopy[lp]"')
         return
 
     g = Game.from_coalitions(

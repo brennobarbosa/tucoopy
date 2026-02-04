@@ -1,4 +1,4 @@
-# `tucoop.games.airport`
+# `tucoopy.games.airport`
 
-::: tucoop.games.airport
+::: tucoopy.games.airport
 

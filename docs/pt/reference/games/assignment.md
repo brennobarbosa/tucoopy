@@ -1,3 +1,3 @@
-# `tucoop.games.assignment`
+# `tucoopy.games.assignment`
 
-::: tucoop.games.assignment
+::: tucoopy.games.assignment

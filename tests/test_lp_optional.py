@@ -11,10 +11,10 @@ class TestLPOptional(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import least_core, nucleolus  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import least_core, nucleolus  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,
@@ -41,7 +41,7 @@ class TestLPOptional(unittest.TestCase):
         self.assertIsNotNone(nu.lp_rounds)
         self.assertEqual(len(nu.lp_rounds), len(nu.levels))
 
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         a = build_analysis(g, max_players=4, include_lp_explanations=True, lp_explanations_max_players=4)
         self.assertIn("lp", a["diagnostics"])
@@ -54,10 +54,10 @@ class TestLPOptional(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.properties import balancedness_check  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.properties import balancedness_check  # noqa: E402
 
         # Core-empty example:
         # v(i)=0, v(ij)=1, v(123)=1 -> infeasible (pair constraints imply 2>=3).
@@ -83,10 +83,10 @@ class TestLPOptional(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import nucleolus, prenucleolus  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import nucleolus, prenucleolus  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         nu = nucleolus(g)
@@ -102,10 +102,10 @@ class TestLPOptional(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import nucleolus  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import nucleolus  # noqa: E402
 
         # sum v({i}) = 3 > v(N) = 2 -> imputation set is empty.
         g = Game.from_coalitions(
@@ -125,10 +125,10 @@ class TestLPOptional(unittest.TestCase):
         try:
             import numpy  # noqa: F401
         except Exception:
-            self.skipTest("NumPy not installed (install with tucoop[fast])")
+            self.skipTest("NumPy not installed (install with tucoopy[fast])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import prekernel  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import prekernel  # noqa: E402
 
         # Additive game: v(S)=|S| has unique imputation/core point (1,1,1).
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
@@ -141,10 +141,10 @@ class TestLPOptional(unittest.TestCase):
         try:
             import numpy  # noqa: F401
         except Exception:
-            self.skipTest("NumPy not installed (install with tucoop[fast])")
+            self.skipTest("NumPy not installed (install with tucoopy[fast])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import kernel  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import kernel  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         res = kernel(g, tol=1e-9, max_iter=50)
@@ -153,8 +153,8 @@ class TestLPOptional(unittest.TestCase):
         self.assertAlmostEqual(res.x[2], 1.0, places=6)
 
     def test_bargaining_set_additive(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import BargainingSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import BargainingSet  # noqa: E402
 
         # Additive game: imputation set is a singleton (1,1,1), should be in bargaining set.
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
@@ -170,8 +170,8 @@ class TestLPOptional(unittest.TestCase):
         self.assertAlmostEqual(samp[0][2], 1.0, places=9)
 
     def test_bargaining_set_rejects_n_gt_nmax(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import BargainingSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import BargainingSet  # noqa: E402
 
         g = Game.from_value_function(n_players=5, value_fn=lambda S: float(len(S)))
         bs = BargainingSet(g, n_max=4)
@@ -182,10 +182,10 @@ class TestLPOptional(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import BargainingSet, ImputationSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import BargainingSet, ImputationSet  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,

@@ -1,6 +1,6 @@
-# `tucoop.properties`
+# `tucoopy.properties`
 
-::: tucoop.properties
+::: tucoopy.properties
     options:
       members:
         - is_convex

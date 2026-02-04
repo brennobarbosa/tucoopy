@@ -1,3 +1,3 @@
-# `tucoop.games.mst`
+# `tucoopy.games.mst`
 
-::: tucoop.games.mst
+::: tucoopy.games.mst

@@ -17,9 +17,9 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.base.game import Game
-from tucoop.io.animation_spec import AnimationSpec, build_animation_spec, game_to_spec
-from tucoop.solutions.shapley import shapley_value
+from tucoopy.base.game import Game
+from tucoopy.io.animation_spec import AnimationSpec, build_animation_spec, game_to_spec
+from tucoopy.solutions.shapley import shapley_value
 
 
 def _resolve_out_dir(out: str) -> Path:
@@ -180,7 +180,7 @@ def main() -> None:
     try:
         import scipy  # noqa: F401
     except Exception:
-        print('This example requires SciPy (analysis/sets). Install with: pip install "tucoop[lp]"')
+        print('This example requires SciPy (analysis/sets). Install with: pip install "tucoopy[lp]"')
         return
 
     parser = argparse.ArgumentParser()

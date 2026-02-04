@@ -1,3 +1,3 @@
-# `tucoop.transforms.communication`
+# `tucoopy.transforms.communication`
 
-::: tucoop.transforms.communication
+::: tucoopy.transforms.communication

@@ -1,4 +1,4 @@
-# `tucoop.games.market`
+# `tucoopy.games.market`
 
-::: tucoop.games.market
+::: tucoopy.games.market
 

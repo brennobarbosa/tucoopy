@@ -1,6 +1,6 @@
-# `tucoop.base.game`
+# `tucoopy.base.game`
 
-::: tucoop.base.game.Game
+::: tucoopy.base.game.Game
     options:
       members:
         - value

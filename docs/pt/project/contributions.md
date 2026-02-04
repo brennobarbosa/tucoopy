@@ -4,14 +4,14 @@ Este guia é curto por design. A documentação de teoria/API vive em outras pá
 
 # Contribuições
 
-Este documento descreve um fluxo simples para contribuir com o `tucoop` (foco: `tucoop-py`).
+Este documento descreve um fluxo simples para contribuir com o `tucoopy` (foco: `tucoopy-py`).
 
 ## Setup (dev)
 
-Recomendado: criar um ambiente virtual na raiz de `packages/tucoop-py` e instalar o pacote em modo editável.
+Recomendado: criar um ambiente virtual na raiz de `packages/tucoopy-py` e instalar o pacote em modo editável.
 
 ```bash
-cd packages/tucoop-py
+cd packages/tucoopy-py
 python -m venv .venv
 ```
 
@@ -39,7 +39,7 @@ pytest -q
 ### Type checking
 
 ```bash
-mypy src/tucoop
+mypy src/tucoopy
 ```
 
 ### Docs (MkDocs)

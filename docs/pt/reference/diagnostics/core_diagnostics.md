@@ -1,4 +1,4 @@
-# `tucoop.diagnostics.core_diagnostics`
+# `tucoopy.diagnostics.core_diagnostics`
 
-::: tucoop.diagnostics.core_diagnostics
+::: tucoopy.diagnostics.core_diagnostics
 

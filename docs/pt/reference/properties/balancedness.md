@@ -1,3 +1,3 @@
-# `tucoop.properties.balancedness`
+# `tucoopy.properties.balancedness`
 
-::: tucoop.properties.balancedness
+::: tucoopy.properties.balancedness

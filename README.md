@@ -1,14 +1,14 @@
-# tucoop-py
+# tucoopy-py
 
 Python package for cooperative game theory (TU) algorithms and for generating
 animation specs (JSON) consumed by the JS renderer.
 
 Optional speedups:
-- `pip install "tucoop[fast]"` (uses NumPy for small linear solves in geometry helpers)
-- `pip install "tucoop[lp]"` (enables LP-based methods like least-core / nucleolus via SciPy)
+- `pip install "tucoopy[fast]"` (uses NumPy for small linear solves in geometry helpers)
+- `pip install "tucoopy[lp]"` (enables LP-based methods like least-core / nucleolus via SciPy)
 
 Optional visualization:
-- `pip install "tucoop[viz]"` for Matplotlib visualization (2 or 3 players only)
+- `pip install "tucoopy[viz]"` for Matplotlib visualization (2 or 3 players only)
 
 ## Optional extras (feature -> extra)
 
@@ -23,39 +23,39 @@ Optional visualization:
 
 ## Package layout
 
-- `tucoop.base`: game/coalition primitives (bitmask-based)
-- `tucoop.properties`: game properties / recognizers
-- `tucoop.games`: classic games (glove, weighted voting, airport, bankruptcy, savings, unanimity, apex, ...)
-- `tucoop.geometry`: geometry for visualization (core vertices, ...)
-- `tucoop.solutions`: solution concepts (Shapley, Banzhaf, ...)
-- `tucoop.power`: voting/simple-game power indices
-- `tucoop.transforms`: transforms/representations (Harsanyi dividends, ...)
-- `tucoop.viz`: optional visualization with Matplotlib (games with 2 or 3 players only)
-- `tucoop.io`: JSON + animation spec helpers
-- `tucoop.backends`: adapters for optional dependencies (LP, NumPy, ...)
+- `tucoopy.base`: game/coalition primitives (bitmask-based)
+- `tucoopy.properties`: game properties / recognizers
+- `tucoopy.games`: classic games (glove, weighted voting, airport, bankruptcy, savings, unanimity, apex, ...)
+- `tucoopy.geometry`: geometry for visualization (core vertices, ...)
+- `tucoopy.solutions`: solution concepts (Shapley, Banzhaf, ...)
+- `tucoopy.power`: voting/simple-game power indices
+- `tucoopy.transforms`: transforms/representations (Harsanyi dividends, ...)
+- `tucoopy.viz`: optional visualization with Matplotlib (games with 2 or 3 players only)
+- `tucoopy.io`: JSON + animation spec helpers
+- `tucoopy.backends`: adapters for optional dependencies (LP, NumPy, ...)
 
-Docs (in this repo): see `packages/tucoop-py/docs/en/index.md` (EN) and `packages/tucoop-py/docs/pt/index.md` (PT).
-Examples (runnable scripts): see `packages/tucoop-py/examples/README.md`.
+Docs (in this repo): see `packages/tucoopy-py/docs/en/index.md` (EN) and `packages/tucoopy-py/docs/pt/index.md` (PT).
+Examples (runnable scripts): see `packages/tucoopy-py/examples/README.md`.
 
 ## Install
 
 ```bash
-pip install tucoop
+pip install tucoopy
 ```
 
 Optional extras:
 
-- `pip install "tucoop[lp]"` for LP-based methods (least-core / nucleolus / modiclus / balancedness) using SciPy (recommended)
-- `pip install "tucoop[lp_alt]"` for LP-based methods (least-core / nucleolus / modiclus / balancedness) using PuLP (fallback)
-- `pip install "tucoop[fast]"` for NumPy speedups (kernel / prekernel and helpers)
-- `pip install "tucoop[viz]"` for Matplotlib visualization (2 or 3 players only)
+- `pip install "tucoopy[lp]"` for LP-based methods (least-core / nucleolus / modiclus / balancedness) using SciPy (recommended)
+- `pip install "tucoopy[lp_alt]"` for LP-based methods (least-core / nucleolus / modiclus / balancedness) using PuLP (fallback)
+- `pip install "tucoopy[fast]"` for NumPy speedups (kernel / prekernel and helpers)
+- `pip install "tucoopy[viz]"` for Matplotlib visualization (2 or 3 players only)
 
 ## Quick example (generate an animation spec)
 
 ```py
-from tucoop import Game
-from tucoop.solutions import shapley_value
-from tucoop.io.animation_spec import build_animation_spec
+from tucoopy import Game
+from tucoopy.solutions import shapley_value
+from tucoopy.io.animation_spec import build_animation_spec
 
 game = Game.from_coalitions(
     n_players=3,
@@ -89,8 +89,8 @@ print(spec.to_json())
 LP-based methods are behind the optional `lp` extra:
 
 ```py
-from tucoop import Game
-from tucoop.solutions import least_core, nucleolus
+from tucoopy import Game
+from tucoopy.solutions import least_core, nucleolus
 
 g = Game.from_coalitions(
     n_players=3,
@@ -117,8 +117,8 @@ print(nu.levels, nu.x)
 Bondareva–Shapley balancedness check (behind `lp`):
 
 ```py
-from tucoop import Game
-from tucoop.properties.balancedness import balancedness_check
+from tucoopy import Game
+from tucoopy.properties.balancedness import balancedness_check
 
 g = Game.from_coalitions(
     n_players=3,
@@ -140,5 +140,5 @@ print(res.core_nonempty, res.objective, res.weights)
 
 ## Schema (Python <-> JS contract)
 
-- Canonical schema: `schema/tucoop-animation.schema.json`
-- Bundled schema (package data): `packages/tucoop-py/src/tucoop/io/schemas/tucoop-animation.schema.json`
+- Canonical schema: `schema/tucoopy-animation.schema.json`
+- Bundled schema (package data): `packages/tucoopy-py/src/tucoopy/io/schemas/tucoopy-animation.schema.json`

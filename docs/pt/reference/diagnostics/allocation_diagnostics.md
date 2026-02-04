@@ -1,3 +1,3 @@
-# `tucoop.diagnostics.allocation_diagnostics`
+# `tucoopy.diagnostics.allocation_diagnostics`
 
-::: tucoop.diagnostics.allocation_diagnostics
+::: tucoopy.diagnostics.allocation_diagnostics

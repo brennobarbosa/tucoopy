@@ -1,4 +1,4 @@
-# `tucoop.geometry.weber`
+# `tucoopy.geometry.weber`
 
-::: tucoop.geometry.weber
+::: tucoopy.geometry.weber
 

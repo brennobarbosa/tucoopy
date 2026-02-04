@@ -1,3 +1,3 @@
-# `tucoop.io.game_spec`
+# `tucoopy.io.game_spec`
 
-::: tucoop.io.game_spec
+::: tucoopy.io.game_spec

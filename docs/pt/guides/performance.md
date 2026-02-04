@@ -1,6 +1,6 @@
 ﻿# Performance, limites e custos computacionais
 
-Esta pagina resume os principais **custos assintoticos** no `tucoop` e como escolher limites praticos para jogos maiores.
+Esta pagina resume os principais **custos assintoticos** no `tucoopy` e como escolher limites praticos para jogos maiores.
 
 ## Regra de ouro
 
@@ -55,7 +55,7 @@ O Weber set e o fecho convexo de vetores marginais. O gerador exato tem tamanho 
 ## Backends e dependencias
 
 - Rotinas LP dependem de um backend (recomendado: SciPy/HiGHS). Veja `guides/lp_backends.md`.
-- Algumas rotinas de performance usam NumPy quando disponivel (extra `tucoop[fast]`).
+- Algumas rotinas de performance usam NumPy quando disponivel (extra `tucoopy[fast]`).
 
 ## Checklist de "o que fazer quando ficar lento"
 

@@ -10,14 +10,14 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.games.weighted_voting import weighted_voting_game  # noqa: E402
-from tucoop.power.banzhaf import banzhaf_index  # noqa: E402
-from tucoop.power.coleman import coleman_initiate_index, coleman_prevent_index  # noqa: E402
-from tucoop.power.deegan_packel import deegan_packel_index  # noqa: E402
-from tucoop.power.holler import holler_index  # noqa: E402
-from tucoop.power.johnston import johnston_index  # noqa: E402
-from tucoop.power.rae import rae_index  # noqa: E402
-from tucoop.power.shapley_shubik import shapley_shubik_index  # noqa: E402
+from tucoopy.games.weighted_voting import weighted_voting_game  # noqa: E402
+from tucoopy.power.banzhaf import banzhaf_index  # noqa: E402
+from tucoopy.power.coleman import coleman_initiate_index, coleman_prevent_index  # noqa: E402
+from tucoopy.power.deegan_packel import deegan_packel_index  # noqa: E402
+from tucoopy.power.holler import holler_index  # noqa: E402
+from tucoopy.power.johnston import johnston_index  # noqa: E402
+from tucoopy.power.rae import rae_index  # noqa: E402
+from tucoopy.power.shapley_shubik import shapley_shubik_index  # noqa: E402
 
 
 def main() -> None:

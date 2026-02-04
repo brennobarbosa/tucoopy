@@ -8,8 +8,8 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestTheoryCanonic(unittest.TestCase):
     def test_additive_game_core_equals_imputation_singleton(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import Core, ImputationSet  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import Core, ImputationSet  # noqa: E402
 
         weights = [1.0, 2.0, 3.0]
 
@@ -32,9 +32,9 @@ class TestTheoryCanonic(unittest.TestCase):
         self.assertEqual(imp_vertices, [x_star])
 
     def test_convex_game_shapley_in_core(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.geometry import Core  # noqa: E402
-        from tucoop.solutions import shapley_value  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.geometry import Core  # noqa: E402
+        from tucoopy.solutions import shapley_value  # noqa: E402
 
         # Symmetric convex / supermodular example (n=3):
         # v(i)=0, v(ij)=1, v(123)=3
@@ -59,16 +59,16 @@ class TestTheoryCanonic(unittest.TestCase):
         self.assertTrue(C.contains(phi))
 
     def test_least_core_epsilon_zero_iff_core_nonempty_when_lp_available(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.base.exceptions import MissingOptionalDependencyError  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.base.exceptions import MissingOptionalDependencyError  # noqa: E402
 
         try:
             import numpy  # noqa: F401
             import scipy.optimize  # noqa: F401
         except Exception:
-            self.skipTest("requires tucoop[lp] (SciPy + NumPy)")
+            self.skipTest("requires tucoopy[lp] (SciPy + NumPy)")
 
-        from tucoop.solutions import least_core  # noqa: E402
+        from tucoopy.solutions import least_core  # noqa: E402
 
         # Core non-empty (additive): epsilon* should be 0.
         g_nonempty = Game.from_value_function(n_players=3, value_fn=lambda ps: float(len(ps)))
@@ -88,12 +88,12 @@ class TestTheoryCanonic(unittest.TestCase):
         try:
             _ = least_core(g_empty)
         except MissingOptionalDependencyError as e:  # pragma: no cover
-            self.assertIn("tucoop[lp]", str(e))
+            self.assertIn("tucoopy[lp]", str(e))
 
     def test_least_core_requires_lp_extra_message(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.base.exceptions import MissingOptionalDependencyError  # noqa: E402
-        from tucoop.solutions import least_core  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.base.exceptions import MissingOptionalDependencyError  # noqa: E402
+        from tucoopy.solutions import least_core  # noqa: E402
 
         g = Game.from_coalitions(n_players=2, values={0: 0.0, 3: 1.0})
 
@@ -101,11 +101,11 @@ class TestTheoryCanonic(unittest.TestCase):
         try:
             _ = least_core(g)
         except MissingOptionalDependencyError as e:
-            self.assertIn("tucoop[lp]", str(e))
+            self.assertIn("tucoopy[lp]", str(e))
         except ImportError as e:
             # Backward-compatible: MissingOptionalDependencyError subclasses ImportError,
             # but tests should accept plain ImportError with the same message.
-            self.assertIn("tucoop[lp]", str(e))
+            self.assertIn("tucoopy[lp]", str(e))
 
 
 if __name__ == "__main__":

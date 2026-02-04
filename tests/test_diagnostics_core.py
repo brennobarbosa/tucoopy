@@ -8,9 +8,9 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestCoreDiagnostics(unittest.TestCase):
     def test_in_core_true_for_core_point(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.diagnostics import core_diagnostics  # noqa: E402
-        from tucoop.solutions import shapley_value  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.diagnostics import core_diagnostics  # noqa: E402
+        from tucoopy.solutions import shapley_value  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=2,
@@ -32,8 +32,8 @@ class TestCoreDiagnostics(unittest.TestCase):
         self.assertIsInstance(d.violations, list)
 
     def test_in_core_false_has_violations(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.diagnostics import core_diagnostics  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.diagnostics import core_diagnostics  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,

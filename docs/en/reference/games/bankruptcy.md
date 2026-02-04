@@ -1,4 +1,4 @@
-# `tucoop.games.bankruptcy`
+# `tucoopy.games.bankruptcy`
 
-::: tucoop.games.bankruptcy
+::: tucoopy.games.bankruptcy
 

@@ -1,5 +1,5 @@
-# `tucoop.power`
+# `tucoopy.power`
 
-This module was moved out of `tucoop.solutions`.
+This module was moved out of `tucoopy.solutions`.
 
-::: tucoop.power
+::: tucoopy.power

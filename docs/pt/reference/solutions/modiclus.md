@@ -1,3 +1,3 @@
-# `tucoop.solutions.modiclus`
+# `tucoopy.solutions.modiclus`
 
-::: tucoop.solutions.modiclus
+::: tucoopy.solutions.modiclus

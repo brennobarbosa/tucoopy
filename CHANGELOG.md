@@ -1,6 +1,6 @@
 # Changelog
 
-This file tracks user-facing changes in `tucoop` (Python package).
+This file tracks user-facing changes in `tucoopy` (Python package).
 
 The project is currently in the `0.x` series (Alpha). The API is stabilizing, but
 breaking changes may still occur. When possible, changes are documented here.

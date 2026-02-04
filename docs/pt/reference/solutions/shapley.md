@@ -1,4 +1,4 @@
-# `tucoop.solutions.shapley`
+# `tucoopy.solutions.shapley`
 
-::: tucoop.solutions.shapley
+::: tucoopy.solutions.shapley
 

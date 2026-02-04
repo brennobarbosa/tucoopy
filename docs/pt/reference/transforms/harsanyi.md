@@ -1,3 +1,3 @@
-# `tucoop.transforms.harsanyi`
+# `tucoopy.transforms.harsanyi`
 
-::: tucoop.transforms.harsanyi
+::: tucoopy.transforms.harsanyi

@@ -1,3 +1,3 @@
-# `tucoop.power.banzhaf`
+# `tucoopy.power.banzhaf`
 
-::: tucoop.power.banzhaf
+::: tucoopy.power.banzhaf

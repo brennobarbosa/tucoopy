@@ -1,3 +1,3 @@
-# `tucoop.geometry.polyhedron`
+# `tucoopy.geometry.polyhedron`
 
-::: tucoop.geometry.polyhedron
+::: tucoopy.geometry.polyhedron

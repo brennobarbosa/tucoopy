@@ -1,4 +1,4 @@
-# `tucoop.geometry.imputation`
+# `tucoopy.geometry.imputation`
 
-::: tucoop.geometry.imputation
+::: tucoopy.geometry.imputation
 

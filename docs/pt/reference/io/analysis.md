@@ -1,3 +1,3 @@
-# `tucoop.io.analysis`
+# `tucoopy.io.analysis`
 
-::: tucoop.io.analysis
+::: tucoopy.io.analysis

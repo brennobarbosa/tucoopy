@@ -11,9 +11,9 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop import Game  # noqa: E402
-from tucoop.diagnostics.blocking_regions import blocking_regions  # noqa: E402
-from tucoop.solutions.shapley import shapley_value  # noqa: E402
+from tucoopy import Game  # noqa: E402
+from tucoopy.diagnostics.blocking_regions import blocking_regions  # noqa: E402
+from tucoopy.solutions.shapley import shapley_value  # noqa: E402
 
 
 def main() -> None:

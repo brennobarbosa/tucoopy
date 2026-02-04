@@ -11,11 +11,11 @@ This example builds games directly and renders:
 Warning
 -------
 This example requires Matplotlib at runtime. Install with:
-`pip install tucoop[viz]`.
+`pip install tucoopy[viz]`.
 
 Some set-valued computations (vertices / core-like polytopes) require an LP
 backend at runtime. Install with:
-`pip install "tucoop[lp]"`.
+`pip install "tucoopy[lp]"`.
 """
 
 import sys
@@ -23,23 +23,23 @@ from pathlib import Path
 import argparse
 
 # Ensure the examples folder (for `_bootstrap.py`) is importable even when this file is
-# executed from outside `packages/tucoop-py/examples`.
+# executed from outside `packages/tucoopy-py/examples`.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.base.game import Game
-from tucoop.geometry.core_cover_set import CoreCover
-from tucoop.geometry.imputation_set import ImputationSet
-from tucoop.geometry.reasonable_set import ReasonableSet
-from tucoop.geometry.weber_set import weber_marginal_vectors
-from tucoop.solutions.banzhaf import normalized_banzhaf_value
-from tucoop.solutions.shapley import shapley_value
-from tucoop.solutions.tau import tau_value
-from tucoop.viz.mpl2 import plot_segment
-from tucoop.viz.mpl3 import plot_ternary
+from tucoopy.base.game import Game
+from tucoopy.geometry.core_cover_set import CoreCover
+from tucoopy.geometry.imputation_set import ImputationSet
+from tucoopy.geometry.reasonable_set import ReasonableSet
+from tucoopy.geometry.weber_set import weber_marginal_vectors
+from tucoopy.solutions.banzhaf import normalized_banzhaf_value
+from tucoopy.solutions.shapley import shapley_value
+from tucoopy.solutions.tau import tau_value
+from tucoopy.viz.mpl2 import plot_segment
+from tucoopy.viz.mpl3 import plot_ternary
 
 
 def _resolve_out_dir(out: str) -> Path:
@@ -141,5 +141,5 @@ if __name__ == "__main__":
     try:
         main()
     except ImportError as e:
-        # Most likely: matplotlib not installed (tucoop[viz]).
+        # Most likely: matplotlib not installed (tucoopy[viz]).
         raise SystemExit(str(e)) from e

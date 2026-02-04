@@ -1,3 +1,3 @@
-# `tucoop.diagnostics.blocking_regions`
+# `tucoopy.diagnostics.blocking_regions`
 
-::: tucoop.diagnostics.blocking_regions
+::: tucoopy.diagnostics.blocking_regions

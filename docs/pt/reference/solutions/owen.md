@@ -1,3 +1,3 @@
-# `tucoop.solutions.owen`
+# `tucoopy.solutions.owen`
 
-::: tucoop.solutions.owen
+::: tucoopy.solutions.owen

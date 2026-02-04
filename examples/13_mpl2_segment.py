@@ -6,11 +6,11 @@ Matplotlib viz (n=2): segment plot.
 Warning
 -------
 This example requires Matplotlib at runtime. Install with:
-`pip install tucoop[viz]`.
+`pip install tucoopy[viz]`.
 
 Some set-valued computations in the plot (imputation/core segments) may require
 an LP backend at runtime. Install with:
-`pip install "tucoop[lp]"`.
+`pip install "tucoopy[lp]"`.
 """
 
 from pathlib import Path
@@ -21,8 +21,8 @@ add_src_to_path()
 
 import argparse
 
-from tucoop.base.game import Game
-from tucoop.viz.mpl2 import plot_segment
+from tucoopy.base.game import Game
+from tucoopy.viz.mpl2 import plot_segment
 
 
 def _resolve_out_dir(out: str) -> Path:

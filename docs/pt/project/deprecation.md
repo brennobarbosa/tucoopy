@@ -1,6 +1,6 @@
 # Politica de deprecacao
 
-Este documento define como o `tucoop` (Python) lida com mudancas de API.
+Este documento define como o `tucoopy` (Python) lida com mudancas de API.
 
 ## Objetivo
 
@@ -35,5 +35,5 @@ Arquivos vazios (ou com `# apagar`) nao devem permanecer:
 
 ## Compatibilidade com JS
 
-Compatibilidade deve ser mantida no **contrato JSON** (`tucoop.io.schema`), nao por shims/aliases de modulo.
+Compatibilidade deve ser mantida no **contrato JSON** (`tucoopy.io.schema`), nao por shims/aliases de modulo.
 

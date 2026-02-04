@@ -1,3 +1,3 @@
-# `tucoop.transforms.algebra`
+# `tucoopy.transforms.algebra`
 
-::: tucoop.transforms.algebra
+::: tucoopy.transforms.algebra

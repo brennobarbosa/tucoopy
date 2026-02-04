@@ -1,3 +1,3 @@
-# `tucoop.properties.convexity`
+# `tucoopy.properties.convexity`
 
-::: tucoop.properties.convexity
+::: tucoopy.properties.convexity

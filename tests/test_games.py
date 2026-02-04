@@ -5,7 +5,7 @@ import unittest
 PKG_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PKG_ROOT / "src"))
 
-from tucoop.games import (  # noqa: E402
+from tucoopy.games import (  # noqa: E402
     airport_game,
     apex_game,
     bankruptcy_game,
@@ -14,12 +14,12 @@ from tucoop.games import (  # noqa: E402
     unanimity_game,
     weighted_voting_game,
 )
-from tucoop.solutions import (  # noqa: E402
+from tucoopy.solutions import (  # noqa: E402
     banzhaf_value,
     normalized_banzhaf_value,
     shapley_value,
 )
-from tucoop.power import (  # noqa: E402
+from tucoopy.power import (  # noqa: E402
     banzhaf_index_weighted_voting,
     banzhaf_index,
     coleman_initiate_index,
@@ -31,8 +31,8 @@ from tucoop.power import (  # noqa: E402
     shapley_shubik_index,
     shapley_shubik_index_weighted_voting,
 )
-from tucoop.properties import validate_simple_game  # noqa: E402
-from tucoop.geometry import marginal_vector, weber_marginal_vectors  # noqa: E402
+from tucoopy.properties import validate_simple_game  # noqa: E402
+from tucoopy.geometry import marginal_vector, weber_marginal_vectors  # noqa: E402
 
 
 class TestGames(unittest.TestCase):

@@ -1,3 +1,3 @@
-# `tucoop.games.flow`
+# `tucoopy.games.flow`
 
-::: tucoop.games.flow
+::: tucoopy.games.flow

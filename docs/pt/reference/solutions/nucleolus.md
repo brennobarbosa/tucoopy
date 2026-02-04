@@ -1,4 +1,4 @@
-# `tucoop.solutions.nucleolus`
+# `tucoopy.solutions.nucleolus`
 
-::: tucoop.solutions.nucleolus
+::: tucoopy.solutions.nucleolus
 

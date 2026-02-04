@@ -11,10 +11,10 @@ class TestModiclusOptional(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import modiclus  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import modiclus  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         res = modiclus(g, tol=1e-9, max_players=6, require_complete=True)
@@ -27,10 +27,10 @@ class TestModiclusOptional(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import modiclus  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import modiclus  # noqa: E402
 
         g = Game.from_coalitions(n_players=3, values={(): 0.0, (0, 1, 2): 1.0})
         with self.assertRaises(ValueError):
@@ -40,10 +40,10 @@ class TestModiclusOptional(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import modiclus  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import modiclus  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         with self.assertRaises(ValueError):
@@ -53,10 +53,10 @@ class TestModiclusOptional(unittest.TestCase):
         try:
             import scipy  # noqa: F401
         except Exception:
-            self.skipTest("SciPy not installed (install with tucoop[lp])")
+            self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import solve  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import solve  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         res = solve(g, method="modiclus")

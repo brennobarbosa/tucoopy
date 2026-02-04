@@ -1,4 +1,4 @@
-# `tucoop.solutions.tau`
+# `tucoopy.solutions.tau`
 
-::: tucoop.solutions.tau
+::: tucoopy.solutions.tau
 

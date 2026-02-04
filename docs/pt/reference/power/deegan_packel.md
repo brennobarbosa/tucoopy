@@ -1,3 +1,3 @@
-# `tucoop.power.deegan_packel`
+# `tucoopy.power.deegan_packel`
 
-::: tucoop.power.deegan_packel
+::: tucoopy.power.deegan_packel

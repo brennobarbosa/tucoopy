@@ -14,9 +14,9 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.base.game import Game
-from tucoop.io.animation_spec import build_animation_spec
-from tucoop.solutions.shapley import shapley_value
+from tucoopy.base.game import Game
+from tucoopy.io.animation_spec import build_animation_spec
+from tucoopy.solutions.shapley import shapley_value
 
 
 def _resolve_out_dir(out: str) -> Path:
@@ -30,7 +30,7 @@ def main() -> None:
     try:
         import scipy  # noqa: F401
     except Exception:
-        print('This example requires SciPy (analysis + core diagnostics). Install with: pip install "tucoop[lp]"')
+        print('This example requires SciPy (analysis + core diagnostics). Install with: pip install "tucoopy[lp]"')
         return
 
     parser = argparse.ArgumentParser()
@@ -67,7 +67,7 @@ def main() -> None:
         analysis_kwargs={"include_blocking_regions": True, "include_weber": False, "max_players": 4},
         include_frame_diagnostics=True,
         frame_diagnostics_max_players=4,
-        meta={"generator": "tucoop-py/examples/05_animation_spec_to_file.py"},
+        meta={"generator": "tucoopy-py/examples/05_animation_spec_to_file.py"},
     )
 
     out_dir = _resolve_out_dir(str(args.out))

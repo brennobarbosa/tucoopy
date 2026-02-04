@@ -6,7 +6,7 @@ Kernel and prekernel (optional fast backend).
 Warning
 -------
 This example requires NumPy at runtime. Install with:
-`pip install \"tucoop[fast]\"`.
+`pip install \"tucoopy[fast]\"`.
 """
 
 from _bootstrap import add_src_to_path
@@ -18,12 +18,12 @@ def main() -> None:
     try:
         import numpy  # noqa: F401
     except Exception:
-        print("This example requires NumPy. Install with: pip install \"tucoop[fast]\"")
+        print("This example requires NumPy. Install with: pip install \"tucoopy[fast]\"")
         return
 
-    from tucoop.base.game import Game
-    from tucoop.solutions.kernel import kernel, prekernel
-    from tucoop.solutions.shapley import shapley_value
+    from tucoopy.base.game import Game
+    from tucoopy.solutions.kernel import kernel, prekernel
+    from tucoopy.solutions.shapley import shapley_value
 
     # Additive game: v(S)=|S|. Unique imputation/core point is (1,1,1).
     g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))

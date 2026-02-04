@@ -1,3 +1,3 @@
-# `tucoop.base.coalition`
+# `tucoopy.base.coalition`
 
-::: tucoop.base.coalition
+::: tucoopy.base.coalition

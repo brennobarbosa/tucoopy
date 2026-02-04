@@ -1,4 +1,4 @@
-# `tucoop.geometry.epsilon_core`
+# `tucoopy.geometry.epsilon_core`
 
-::: tucoop.geometry.epsilon_core
+::: tucoopy.geometry.epsilon_core
 

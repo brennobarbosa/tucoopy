@@ -1,4 +1,4 @@
-# `tucoop.games.production`
+# `tucoopy.games.production`
 
-::: tucoop.games.production
+::: tucoopy.games.production
 

@@ -3,13 +3,13 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tucoop"
+name = "tucoopy"
 version = "0.1.0"
 description = "Cooperative game theory (TU) algorithms + animation spec generator"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
-authors = [{ name = "tucoop contributors" }]
+authors = [{ name = "tucoopy contributors" }]
 dependencies = [
 ]
 
@@ -30,9 +30,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/brennobarbosa/tucoop"
-Repository = "https://github.com/brennobarbosa/tucoop"
-Issues = "https://github.com/brennobarbosa/tucoop/issues"
+Homepage = "https://github.com/brennobarbosa/tucoopy"
+Repository = "https://github.com/brennobarbosa/tucoopy"
+Issues = "https://github.com/brennobarbosa/tucoopy/issues"
 
 [project.optional-dependencies]
 lp = ["scipy>=1.10"]
@@ -46,6 +46,10 @@ docs = [
   "pymdown-extensions>=10.0",
   "mkdocstrings[python]>=0.25",
   "griffe>=0.49",
+  "mkdocs-git-revision-date-localized-plugin>=1.5",
+  "mkdocs-minify-plugin>=0.8",
+  "mkdocs-awesome-pages-plugin>=2.10",
+  "ruff>=0.15",
 ]
 
 [tool.setuptools]
@@ -53,10 +57,10 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["tucoop*"]
+include = ["tucoopy*"]
 
 [tool.setuptools.package-data]
-"tucoop.io" = ["schemas/*.json"]
+"tucoopy.io" = ["schemas/*.json"]
 
 [tool.pytest.ini_options]
 addopts = "-p no:cacheprovider"

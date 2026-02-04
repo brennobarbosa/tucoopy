@@ -1,3 +1,3 @@
-# `tucoop.transforms.combine`
+# `tucoopy.transforms.combine`
 
-::: tucoop.transforms.combine
+::: tucoopy.transforms.combine

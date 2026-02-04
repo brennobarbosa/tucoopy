@@ -8,8 +8,8 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestWeightedValues(unittest.TestCase):
     def test_weighted_shapley_unanimity_n2(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import weighted_shapley_value  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import weighted_shapley_value  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=2,
@@ -24,8 +24,8 @@ class TestWeightedValues(unittest.TestCase):
         self.assertAlmostEqual(x[1], 1.0 / 3.0, places=9)
 
     def test_weighted_shapley_additive(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import weighted_shapley_value  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import weighted_shapley_value  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         x = weighted_shapley_value(g, weights=[1.0, 2.0, 3.0])
@@ -34,8 +34,8 @@ class TestWeightedValues(unittest.TestCase):
         self.assertAlmostEqual(x[2], 1.0, places=9)
 
     def test_semivalue_shapley_weights(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import semivalue, shapley_value  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import semivalue, shapley_value  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,
@@ -61,8 +61,8 @@ class TestWeightedValues(unittest.TestCase):
             self.assertAlmostEqual(x1[i], x2[i], places=9)
 
     def test_weighted_banzhaf_p_half_equals_banzhaf(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.solutions import banzhaf_value, weighted_banzhaf_value  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.solutions import banzhaf_value, weighted_banzhaf_value  # noqa: E402
 
         g = Game.from_value_function(n_players=4, value_fn=lambda S: float(len(S) ** 2))
         x1 = banzhaf_value(g)

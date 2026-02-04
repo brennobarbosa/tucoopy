@@ -1,4 +1,4 @@
-# `tucoop.games.apex`
+# `tucoopy.games.apex`
 
-::: tucoop.games.apex
+::: tucoopy.games.apex
 

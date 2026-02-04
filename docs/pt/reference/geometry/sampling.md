@@ -1,3 +1,3 @@
-# `tucoop.geometry.sampling`
+# `tucoopy.geometry.sampling`
 
-::: tucoop.geometry.sampling
+::: tucoopy.geometry.sampling

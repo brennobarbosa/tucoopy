@@ -1,3 +1,3 @@
-# `tucoop.transforms`
+# `tucoopy.transforms`
 
-::: tucoop.transforms
+::: tucoopy.transforms

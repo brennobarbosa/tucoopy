@@ -1,4 +1,4 @@
-# `tucoop.base.config`
+# `tucoopy.base.config`
 
-::: tucoop.base.config
+::: tucoopy.base.config
 

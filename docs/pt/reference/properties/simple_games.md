@@ -1,3 +1,3 @@
-# `tucoop.properties.simple_games`
+# `tucoopy.properties.simple_games`
 
-::: tucoop.properties.simple_games
+::: tucoopy.properties.simple_games

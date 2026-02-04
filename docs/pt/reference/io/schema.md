@@ -1,3 +1,3 @@
-# `tucoop.io.schema`
+# `tucoopy.io.schema`
 
-::: tucoop.io.schema
+::: tucoopy.io.schema

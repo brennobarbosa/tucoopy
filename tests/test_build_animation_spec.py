@@ -8,8 +8,8 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestBuildAnimationSpec(unittest.TestCase):
     def test_build_animation_spec_includes_analysis_and_highlights(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_animation_spec  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_animation_spec  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,

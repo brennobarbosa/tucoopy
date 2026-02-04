@@ -1,3 +1,3 @@
-# `tucoop.geometry.bargaining_set`
+# `tucoopy.geometry.bargaining_set`
 
-::: tucoop.geometry.bargaining_set
+::: tucoopy.geometry.bargaining_set

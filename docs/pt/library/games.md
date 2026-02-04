@@ -1,7 +1,7 @@
 #
 # Jogos geradores
 
-Esta pagina lista os geradores em `tucoop.games`.
+Esta pagina lista os geradores em `tucoopy.games`.
 
 See Also
 --------

@@ -1,3 +1,3 @@
-# `tucoop.power.holler`
+# `tucoopy.power.holler`
 
-::: tucoop.power.holler
+::: tucoopy.power.holler

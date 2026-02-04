@@ -1,3 +1,3 @@
-# `tucoop.power.shapley_shubik`
+# `tucoopy.power.shapley_shubik`
 
-::: tucoop.power.shapley_shubik
+::: tucoopy.power.shapley_shubik

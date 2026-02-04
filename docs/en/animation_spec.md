@@ -1,13 +1,13 @@
 # Animation spec (Python -> JS contract)
 
-`tucoop` can emit a JSON "animation spec" that the JS renderer can consume to draw allocations over time.
+`tucoopy` can emit a JSON "animation spec" that the JS renderer can consume to draw allocations over time.
 
 Schema file (in this monorepo):
-- `schema/tucoop-animation.schema.json`
+- `schema/tucoopy-animation.schema.json`
 
 ## Dataclasses
 
-The Python-side data model lives in `tucoop.io.animation_spec`:
+The Python-side data model lives in `tucoopy.io.animation_spec`:
 
 - `AnimationSpec`
 - `GameSpec` / `CharacteristicEntry`
@@ -21,9 +21,9 @@ Helper functions:
 ## Minimal example
 
 ```py
-from tucoop import Game, shapley_value
-from tucoop.geometry import Core
-from tucoop.io import AnimationSpec, game_to_spec, series_from_allocations
+from tucoopy import Game, shapley_value
+from tucoopy.geometry import Core
+from tucoopy.io import AnimationSpec, game_to_spec, series_from_allocations
 
 g = Game.from_coalitions(
     n_players=3,

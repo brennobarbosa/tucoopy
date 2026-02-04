@@ -1,3 +1,3 @@
-# `tucoop.io.animation_spec`
+# `tucoopy.io.animation_spec`
 
-::: tucoop.io.animation_spec
+::: tucoopy.io.animation_spec

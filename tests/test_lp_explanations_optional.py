@@ -9,8 +9,8 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestLPExplanationsOptional(unittest.TestCase):
     def test_build_analysis_lp_explanations_no_scipy_does_not_raise(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         g = Game.from_coalitions(n_players=2, values={(): 0.0, (0, 1): 1.0})
 

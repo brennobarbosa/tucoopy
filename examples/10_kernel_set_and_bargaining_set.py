@@ -13,10 +13,10 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop.base.game import Game
-from tucoop.geometry.bargaining_set import BargainingSet
-from tucoop.geometry.kernel_set import KernelSet
-from tucoop.solutions.shapley import shapley_value
+from tucoopy.base.game import Game
+from tucoopy.geometry.bargaining_set import BargainingSet
+from tucoopy.geometry.kernel_set import KernelSet
+from tucoopy.solutions.shapley import shapley_value
 
 
 def main() -> None:

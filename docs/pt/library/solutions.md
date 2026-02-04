@@ -1,7 +1,7 @@
 #
 # Solucoes (point-valued)
 
-Esta pagina e um mapa da pasta `tucoop.solutions`.
+Esta pagina e um mapa da pasta `tucoopy.solutions`.
 
 Objetivo: explicar **onde procurar** cada conceito, sem duplicar as docstrings
 da API. Para detalhes completos (assinaturas, exemplos, parametros), use a
@@ -10,7 +10,7 @@ secao **Referencia (API)**.
 See Also
 --------
 - Referencia (API) -> solutions: `../reference/index.md`
-- `tucoop.solutions` (API): `../reference/solutions/shapley.md`
+- `tucoopy.solutions` (API): `../reference/solutions/shapley.md`
 
 Conteudo
 --------
@@ -24,7 +24,7 @@ Conteudo
 
 > Warning
 > Modulos como `nucleolus`/`modiclus` dependem de um backend de LP em runtime
-> (recomendado: `pip install "tucoop[lp]"`).
+> (recomendado: `pip install "tucoopy[lp]"`).
 
 - Least-core (ponto/solver): `../reference/solutions/least_core.md`
 - Nucleolus: `../reference/solutions/nucleolus.md`

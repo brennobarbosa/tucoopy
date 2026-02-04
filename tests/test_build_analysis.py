@@ -8,8 +8,8 @@ sys.path.insert(0, str(PKG_ROOT / "src"))
 
 class TestBuildAnalysis(unittest.TestCase):
     def test_build_analysis_includes_solutions_and_sets(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=2,
@@ -48,8 +48,8 @@ class TestBuildAnalysis(unittest.TestCase):
         self.assertTrue(a["meta"]["computed"]["diagnostics"])
 
     def test_build_analysis_blocking_regions_n3(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,
@@ -72,8 +72,8 @@ class TestBuildAnalysis(unittest.TestCase):
         self.assertIsInstance(br["regions"], list)
 
     def test_build_analysis_bundle_for_large_n(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=6,
@@ -94,8 +94,8 @@ class TestBuildAnalysis(unittest.TestCase):
         self.assertEqual(len(a["bundle"]["tables"]["players"]), 6)
 
     def test_build_analysis_bundle_power_indices_simple_complete(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         # Simple game with complete v(S): winning iff |S| >= 4 (n=6).
         g = Game.from_value_function(
@@ -128,8 +128,8 @@ class TestBuildAnalysis(unittest.TestCase):
         self.assertIn("tau_vectors", b["tables"])
 
     def test_build_analysis_simple_game_monotonicity(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         # Not monotone: singleton is winning, but grand coalition is losing.
         g = Game.from_coalitions(
@@ -148,8 +148,8 @@ class TestBuildAnalysis(unittest.TestCase):
         self.assertIsNotNone(inp["monotone_counterexample"])
 
     def test_build_analysis_diagnostics_truncation(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=12,
@@ -162,8 +162,8 @@ class TestBuildAnalysis(unittest.TestCase):
         self.assertGreater(inp["missing_coalition_mask_count"], 10)
 
     def test_build_analysis_max_points_truncates_weber(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         g = Game.from_value_function(n_players=4, value_fn=lambda S: float(len(S)))
         a = build_analysis(
@@ -182,8 +182,8 @@ class TestBuildAnalysis(unittest.TestCase):
         self.assertEqual(w["meta"]["count_total"], 24)
 
     def test_build_analysis_bundle_includes_approx_shapley(self) -> None:
-        from tucoop import Game  # noqa: E402
-        from tucoop.io import build_analysis  # noqa: E402
+        from tucoopy import Game  # noqa: E402
+        from tucoopy.io import build_analysis  # noqa: E402
 
         g = Game.from_value_function(n_players=6, value_fn=lambda S: float(len(S)))
         a = build_analysis(

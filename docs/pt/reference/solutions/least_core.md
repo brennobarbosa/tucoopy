@@ -1,3 +1,3 @@
-# `tucoop.solutions.least_core`
+# `tucoopy.solutions.least_core`
 
-::: tucoop.solutions.least_core
+::: tucoopy.solutions.least_core

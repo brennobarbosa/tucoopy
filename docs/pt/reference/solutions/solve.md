@@ -1,3 +1,3 @@
-# `tucoop.solutions.solve`
+# `tucoopy.solutions.solve`
 
-::: tucoop.solutions.solve
+::: tucoopy.solutions.solve

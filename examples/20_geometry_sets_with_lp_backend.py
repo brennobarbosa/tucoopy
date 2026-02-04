@@ -11,7 +11,7 @@ polyhedral construction of:
 Warning
 -------
 This example requires an LP backend at runtime.
-Install with: `pip install "tucoop[lp]"`.
+Install with: `pip install "tucoopy[lp]"`.
 """
 
 from __future__ import annotations
@@ -25,13 +25,13 @@ def main() -> None:
     try:
         import scipy  # noqa: F401
     except Exception:
-        print('This example requires SciPy. Install with: pip install "tucoop[lp]"')
+        print('This example requires SciPy. Install with: pip install "tucoopy[lp]"')
         return
 
-    from tucoop import Game  # noqa: E402
-    from tucoop.geometry.core_set import Core  # noqa: E402
-    from tucoop.geometry.core_cover_set import CoreCover  # noqa: E402
-    from tucoop.geometry.reasonable_set import ReasonableSet  # noqa: E402
+    from tucoopy import Game  # noqa: E402
+    from tucoopy.geometry.core_set import Core  # noqa: E402
+    from tucoopy.geometry.core_cover_set import CoreCover  # noqa: E402
+    from tucoopy.geometry.reasonable_set import ReasonableSet  # noqa: E402
 
     g = Game.from_coalitions(
         n_players=3,

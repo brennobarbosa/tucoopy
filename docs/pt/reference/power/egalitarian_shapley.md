@@ -1,3 +1,3 @@
-# `tucoop.power.egalitarian_shapley`
+# `tucoopy.power.egalitarian_shapley`
 
-::: tucoop.power.egalitarian_shapley
+::: tucoopy.power.egalitarian_shapley

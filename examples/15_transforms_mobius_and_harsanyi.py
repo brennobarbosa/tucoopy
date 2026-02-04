@@ -15,9 +15,9 @@ from _bootstrap import add_src_to_path
 
 add_src_to_path()
 
-from tucoop import Game  # noqa: E402
-from tucoop.transforms.harsanyi import harsanyi_dividends  # noqa: E402
-from tucoop.transforms.mobius import inverse_mobius_transform, mobius_transform  # noqa: E402
+from tucoopy import Game  # noqa: E402
+from tucoopy.transforms.harsanyi import harsanyi_dividends  # noqa: E402
+from tucoopy.transforms.mobius import inverse_mobius_transform, mobius_transform  # noqa: E402
 
 
 def main() -> None:
