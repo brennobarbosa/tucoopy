@@ -37,14 +37,14 @@ def animation_spec_schema() -> dict[str, Any]:
     """
     Return the JSON Schema for the tucoopy animation spec.
     """
-    return _load_schema("tucoopy-animation.schema.json")
+    return _load_schema("tucoop-animation.schema.json")
 
 
 def game_schema() -> dict[str, Any]:
     """
-    Return the JSON Schema for `tucoopy.io.json.game_to_dict` output.
+    Return the JSON Schema for `tucoop.io.json.game_to_dict` output.
     """
-    return _load_schema("tucoopy-game.schema.json")
+    return _load_schema("tucoop-game.schema.json")
 
 
 def write_schema(

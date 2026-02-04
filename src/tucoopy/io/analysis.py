@@ -33,6 +33,7 @@ from ..base.exceptions import tucoopyError
 
 
 ANALYSIS_CONTRACT_VERSION = "0.1.0"
+ENGINE_ID = "tugcoopy"
 
 
 def _to_jsonable(x: Any) -> Any:
@@ -86,7 +87,7 @@ def build_analysis(
 
     analysis: dict[str, Any] = {
         "meta": {
-            "computed_by": "tucoopy-py",
+            "computed_by": ENGINE_ID,
             "contract_version": ANALYSIS_CONTRACT_VERSION,
             "build_analysis": {
                 "include_sets": bool(include_sets),
@@ -136,11 +137,11 @@ def build_analysis(
             analysis["solutions"] = {
                 "shapley": {
                     "allocation": shapley_value(game),
-                    "meta": {"computed_by": "tucoopy-py", "method": "shapley_value"},
+                    "meta": {"computed_by": ENGINE_ID, "method": "shapley_value"},
                 },
                 "normalized_banzhaf": {
                     "allocation": normalized_banzhaf_value(game),
-                    "meta": {"computed_by": "tucoopy-py", "method": "normalized_banzhaf_value"},
+                    "meta": {"computed_by": ENGINE_ID, "method": "normalized_banzhaf_value"},
                 },
             }
             analysis["meta"]["computed"]["solutions"] = True
@@ -313,13 +314,13 @@ def build_analysis(
         imp_vertices, imp_meta = _truncate_list(list(imp_vertices), max_points)
         if imp_meta.get("truncated"):
             approx_reasons.append("sets.imputation.vertices truncated")
-        sets["imputation"] = {"vertices": imp_vertices, "meta": {"computed_by": "tucoopy-py", **imp_meta}}
+        sets["imputation"] = {"vertices": imp_vertices, "meta": {"computed_by": ENGINE_ID, **imp_meta}}
 
         core_v = Core(game).extreme_points(tol=tol, max_dim=max_players)
         core_v, core_meta = _truncate_list(list(core_v), max_points)
         if core_meta.get("truncated"):
             approx_reasons.append("sets.core.vertices truncated")
-        sets["core"] = {"vertices": core_v, "meta": {"computed_by": "tucoopy-py", **core_meta}}
+        sets["core"] = {"vertices": core_v, "meta": {"computed_by": ENGINE_ID, **core_meta}}
 
         # Core cover (always cheap: just bounds + efficiency)
         from ..solutions.tau import minimal_rights, utopia_payoff
@@ -333,7 +334,7 @@ def build_analysis(
         sets["core_cover"] = {
             "vertices": cc_vertices,
             "bounds": {"minimal_rights": [float(v) for v in m], "utopia_payoff": [float(v) for v in M]},
-            "meta": {"computed_by": "tucoopy-py", **cc_meta},
+            "meta": {"computed_by": ENGINE_ID, **cc_meta},
         }
 
         # Reasonable set (bounds + efficiency)
@@ -346,7 +347,7 @@ def build_analysis(
         sets["reasonable"] = {
             "vertices": r_vertices,
             "bounds": {"imputation_lower_bounds": lower, "utopia_payoff": upper},
-            "meta": {"computed_by": "tucoopy-py", **r_meta},
+            "meta": {"computed_by": ENGINE_ID, **r_meta},
         }
 
         # Optional Weber points
@@ -360,7 +361,7 @@ def build_analysis(
                 sets["weber"] = {
                     "points": pts,
                     "mean_marginal": mu,
-                    "meta": {"computed_by": "tucoopy-py", **pts_meta},
+                    "meta": {"computed_by": ENGINE_ID, **pts_meta},
                 }
             except tucoopyError as e:
                 analysis["meta"]["skipped"]["sets.weber"] = str(e)
@@ -375,7 +376,7 @@ def build_analysis(
                 sets["bargaining"] = {
                     "points": pts,
                     "meta": {
-                        "computed_by": "tucoopy-py",
+                        "computed_by": ENGINE_ID,
                         "count_requested": int(k),
                         "count_returned": int(len(pts)),
                         "seed": int(sets_seed) if sets_seed is not None else None,
@@ -408,7 +409,7 @@ def build_analysis(
         analysis["blocking_regions"] = {
             "coordinate_system": br.coordinate_system,
             "regions": regions_out,
-            "meta": {"computed_by": "tucoopy-py"},
+            "meta": {"computed_by": ENGINE_ID},
         }
         analysis["meta"]["computed"]["blocking_regions"] = True
     else:
@@ -450,7 +451,7 @@ def build_analysis(
                 f"n={n} > max_players={max_players}: set geometry (vertices) is skipped; prefer tables/lists.",
                 "To compute exact exponential solutions (e.g., Shapley) for larger n, call those solvers explicitly.",
             ],
-            "meta": {"computed_by": "tucoopy-py"},
+            "meta": {"computed_by": ENGINE_ID},
         }
 
         if n <= int(bundle_max_players):
@@ -521,7 +522,7 @@ def build_analysis(
                     "allocation": [float(x) for x in phi_hat],
                     "stderr": [float(x) for x in stderr],
                     "meta": {
-                        "computed_by": "tucoopy-py",
+                        "computed_by": ENGINE_ID,
                         "method": "shapley_value_sample",
                         "n_samples": int(bundle_shapley_samples),
                         "seed": None if bundle_seed is None else int(bundle_seed),

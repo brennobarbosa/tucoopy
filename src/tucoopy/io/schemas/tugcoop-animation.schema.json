@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.org/tucoopy/tucoopy-animation.schema.json",
+  "$id": "https://example.org/tucoop/tucoop-animation.schema.json",
   "title": "Cooperative Game Theory Animation Spec",
   "type": "object",
   "required": ["schema_version", "game", "series"],
