@@ -22,12 +22,12 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
           cache-dependency-path: |
-            tucoopyy/pyproject.toml
+            tucoopy/pyproject.toml
 
       - name: Install (editable)
         run: |
           python -m pip install -U pip
-          python -m pip install -e "tucoopyy[dev,docs]"
+          python -m pip install -e "tucoopy[dev,docs]"
 
       - name: Case-collision check (Windows)
         if: runner.os == 'Windows'
@@ -53,23 +53,23 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if rg -n "^[[:space:]]*#\\s*apagar\\b" tucoopyy/src/tucoopyy -S; then
+          if rg -n "^[[:space:]]*#\\s*apagar\\b" tucoopy/src/tucoopy -S; then
             echo "Found placeholder '# apagar' files. Remove them or replace with an explicit ImportError module."
             exit 1
           fi
 
       - name: Pytest
         run: |
-          python -m pytest -q tucoopyy/tests
+          python -m pytest -q tucoopy/tests
 
       - name: Mypy
         run: |
-          python -m mypy tucoopyy/src/tucoopyy
+          python -m mypy tucoopy/src/tucoopy
 
       - name: MkDocs (pt)
         if: runner.os == 'Linux'
         run: |
-          python -m mkdocs build -f tucoopyy/mkdocs.pt.yml --clean
+          python -m mkdocs build -f tucoopy/mkdocs.pt.yml --clean
 
   test-full:
     name: test (full extras) - ubuntu / py3.12
@@ -82,13 +82,13 @@ jobs:
           python-version: "3.12"
           cache: pip
           cache-dependency-path: |
-            tucoopyy/pyproject.toml
+            tucoopy/pyproject.toml
 
       - name: Install (editable + extras)
         run: |
           python -m pip install -U pip
-          python -m pip install -e "tucoopyy[dev,docs,lp,fast,viz]"
+          python -m pip install -e "tucoopy[dev,docs,lp,fast,viz]"
 
       - name: Pytest
         run: |
-          python -m pytest -q tucoopyy/tests
+          python -m pytest -q tucoopy/tests
