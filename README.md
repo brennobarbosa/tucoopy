@@ -1,4 +1,4 @@
-# tucoopy-py
+# tucoopy
 
 Python package for cooperative game theory (TU) algorithms and for generating
 animation specs (JSON) consumed by the JS renderer.
