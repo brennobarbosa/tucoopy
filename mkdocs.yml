@@ -35,52 +35,50 @@ nav:
   - Home: index.md
 
   - Theory:
-      - theory/index.md
-      - theory/tu_games.md
-      - theory/allocations.md
-      - theory/stability.md
-      - theory/game_classes.md
-      - theory/simple_games.md
-      - theory/notation.md
-      - theory/set_solutions.md
-      - theory/solution_concepts.md
-      - theory/power.md
-      - theory/transforms.md
+      - General View: theory/index.md
+      - TU Cooperative Games: theory/tu_games.md
+      - Allocations and Imputation: theory/allocations.md
+      - Blocking and Stability: theory/stability.md
+      - Game Properties: theory/game_classes.md
+      - Simple Games: theory/simple_games.md
+      - Notation: theory/notation.md
+      - Set Solutions: theory/set_solutions.md
+      - Solution Concepts: theory/solution_concepts.md
+      - Power in Simple Games: theory/power.md
+      - Decompositions ans Transforms: theory/transforms.md
 
   - Guides:
-      - guides/quickstart.md
-      - guides/choose_solution.md
-      - guides/diagnostics.md
-      - guides/large_games.md
-      - guides/performance.md
-      - guides/dev_windows_onedrive.md
-      - guides/lp_backends.md
-      - guides/vizualization.md
-      - guides/animation_spec.md
-      - guides/analysis_contract.md
-      - guides/examples.md
+      - Quickstart: guides/quickstart.md
+      - Choosing a solution: guides/choose_solution.md
+      - Diagnostics: guides/diagnostics.md
+      - Working with Large Games: guides/large_games.md
+      - Optimizing Performance: guides/performance.md
+      - How to Choose a Backend: guides/lp_backends.md
+      - Visualization (Matplotlib): guides/vizualization.md
+      - Animation Specs: guides/animation_spec.md
+      - Analysis Contract: guides/analysis_contract.md
+      - Examples: guides/examples.md
 
   - Library:
-      - library/solutions.md
-      - library/geometry.md
-      - library/games.md
-      - library/power.md
-      - library/transforms.md
-      - library/viz.md
-      - library/api.md
-      - library/structure.md
+      - Solutions: library/solutions.md
+      - Geometry: library/geometry.md
+      - Geretating Games: library/games.md
+      - Power Index: library/power.md
+      - Transformations: library/transforms.md
+      - Visualization: library/viz.md
+      - API (how to read): library/api.md
+      - Package Structure: library/structure.md
 
   - Project:
-      - project/references.md
-      - project/roadmap.md
-      - project/public_api.md
-      - project/deprecation.md
-      - project/js_vs_python.md
-      - project/project_critique.md
-      - project/contributions.md
+      - References: project/references.md
+      - Roadmap: project/roadmap.md
+      - Public Api: project/public_api.md
+      - Deprecation Poly: project/deprecation.md
+      - JS vs Python: project/js_vs_python.md
+      - Contributing: project/contributions.md
 
   - API Reference:
-      - reference/index.md
+      - Index: reference/index.md
 
       - base:
           - reference/base/coalition.md

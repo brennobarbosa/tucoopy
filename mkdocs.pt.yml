@@ -53,7 +53,6 @@ nav:
       - Diagnosticando resultados: guides/diagnostics.md
       - Trabalhando com jogos grandes: guides/large_games.md
       - Otimizando a performance: guides/performance.md
-      - Desenvolvimento (Windows/OneDrive): guides/dev_windows_onedrive.md
       - Como escolher/entender backends: guides/lp_backends.md
       - Visualização (Matplotlib): guides/vizualization.md
       - Especificação de animação: guides/animation_spec.md
@@ -76,7 +75,6 @@ nav:
       - API pública: project/public_api.md
       - Depreciação: project/deprecation.md
       - JS vs Python: project/js_vs_python.md
-      - Crítica do projeto: project/project_critique.md
       - Contribuições: project/contributions.md
 
   - Referência (API):
