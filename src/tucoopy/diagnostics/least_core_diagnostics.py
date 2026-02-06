@@ -129,7 +129,7 @@ def least_core_diagnostics(
     True
     """
     try:
-        from ..solutions.least_core import least_core_epsilon_star
+        from ..geometry.least_core_set import least_core_epsilon_star
 
         eps_star = float(least_core_epsilon_star(game, tol=float(tol)))
     except Exception as e:  # keep this diagnostic-friendly

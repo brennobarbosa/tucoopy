@@ -68,7 +68,7 @@ class TestTheoryCanonic(unittest.TestCase):
         except Exception:
             self.skipTest("requires tucoopy[lp] (SciPy + NumPy)")
 
-        from tucoopy.solutions import least_core  # noqa: E402
+        from tucoopy.geometry.least_core_set import least_core  # noqa: E402
 
         # Core non-empty (additive): epsilon* should be 0.
         g_nonempty = Game.from_value_function(n_players=3, value_fn=lambda ps: float(len(ps)))
@@ -93,7 +93,7 @@ class TestTheoryCanonic(unittest.TestCase):
     def test_least_core_requires_lp_extra_message(self) -> None:
         from tucoopy import Game  # noqa: E402
         from tucoopy.base.exceptions import MissingOptionalDependencyError  # noqa: E402
-        from tucoopy.solutions import least_core  # noqa: E402
+        from tucoopy.geometry.least_core_set import least_core  # noqa: E402
 
         g = Game.from_coalitions(n_players=2, values={0: 0.0, 3: 1.0})
 

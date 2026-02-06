@@ -26,13 +26,9 @@ Conteudo
 > Modulos como `nucleolus`/`modiclus` dependem de um backend de LP em runtime
 > (recomendado: `pip install "tucoopy[lp]"`).
 
-- Least-core (ponto/solver): `../reference/solutions/least_core.md`
+- Least-core (conjunto): `../reference/geometry/least_core_set.md`
 - Nucleolus: `../reference/solutions/nucleolus.md`
 - Modiclus: `../reference/solutions/modiclus.md`
-
-## Kernel / prekernel
-
-- Kernel (solver): `../reference/solutions/kernel.md`
 
 ## Outros
 

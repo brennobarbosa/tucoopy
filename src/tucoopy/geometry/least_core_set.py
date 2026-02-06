@@ -1,5 +1,5 @@
 ﻿"""
-# Least-core as a set-valued object.
+# Least-core (set-valued object + LP helpers).
 
 The least-core is the epsilon-core with the smallest feasible ``epsilon*``. This
 module defines `LeastCore` as a thin wrapper that:
@@ -7,6 +7,9 @@ module defines `LeastCore` as a thin wrapper that:
 - computes/stores the optimal ``epsilon*`` (when an LP backend is available),
 - exposes a corresponding `tucoopy.geometry.EpsilonCore` / polyhedron, and
 - provides convenience methods for membership and small-n geometry operations.
+
+In addition, this module provides LP-based helpers to compute ``epsilon*`` and
+select representative points from the least-core polytope.
 
 Examples
 --------
@@ -21,11 +24,37 @@ True
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import TYPE_CHECKING, Literal, TypeAlias
 
 from ..base.config import DEFAULT_GEOMETRY_MAX_DIM, DEFAULT_GEOMETRY_MAX_PLAYERS, DEFAULT_GEOMETRY_TOL
+from ..base.coalition import all_coalitions
+from ..base.exceptions import InvalidGameError, InvalidParameterError
 from ..base.types import GameProtocol
 from .epsilon_core_set import EpsilonCore
 from .polyhedron import PolyhedralSet
+
+
+SelectionMethod: TypeAlias = Literal["chebyshev_center", "any_feasible"]
+
+
+if TYPE_CHECKING:  # pragma: no cover
+    from ..diagnostics.linprog_diagnostics import LinprogDiagnostics
+
+
+@dataclass(frozen=True)
+class LeastCoreResult:
+    x: list[float]
+    epsilon: float
+    tight: list[int] | None = None
+    dual_weights: dict[int, float] | None = None
+    lp: "LinprogDiagnostics | None" = None
+
+
+@dataclass(frozen=True)
+class LeastCorePointResult:
+    x: list[float]
+    epsilon: float
+    method: str
 
 
 @dataclass
@@ -60,10 +89,9 @@ class LeastCore:
 
     Lazy evaluation / dependencies
     ------------------------------
-    The value ``epsilon`` is computed on demand via the LP-based solver
-    ``tucoopy.solutions.least_core.least_core`` (which requires SciPy/HiGHS at runtime,
-    typically via ``pip install "tucoopy[lp]"``). Once computed, it is cached in
-    ``_epsilon``.
+    The value ``epsilon`` is computed on demand via `least_core_epsilon_star`
+    in this module (which requires an LP backend at runtime, typically via
+    ``pip install "tucoopy[lp]"``). Once computed, it is cached in ``_epsilon``.
 
     Parameters
     ----------
@@ -134,8 +162,6 @@ class LeastCore:
         0.0
         """
         if self._epsilon is None:
-            from ..solutions.least_core import least_core_epsilon_star
-
             self._epsilon = float(least_core_epsilon_star(self.game, tol=float(self.tol)))
         return float(self._epsilon)
 
@@ -325,4 +351,141 @@ class LeastCore:
         return self.epsilon_core.vertices(tol=tol, max_players=max_players, max_dim=max_dim)
 
 
-__all__ = ["LeastCore"]
+def least_core(game: GameProtocol, *, tol: float = 1e-9) -> LeastCoreResult:
+    """
+    Compute a least-core allocation and the least-core epsilon.
+
+    Notes
+    -----
+    Requires an LP backend at runtime (`pip install "tucoopy[lp]"`).
+    """
+    from ..backends.optional_deps import require_module
+
+    np = require_module("numpy", extra="lp", context="least_core")  # type: ignore
+
+    n = game.n_players
+    grand = game.grand_coalition
+    vN = float(game.value(grand))
+
+    # Variables: [x0..x_{n-1}, eps]
+    c = np.zeros(n + 1, dtype=float)
+    c[n] = 1.0
+
+    A_eq = np.zeros((1, n + 1), dtype=float)
+    A_eq[0, :n] = 1.0
+    b_eq = np.array([vN], dtype=float)
+
+    rows: list[list[float]] = []
+    rhs: list[float] = []
+    for S in all_coalitions(n):
+        if S == 0 or S == grand:
+            continue
+        row = [0.0] * (n + 1)
+        for i in range(n):
+            if S & (1 << i):
+                row[i] = -1.0
+        row[n] = -1.0  # -eps
+        rows.append(row)
+        rhs.append(-float(game.value(S)))
+
+    A_ub = np.asarray(rows, dtype=float) if rows else None
+    b_ub = np.asarray(rhs, dtype=float) if rhs else None
+
+    bounds = [(None, None)] * n + [(None, None)]
+
+    from ..backends.lp import linprog_solve
+
+    res = linprog_solve(
+        c,
+        A_ub=A_ub,
+        b_ub=b_ub,
+        A_eq=A_eq,
+        b_eq=b_eq,
+        bounds=bounds,
+        method="highs",
+        context="least_core",
+    )
+
+    z = res.x.tolist()
+    x = [float(v) for v in z[:n]]
+    eps = float(z[n])
+    if abs(eps) <= float(tol):
+        eps = 0.0
+
+    tight: list[int] = []
+    duals: dict[int, float] = {}
+    if A_ub is not None and b_ub is not None:
+        z_np = np.asarray(z, dtype=float)
+        slack = b_ub - (A_ub @ z_np)
+        for idx, S in enumerate([S for S in all_coalitions(n) if S not in (0, grand)]):
+            if idx >= slack.shape[0]:
+                break
+            if float(slack[idx]) <= float(tol):
+                tight.append(S)
+        tight.sort()
+
+        marg = getattr(getattr(res, "ineqlin", None), "marginals", None)
+        if marg is not None:
+            for idx, S in enumerate([S for S in all_coalitions(n) if S not in (0, grand)]):
+                if idx >= len(marg):
+                    break
+                w = float(marg[idx])
+                if abs(w) > float(tol):
+                    duals[S] = w
+
+    diag = None
+    try:
+        from ..diagnostics.linprog_diagnostics import linprog_diagnostics
+
+        diag = linprog_diagnostics(res)
+    except Exception:
+        diag = None
+
+    return LeastCoreResult(x=x, epsilon=eps, tight=tight or None, dual_weights=duals or None, lp=diag)
+
+
+def least_core_epsilon_star(game: GameProtocol, *, tol: float = 1e-9) -> float:
+    """
+    Compute the least-core value epsilon*.
+    """
+
+    return float(least_core(game, tol=float(tol)).epsilon)
+
+
+def least_core_point(
+    game: GameProtocol,
+    *,
+    restrict_to_imputation: bool = False,
+    tol: float = 1e-9,
+    method: SelectionMethod = "chebyshev_center",
+) -> LeastCorePointResult:
+    """
+    Select a single allocation from the least-core set.
+    """
+
+    lc = LeastCore(game, restrict_to_imputation=restrict_to_imputation, tol=float(tol))
+
+    if method == "chebyshev_center":
+        cc = lc.chebyshev_center()
+        if cc is None:
+            raise InvalidGameError("least_core_point: least-core set is empty")
+        x_cc, _r = cc
+        return LeastCorePointResult(x=[float(v) for v in x_cc], epsilon=float(lc.epsilon), method=str(method))
+
+    if method == "any_feasible":
+        x_any = lc.sample_point()
+        if x_any is None:
+            raise InvalidGameError("least_core_point: least-core set is empty")
+        return LeastCorePointResult(x=[float(v) for v in x_any], epsilon=float(lc.epsilon), method=str(method))
+
+    raise InvalidParameterError("method must be 'chebyshev_center' or 'any_feasible'")
+
+
+__all__ = [
+    "LeastCore",
+    "LeastCoreResult",
+    "LeastCorePointResult",
+    "least_core",
+    "least_core_epsilon_star",
+    "least_core_point",
+]

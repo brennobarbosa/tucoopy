@@ -2,8 +2,8 @@
 # Point-valued solution concepts for TU cooperative games.
 
 This package contains algorithms that return a single payoff vector (allocation / imputation),
-such as the Shapley value, (normalized) Banzhaf value, nucleolus, least-core point selections,
-kernel/prekernel, and related solution concepts.
+such as the Shapley value, (normalized) Banzhaf value, nucleolus,
+and related solution concepts.
 
 `__init__.py` re-exports the stable public API from the submodules.
 """
@@ -16,15 +16,6 @@ from .egalitarian import egalitarian_value
 from .ensc import ensc_value
 from .esd import esd_value
 from .gately import GatelyResult, gately_point
-from .kernel import KernelResult, PreKernelResult, kernel, prekernel
-from .least_core import (
-    LeastCorePointResult,
-    LeastCoreResult,
-    least_core,
-    least_core_epsilon_star,
-    least_core_point,
-)
-from .least_squares import least_squares_imputation
 from .myerson import MyersonResult, myerson_value
 from .modiclus import ModiclusResult, modiclus
 from .nucleolus import NucleolusResult, nucleolus, prenucleolus
@@ -46,22 +37,12 @@ __all__ = [
     "SolveResult",
     "nucleolus",
     "prenucleolus",
-    "least_core",
-    "least_core_epsilon_star",
-    "LeastCoreResult",
     "NucleolusResult",
     "tau_value",
     "utopia_payoff",
     "minimal_rights",
-    "prekernel",
-    "kernel",
-    "PreKernelResult",
-    "KernelResult",
-    "least_core_point",
-    "LeastCorePointResult",
     "gately_point",
     "GatelyResult",
-    "least_squares_imputation",
     "myerson_value",
     "MyersonResult",
     "modiclus",

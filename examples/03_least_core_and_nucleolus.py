@@ -22,7 +22,7 @@ def main() -> None:
         return
 
     from tucoopy.base.game import Game
-    from tucoopy.solutions.least_core import least_core
+    from tucoopy.geometry.least_core_set import least_core
     from tucoopy.solutions.nucleolus import nucleolus, prenucleolus
 
     g = Game.from_coalitions(

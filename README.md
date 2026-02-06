@@ -90,7 +90,8 @@ LP-based methods are behind the optional `lp` extra:
 
 ```py
 from tucoopy import Game
-from tucoopy.solutions import least_core, nucleolus
+from tucoopy.geometry.least_core_set import least_core
+from tucoopy.solutions import nucleolus
 
 g = Game.from_coalitions(
     n_players=3,

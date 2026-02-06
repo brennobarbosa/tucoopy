@@ -135,6 +135,28 @@
                 }
               },
               "additionalProperties": true
+            },
+            "prekernel_set": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "description": "Pre-kernel sample points (each length n_players).",
+                  "items": { "type": "array", "items": { "type": "number" } }
+                }
+              },
+              "additionalProperties": true
+            },
+            "kernel_set": {
+              "type": "object",
+              "properties": {
+                "points": {
+                  "type": "array",
+                  "description": "Kernel sample points (each length n_players).",
+                  "items": { "type": "array", "items": { "type": "number" } }
+                }
+              },
+              "additionalProperties": true
             }
           },
           "additionalProperties": true

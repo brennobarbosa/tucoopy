@@ -15,7 +15,7 @@ class TestEdgeCases(unittest.TestCase):
             self.skipTest("NumPy not installed (install with tucoopy[fast])")
 
         from tucoopy import Game  # noqa: E402
-        from tucoopy.solutions import prekernel  # noqa: E402
+        from tucoopy.geometry.kernel_set import prekernel  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         res = prekernel(g, max_iter=0)
@@ -74,4 +74,3 @@ class TestEdgeCases(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

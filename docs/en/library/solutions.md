@@ -24,17 +24,12 @@ For full details (signatures, examples, parameters), use the **API Reference** s
 > Modules like `nucleolus` / `modiclus` require an LP backend at runtime
 > (recommended: `pip install "tucoopy[lp]"`).
 
-- Least-core (point/solver): `../reference/solutions/least_core.md`
+- Least-core (set): `../reference/geometry/least_core_set.md`
 - Nucleolus: `../reference/solutions/nucleolus.md`
 - Modiclus: `../reference/solutions/modiclus.md`
-
-### Kernel / prekernel
-
-- Kernel (solver): `../reference/solutions/kernel.md`
 
 ### Other
 
 - Tau value: `../reference/solutions/tau.md`
 - Gately point: `../reference/solutions/gately.md`
 - Dispatch (solve): `../reference/solutions/solve.md`
-

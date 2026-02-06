@@ -50,7 +50,7 @@ class TestSolutionsNew(unittest.TestCase):
 
     def test_least_core_point_missing_numpy_message(self) -> None:
         from tucoopy import Game  # noqa: E402
-        from tucoopy.solutions import least_core_point  # noqa: E402
+        from tucoopy.geometry.least_core_set import least_core_point  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=2,

@@ -168,9 +168,6 @@ nav:
       - solutions:
           - reference/solutions/banzhaf.md
           - reference/solutions/gately.md
-          - reference/solutions/kernel.md
-          - reference/solutions/least_core.md
-          - reference/solutions/least_squares.md
           - reference/solutions/modiclus.md
           - reference/solutions/myerson.md
           - reference/solutions/nucleolus.md

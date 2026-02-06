@@ -29,27 +29,13 @@ class TestSolveDispatch(unittest.TestCase):
         self.assertIn("d", res.meta)
         self.assertAlmostEqual(sum(res.x), 10.0, places=6)
 
-    def test_solve_least_squares_requires_x0(self) -> None:
+    def test_solve_rejects_least_squares_method(self) -> None:
         from tucoopy import Game  # noqa: E402
         from tucoopy.solutions import solve  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
-
         with self.assertRaises(ValueError):
             solve(g, method="least_squares")
-
-    def test_solve_least_squares_projection(self) -> None:
-        from tucoopy import Game  # noqa: E402
-        from tucoopy.solutions import solve  # noqa: E402
-
-        g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
-        res = solve(g, method="least_squares", x0=[1.0, 1.0, 1.0])
-        self.assertEqual(res.method, "least_squares")
-        self.assertAlmostEqual(res.x[0], 1.0, places=9)
-        self.assertAlmostEqual(res.x[1], 1.0, places=9)
-        self.assertAlmostEqual(res.x[2], 1.0, places=9)
-        self.assertIsNotNone(res.meta)
-        self.assertTrue(bool(res.meta.get("feasible", False)))
 
     def test_solve_myerson_requires_edges(self) -> None:
         from tucoopy import Game  # noqa: E402
@@ -89,15 +75,14 @@ class TestSolveDispatch(unittest.TestCase):
         self.assertAlmostEqual(res.x[1], 1.0, places=6)
         self.assertAlmostEqual(res.x[2], 1.0, places=6)
 
-    def test_solve_least_core_point_selection_validation(self) -> None:
+    def test_solve_rejects_least_core_point_method(self) -> None:
         from tucoopy import Game  # noqa: E402
         from tucoopy.solutions import solve  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         with self.assertRaises(ValueError):
-            solve(g, method="least_core_point", selection="nope")
+            solve(g, method="least_core_point")
 
 
 if __name__ == "__main__":
     unittest.main()
-

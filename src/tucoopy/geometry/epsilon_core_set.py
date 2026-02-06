@@ -557,7 +557,7 @@ def least_core_polytope(
     >>> lc.vertices
     [[1.0, 1.0, 1.0]]
     """
-    from ..solutions.least_core import least_core  # local import to keep base lightweight
+    from .least_core_set import least_core  # local import to keep base lightweight
 
     lc = least_core(game, tol=tol)
     verts = EpsilonCore(game, lc.epsilon, restrict_to_imputation=restrict_to_imputation).vertices(

@@ -9,6 +9,7 @@ breaking changes may still occur. When possible, changes are documented here.
 
 ### Added
 - Project hardening checklist (CI, public API, deprecation policy).
+- `build_analysis` now includes `nucleolus` under `analysis.solutions` when an LP backend is available.
 
 ### Changed
 - Documentation and examples organization (ongoing).
@@ -19,4 +20,3 @@ breaking changes may still occur. When possible, changes are documented here.
 ## 0.1.0
 
 Initial public release.
-

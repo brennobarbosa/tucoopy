@@ -9,7 +9,7 @@ import directly from subpackages:
 
 - `tucoopy.base` (core primitives: coalitions + games + config)
 - `tucoopy.games` (game generators)
-- `tucoopy.solutions` (single-valued solutions: Shapley, nucleolus, kernel, ...)
+- `tucoopy.solutions` (single-valued solutions: Shapley, nucleolus, ...)
 - `tucoopy.geometry` (set-valued objects: core, epsilon-core, least-core, ...)
 - `tucoopy.power` (power indices for simple/voting games)
 - `tucoopy.transforms` (game transforms: dual, sum/diff, Myerson restriction, ...)

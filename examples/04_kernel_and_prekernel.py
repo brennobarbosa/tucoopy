@@ -22,7 +22,7 @@ def main() -> None:
         return
 
     from tucoopy.base.game import Game
-    from tucoopy.solutions.kernel import kernel, prekernel
+    from tucoopy.geometry.kernel_set import kernel, prekernel
     from tucoopy.solutions.shapley import shapley_value
 
     # Additive game: v(S)=|S|. Unique imputation/core point is (1,1,1).

@@ -232,7 +232,7 @@ def build_lp_explanations(game: GameProtocol, *, tol: float = 1e-9, max_list: in
     {...}
     """
     from ..properties.balancedness import balancedness_check
-    from ..solutions.least_core import least_core
+    from ..geometry.least_core_set import least_core
 
     out: dict[str, Any] = {}
     bal = balancedness_check(game, tol=tol)

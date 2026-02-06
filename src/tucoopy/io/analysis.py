@@ -64,8 +64,14 @@ def build_analysis(
     include_blocking_regions: bool = True,
     include_weber: bool = False,
     include_bargaining: bool = False,
+    include_prekernel_set: bool = False,
+    include_kernel_set: bool = False,
     bargaining_n_samples: int = 200,
     bargaining_max_attempts: int | None = None,
+    prekernel_n_samples: int = 2000,
+    kernel_n_samples: int = 5000,
+    prekernel_max_points: int = 50,
+    kernel_max_points: int = 50,
     sets_seed: int | None = 0,
     include_bundle: bool = True,
     bundle_max_players: int = 12,
@@ -96,8 +102,14 @@ def build_analysis(
                 "include_blocking_regions": bool(include_blocking_regions),
                 "include_weber": bool(include_weber),
                 "include_bargaining": bool(include_bargaining),
+                "include_prekernel_set": bool(include_prekernel_set),
+                "include_kernel_set": bool(include_kernel_set),
                 "bargaining_n_samples": int(bargaining_n_samples),
                 "bargaining_max_attempts": int(bargaining_max_attempts) if bargaining_max_attempts is not None else None,
+                "prekernel_n_samples": int(prekernel_n_samples),
+                "kernel_n_samples": int(kernel_n_samples),
+                "prekernel_max_points": int(prekernel_max_points),
+                "kernel_max_points": int(kernel_max_points),
                 "sets_seed": int(sets_seed) if sets_seed is not None else None,
                 "include_bundle": bool(include_bundle),
                 "bundle_max_players": int(bundle_max_players),
@@ -144,6 +156,19 @@ def build_analysis(
                     "meta": {"computed_by": ENGINE_ID, "method": "normalized_banzhaf_value"},
                 },
             }
+
+            # Optional LP-based classic solution points (when available).
+            try:
+                from ..solutions.nucleolus import nucleolus
+
+                nu = nucleolus(game, tol=float(tol))
+                analysis["solutions"]["nucleolus"] = {
+                    "allocation": [float(v) for v in nu.x],
+                    "meta": {"computed_by": ENGINE_ID, "method": "nucleolus"},
+                }
+            except Exception as e:
+                analysis["meta"]["skipped"]["solutions.nucleolus"] = str(e)
+
             analysis["meta"]["computed"]["solutions"] = True
         else:
             analysis["meta"]["computed"]["solutions"] = False
@@ -383,6 +408,57 @@ def build_analysis(
                         "max_attempts": int(bargaining_max_attempts) if bargaining_max_attempts is not None else None,
                     },
                 }
+
+        # Optional prekernel/kernel sample points (sampling-based, exponential membership checks).
+        if (include_prekernel_set or include_kernel_set) and n <= 4:
+            from ..geometry.kernel_set import KernelSet, PreKernelSet
+
+            # We treat the number of samples as "work" and the max_points as "output size".
+            out_cap = int(max_points) if max_points is not None else None
+
+            if include_prekernel_set and int(prekernel_n_samples) > 0 and int(prekernel_max_points) > 0:
+                try:
+                    pk = PreKernelSet(game, tol=float(tol), approx_seed=sets_seed)
+                    pts = pk.sample_points(
+                        n_samples=int(prekernel_n_samples),
+                        seed=sets_seed,
+                        max_points=int(prekernel_max_points) if out_cap is None else min(int(prekernel_max_points), out_cap),
+                        tol=float(tol),
+                    )
+                    sets["prekernel_set"] = {
+                        "points": pts,
+                        "meta": {
+                            "computed_by": ENGINE_ID,
+                            "n_samples": int(prekernel_n_samples),
+                            "max_points": int(prekernel_max_points),
+                            "count_returned": int(len(pts)),
+                            "seed": int(sets_seed) if sets_seed is not None else None,
+                        },
+                    }
+                except tucoopyError as e:
+                    analysis["meta"]["skipped"]["sets.prekernel_set"] = str(e)
+
+            if include_kernel_set and int(kernel_n_samples) > 0 and int(kernel_max_points) > 0:
+                try:
+                    ks = KernelSet(game, tol=float(tol), approx_seed=sets_seed)
+                    pts = ks.sample_points(
+                        n_samples=int(kernel_n_samples),
+                        seed=sets_seed,
+                        max_points=int(kernel_max_points) if out_cap is None else min(int(kernel_max_points), out_cap),
+                        tol=float(tol),
+                    )
+                    sets["kernel_set"] = {
+                        "points": pts,
+                        "meta": {
+                            "computed_by": ENGINE_ID,
+                            "n_samples": int(kernel_n_samples),
+                            "max_points": int(kernel_max_points),
+                            "count_returned": int(len(pts)),
+                            "seed": int(sets_seed) if sets_seed is not None else None,
+                        },
+                    }
+                except tucoopyError as e:
+                    analysis["meta"]["skipped"]["sets.kernel_set"] = str(e)
 
         analysis["sets"] = sets
         analysis["meta"]["computed"]["sets"] = True

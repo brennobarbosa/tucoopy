@@ -14,7 +14,8 @@ class TestLPOptional(unittest.TestCase):
             self.skipTest("SciPy not installed (install with tucoopy[lp])")
 
         from tucoopy import Game  # noqa: E402
-        from tucoopy.solutions import least_core, nucleolus  # noqa: E402
+        from tucoopy.geometry.least_core_set import least_core  # noqa: E402
+        from tucoopy.solutions import nucleolus  # noqa: E402
 
         g = Game.from_coalitions(
             n_players=3,
@@ -44,6 +45,8 @@ class TestLPOptional(unittest.TestCase):
         from tucoopy.io import build_analysis  # noqa: E402
 
         a = build_analysis(g, max_players=4, include_lp_explanations=True, lp_explanations_max_players=4)
+        self.assertIn("solutions", a)
+        self.assertIn("nucleolus", a["solutions"])
         self.assertIn("lp", a["diagnostics"])
         self.assertIn("balancedness_check", a["diagnostics"]["lp"])
         self.assertIn("least_core", a["diagnostics"]["lp"])
@@ -128,7 +131,7 @@ class TestLPOptional(unittest.TestCase):
             self.skipTest("NumPy not installed (install with tucoopy[fast])")
 
         from tucoopy import Game  # noqa: E402
-        from tucoopy.solutions import prekernel  # noqa: E402
+        from tucoopy.geometry.kernel_set import prekernel  # noqa: E402
 
         # Additive game: v(S)=|S| has unique imputation/core point (1,1,1).
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
@@ -144,7 +147,7 @@ class TestLPOptional(unittest.TestCase):
             self.skipTest("NumPy not installed (install with tucoopy[fast])")
 
         from tucoopy import Game  # noqa: E402
-        from tucoopy.solutions import kernel  # noqa: E402
+        from tucoopy.geometry.kernel_set import kernel  # noqa: E402
 
         g = Game.from_value_function(n_players=3, value_fn=lambda S: float(len(S)))
         res = kernel(g, tol=1e-9, max_iter=50)
